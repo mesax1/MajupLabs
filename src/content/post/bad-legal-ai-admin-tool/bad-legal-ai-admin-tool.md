@@ -3,6 +3,7 @@ title: "Bad AI Ideas: Legal Admin Tool"
 description: "In our 'Bad AI Ideas' series, we start with a cautionary tale from the legal sector. 
 A potential client's request for an autonomous, AI-powered deadline manager serves as a perfect case study for identifying unrealistic project goals and understanding the critical need for human oversight in high-stakes AI applications."
 publishDate: "2025-06-22"
+lang: "en"
 tags: ["AI", "Legal", "Admin Tool", "Bad AI Ideas"]
 seriesId: "bad_ai_ideas"
 coverImage:

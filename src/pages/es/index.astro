@@ -8,9 +8,9 @@ import PageLayout from "@/layouts/Base.astro";
 import { collectionDateSort } from "@/utils/date";
 import logoImage from "@/assets/images/logo_azul_fondo_transparente.png";
 
-// Posts - filter Spanish posts when available
+// Posts - filter Spanish posts
 const MAX_POSTS = 10;
-const allPosts = await getAllPosts();
+const allPosts = await getAllPosts("es"); // Filter for Spanish posts
 const allPostsByDate = allPosts
 	.sort(collectionDateSort)
 	.slice(0, MAX_POSTS) as CollectionEntry<"post">[];

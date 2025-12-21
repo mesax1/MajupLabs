@@ -14,6 +14,7 @@ const post = defineCollection({
 	schema: ({ image }) =>
 		baseSchema.extend({
 			description: z.string(),
+			lang: z.enum(["en", "es"]).default("en"), // Language field for i18n
 			coverImage: z
 				.object({
 					alt: z.string(),

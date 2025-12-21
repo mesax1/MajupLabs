@@ -2,6 +2,7 @@
 title: "Start with the Problem, Not the Solution"
 description: "Focus on the problem, not the solution. A systematic approach to implementing AI that delivers real business value."
 publishDate: "2025-03-21"
+lang: "en"
 tags: ["RAG", "AI", "ML", "User Feedback", "Continuous Improvement"]
 seriesId: "ai-ml"
 orderInSeries: 1

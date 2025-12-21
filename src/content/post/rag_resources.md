@@ -3,6 +3,7 @@ title: "LLMs, AI Integration, & RAG resources"
 description: "A collection of AI Products Development & Retrieval Augmented Generation (RAG) resources, either informative blogposts or tutorials, along with books, tweets, youtube videos, short courses, etc, that I have found useful at some point during my career."
 publishDate: "2025-03-23"
 updatedDate: "2025-05-15"
+lang: "en"
 tags: ["RAG", "AI", "User Feedback", "Continuous Improvement"]
 seriesId: "rag"
 orderInSeries: 1

@@ -2,6 +2,7 @@
 title: "Bad AI Ideas: Image-Posts Generator for Social Media"
 description: "The second installment in our 'Bad AI Ideas' series examines a recurring request from marketing companies: building an AI system that automatically generates editable image-posts for social media. We explore why this seemingly straightforward idea presents significant technical and business challenges."
 publishDate: "2025-07-01"
+lang: "en"
 tags: ["AI", "Marketing", "Social Media", "Design", "Bad AI Ideas"]
 seriesId: "bad_ai_ideas"
 coverImage:

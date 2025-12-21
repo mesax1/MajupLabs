@@ -10,7 +10,7 @@ import logoImage from "@/assets/images/logo_azul_fondo_transparente.png";
 
 // Posts
 const MAX_POSTS = 10;
-const allPosts = await getAllPosts();
+const allPosts = await getAllPosts("en"); // Filter for English posts
 const allPostsByDate = allPosts
 	.sort(collectionDateSort)
 	.slice(0, MAX_POSTS) as CollectionEntry<"post">[];

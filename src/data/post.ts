@@ -1,9 +1,11 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 
 /** filter out draft posts based on the environment */
-export async function getAllPosts(): Promise<CollectionEntry<"post">[]> {
+export async function getAllPosts(lang?: "en" | "es"): Promise<CollectionEntry<"post">[]> {
 	return await getCollection("post", ({ data }) => {
-		return import.meta.env.PROD ? !data.draft : true;
+		const draftFilter = import.meta.env.PROD ? !data.draft : true;
+		const langFilter = lang ? data.lang === lang : true;
+		return draftFilter && langFilter;
 	});
 }
 

@@ -14,7 +14,7 @@ import { getCollection } from "astro:content";
 export const getStaticPaths = (async ({ paginate }) => {
 	const MAX_POSTS_PER_PAGE = 5;
 	const MAX_TAGS = 20;
-	const allPosts = await getAllPosts();
+	const allPosts = await getAllPosts("en"); // Filter for English posts only
 	const uniqueTags = getUniqueTags(allPosts).slice(0, MAX_TAGS);
 	const allSeries = await getCollection("series");
 	return paginate(allPosts.sort(collectionDateSort), {

@@ -2,13 +2,14 @@
 title: "Comienza con el Problema, No con la Solución"
 description: "Enfócate en el problema, no en la solución. Un enfoque sistemático para implementar IA que entrega valor real al negocio."
 publishDate: "2025-03-21"
+lang: "es"
 tags: ["RAG", "AI", "ML", "User Feedback", "Continuous Improvement"]
 seriesId: "ai-ml"
 orderInSeries: 1
 draft: false
 ---
 
-En el acelerado campo del Machine Learning (ML), la IA Generativa (GenAI) y la Generación Aumentada por Recuperación (RAG), puede ser tentador saltar directamente a modelos sofisticados o herramientas de vanguardia. Sin embargo, el primer paso más crítico a menudo se pasa por alto: **definir claramente el problema de negocio que intentas resolver.** Al adoptar un enfoque centrado en el problema, te aseguras de que tus iniciativas de IA aborden necesidades genuinas, se alineen con las expectativas de los clientes y entreguen valor medible. En este artículo, descubrirás cómo identificar tareas que se benefician de la automatización o el aumento, evaluar la viabilidad y el impacto comercial, y finalmente implementar soluciones de IA que impulsen el rendimiento de tu organización.
+En los campos de Machine Learning (ML) y la IA Generativa (GenAI), puede ser tentador saltar directamente a modelos sofisticados o herramientas de vanguardia. Sin embargo, el primer paso más crítico a menudo se pasa por alto: **definir claramente el problema de negocio que intentas resolver.** Al adoptar un enfoque centrado en el problema, te aseguras de que tus iniciativas de IA aborden necesidades genuinas, se alineen con las expectativas de los clientes y entreguen valor medible. En este artículo, descubrirás cómo identificar tareas que se benefician de la automatización o el aumento, evaluar la viabilidad y el impacto comercial, y finalmente implementar soluciones de IA que impulsen el rendimiento de tu organización.
 
 
 ## Por qué Importa el Pensamiento Centrado en el Problema

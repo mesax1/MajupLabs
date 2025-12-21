@@ -5,6 +5,7 @@ import FormattedDate from "@/components/FormattedDate.astro";
 import { Icon } from "astro-icon/components";
 import Badge from '@/components/Badge.astro';
 import Separator from "../Separator.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/ui";
 
 interface Props {
 	content: CollectionEntry<"post">;
@@ -14,6 +15,11 @@ const {
 	content,
 
 } = Astro.props;
+
+// Get current language
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+const urlPrefix = currentLang === "en" ? "" : `/${currentLang}`;
 
 // console.log("data:", data); // Debug
 // console.log("headings:", content.rendered?.metadata?.headings); // Debug
@@ -124,7 +130,7 @@ const postSeries = content.data.seriesId
 			<Icon aria-hidden="true" class="flex-shrink-0 inline-block h-6 w-6 text-accent-base" focusable="false" name="solar:tag-line-duotone" />	
 			<>
 				{content.data.tags.map((tag) => (
-					<a aria-label={`View all posts with the tag: ${tag}`} href={`/tags/${tag}`}>
+					<a aria-label={`View all posts with the tag: ${tag}`} href={`${urlPrefix}/tags/${tag}`}>
 						<Badge variant="accent-two" title={tag} />
 					</a>
 				))}
@@ -142,7 +148,7 @@ const postSeries = content.data.seriesId
 				<Icon aria-hidden="true" class="flex-shrink-0 inline-block h-6 w-6 text-accent-base" focusable="false" name="solar:notes-line-duotone" />
 				<a 
 					aria-label={`About ${postSeries.data.title} series`} 
-					href={`/series/${postSeries.id}`}
+					href={`${urlPrefix}/series/${postSeries.id}`}
 					class="flex items-center gap-2 flex-wrap"
 				>
 					<Badge variant="accent-base" showHash={false} title={postSeries.data.title} />

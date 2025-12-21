@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "@/components/FormattedDate.astro";
 import type { HTMLTag, Polymorphic } from "astro/types";
+import { getLangFromUrl } from "@/i18n/ui";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
 	post: CollectionEntry<"post">;
@@ -12,6 +13,10 @@ const { as: Tag = "div", post, withDesc = false } = Astro.props;
 const { publishDate, updatedDate } = post.data;
 
 const showUpdatedDate = updatedDate && updatedDate.getTime() > publishDate.getTime();
+
+// Get current language for URL prefix
+const currentLang = getLangFromUrl(Astro.url);
+const urlPrefix = currentLang === "en" ? "" : `/${currentLang}`;
 ---
 
 <div class={withDesc ? "flex flex-col" : "flex flex-col grow sm:flex-row sm:items-center sm:justify-between"}>
@@ -38,7 +43,7 @@ const showUpdatedDate = updatedDate && updatedDate.getTime() > publishDate.getTi
 				)}
 			</div>
 			<Tag class="citrus-link font-medium text-accent-base sm:order-1 sm:flex-gro md:line-clamp-1">
-				<a data-astro-prefetch href={`/posts/${post.id}/`}>
+				<a data-astro-prefetch href={`${urlPrefix}/posts/${post.id}/`}>
 					{post.data.draft && <span class="text-red-500">(Draft) </span>}
 					{post.data.title}
 				</a>
@@ -67,7 +72,7 @@ const showUpdatedDate = updatedDate && updatedDate.getTime() > publishDate.getTi
 				)}
 			</div>
 			<Tag class="citrus-link font-medium text-accent-base mt-2.5">
-				<a data-astro-prefetch href={`/posts/${post.id}/`}>
+				<a data-astro-prefetch href={`${urlPrefix}/posts/${post.id}/`}>
 					{post.data.title}
 				</a>
 			</Tag>

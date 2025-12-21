@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 import SocialList from "@/components/SocialList.astro";
 import PostPreview from "@/components/blog/PostPreview.astro";
 import { getAllPosts } from "@/data/post";
@@ -36,7 +37,7 @@ const allPostsByDate = allPosts
 					class="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 object-contain" 
 					loading="eager"
 				/>
-	</div>
+			</div>
 				
 				<!-- Content section -->
 				<div class="flex-1 text-center lg:text-left order-2 lg:order-2 max-w-2xl">

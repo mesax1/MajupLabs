@@ -1,7 +1,17 @@
 ---
 import { menuLinks, siteConfig } from "@/site.config";
+import { getLangFromUrl, useTranslations } from "@/i18n/ui";
 
 const year = new Date().getFullYear();
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+// Add language prefix to menu links if not English
+const localizedMenuLinks = menuLinks.map((link) => ({
+	...link,
+	path: currentLang === "en" ? link.path : `/es${link.path}`,
+	title: t(`nav.${link.title.toLowerCase()}` as any) || link.title,
+}));
 ---
 
 <footer
@@ -16,7 +26,7 @@ const year = new Date().getFullYear();
 		class="flex justify-between space-x-4 font-medium text-light md:w-[14rem] w-auto"
 	>
 		{
-			menuLinks.map((link) => (
+			localizedMenuLinks.map((link) => (
 				<a class="underline-offset-2 hover:text-accent hover:underline" href={link.path}>
 					{link.title}
 				</a>

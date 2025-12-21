@@ -4,21 +4,25 @@ import SkipLink from "@/components/SkipLink.astro";
 import ThemeProvider from "@/components/ThemeProvider.astro";
 import Header from "@/components/layout/Header.astro";
 import Footer from "@/components/layout/Footer.astro";
-import { siteConfig } from "@/site.config";
+import { getSiteConfig } from "@/site.config";
+import { getLangFromUrl } from "@/i18n/ui";
 import type { SiteMeta } from "@/types";
 
 interface Props {
 	meta: SiteMeta;
 }
 
+const currentLang = getLangFromUrl(Astro.url);
+const config = getSiteConfig(currentLang);
+
 const {
-	meta: { articleDate, description = siteConfig.description, ogImage, title },
+	meta: { articleDate, description = config.description, ogImage, title },
 } = Astro.props;
 ---
 
 <html
 	class="overflow-x-hidden grid scroll-pt-20 scroll-smooth font-sans text-textColor text-xl md:text-base antialiased"
-	lang={siteConfig.lang}
+	lang={config.locale}
 >
 	<head>
 		<BaseHead articleDate={articleDate} description={description} ogImage={ogImage} title={title} />

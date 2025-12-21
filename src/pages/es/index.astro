@@ -1,0 +1,359 @@
+---
+import { type CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import SocialList from "@/components/SocialList.astro";
+import PostPreview from "@/components/blog/PostPreview.astro";
+import { getAllPosts } from "@/data/post";
+import PageLayout from "@/layouts/Base.astro";
+import { collectionDateSort } from "@/utils/date";
+import logoImage from "@/assets/images/logo_azul_fondo_transparente.png";
+
+// Posts - filter Spanish posts when available
+const MAX_POSTS = 10;
+const allPosts = await getAllPosts();
+const allPostsByDate = allPosts
+	.sort(collectionDateSort)
+	.slice(0, MAX_POSTS) as CollectionEntry<"post">[];
+
+---
+
+<PageLayout meta={{ title: "Inicio" }}>
+	<!-- Background blur - optimized for mobile -->
+	<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-screen pointer-events-none blur-3xl opacity-40 dark:opacity-20 overflow-hidden">
+		<div class="absolute top-[5%] right-[10%] w-[40%] h-[60%] bg-gradient-to-b from-purple-300 via-blue-300 to-transparent rounded-full opacity-60"></div>
+		<div class="absolute top-[5%] left-[10%] w-[40%] h-[60%] bg-gradient-to-b from-blue-300 via-pink-300 to-transparent rounded-full opacity-60"></div>
+		<div class="absolute top-[-10%] left-[20%] w-[60%] h-[80%] bg-gradient-to-b from-indigo-300 via-orange-300 to-transparent rounded-full opacity-30"></div>
+	</div>
+
+	<!-- Hero section -->
+	<section class="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+		<div class="max-w-6xl mx-auto">
+			<div class="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+			<!-- Logo section -->
+			<div class="flex-shrink-0 order-1 lg:order-1">
+				<img 
+					src={logoImage.src} 
+					alt="MajupLabs - Ingeniería de IA Experta, Consultoría y Desarrollo" 
+					class="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 object-contain" 
+					loading="eager"
+				/>
+			</div>
+				
+				<!-- Content section -->
+				<div class="flex-1 text-center lg:text-left order-2 lg:order-2 max-w-2xl">
+					<span class="inline-block text-xs sm:text-sm uppercase tracking-wider bg-gradient-to-r from-accent-two/85 via-accent-one/85 to-accent-two/85 dark:from-accent-two dark:via-accent-one dark:to-accent-two bg-clip-text text-transparent font-semibold">
+				Soluciones de IA que Generan Resultados
+			</span>
+					<h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mt-2 mb-3 lg:mb-4 leading-tight">
+						MajupLabs
+					</h1>
+					<p class="text-base sm:text-lg lg:text-xl leading-relaxed mb-6 text-textColor">
+						Somos una <strong class="text-accent-base">Firma de Ingeniería de IA Aplicada</strong> especializada en <strong class="text-accent-base">Ciencia de Datos, Machine Learning e Integración de IA</strong> para startups y empresas establecidas que buscan aprovechar la IA de manera efectiva.
+					</p>
+					<p class="text-sm sm:text-base lg:text-lg leading-relaxed mb-6 text-light">
+						Nuestra experiencia incluye <strong class="text-accent-two">ML, LLMs, RAG, Sistemas de Búsqueda y Recomendación, VRP, y Decisiones basadas en Datos</strong>.
+					</p>
+					
+					<!-- Social links -->
+					<div class="flex justify-center lg:justify-start mb-6">
+				<SocialList />
+			</div>
+					
+					<!-- CTA buttons -->
+					<div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 sm:gap-4">
+						<a 
+							href="/es/posts/" 
+							class="inline-flex items-center justify-center h-10 sm:h-12 px-6 sm:px-8 rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-bgColor font-semibold text-sm sm:text-base"
+							aria-label="Ver mis publicaciones del blog"
+						>
+							Blog
+						</a>
+						<a 
+							href="/es/services/" 
+							class="inline-flex items-center justify-center h-10 sm:h-12 px-6 sm:px-8 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest transition-all"
+							aria-label="Ver mis servicios de consultoría"
+						>
+							<span class="bg-clip-text text-transparent font-semibold bg-gradient-to-r from-accent-one to-accent-two text-sm sm:text-base">
+						Servicios
+					</span>
+				</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Main content container -->
+	<div class="relative px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			
+			<!-- Consulting section -->
+			<section class="prose prose-citrus prose-lg max-w-none mb-12 lg:mb-16">
+				<h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-accent-base mb-4 sm:mb-6">
+					Consultoría de IA Bajo Demanda: Del Concepto a la Producción
+				</h2>
+				
+				<p class="text-base sm:text-lg leading-relaxed mb-4">
+					<strong class="text-accent-base">¿Te cuesta convertir tus ideas de IA en realidad?</strong> Nos especializamos en ayudar a startups y empresas tecnológicas establecidas a cerrar la brecha entre los conceptos de IA y las soluciones listas para producción.
+				</p>
+				
+				<p class="text-base sm:text-lg leading-relaxed mb-4">
+					Nuestros clientes aprovechan nuestra experiencia en <strong class="text-accent-two">ML, LLMs, RAG, Búsqueda, Evaluaciones, Sistemas de Recomendación y Toma de Decisiones basada en Datos</strong> para lograr resultados de negocio tangibles.
+				</p>
+				
+				<h3 class="text-lg sm:text-xl font-semibold text-accent-base mb-3 sm:mb-4">
+					¿Enfrentas estos desafíos?
+				</h3>
+				
+				<ul class="space-y-2 mb-6 text-base sm:text-lg">
+					<li class="flex items-start gap-2">
+						<span class="text-accent-two mt-1">•</span>
+						<span>¿Dificultad para integrar IA en productos o flujos de trabajo existentes?</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<span class="text-accent-two mt-1">•</span>
+						<span>¿Incertidumbre sobre la estrategia de IA adecuada para tus objetivos de negocio?</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<span class="text-accent-two mt-1">•</span>
+						<span>¿Problemas para escalar prototipos de IA a sistemas de nivel de producción?</span>
+					</li>
+		</ul>
+		
+				<p class="text-base sm:text-lg leading-relaxed mb-6">
+					<strong class="text-accent-base">Si es así, podemos ayudarte.</strong> Ofrecemos <a href="/es/services/" class="citrus-link font-semibold">servicios de consultoría</a> especializados diseñados para llevar tus proyectos de IA desde la ideación hasta el despliegue exitoso.
+				</p>
+				
+				<!-- CTA button -->
+				<div class="flex justify-center my-8">
+					<a 
+						href="/es/services/" 
+						class="inline-flex items-center justify-center h-10 sm:h-12 px-6 sm:px-8 rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-bgColor font-semibold text-sm sm:text-base"
+						aria-label="Conoce más sobre mis servicios de consultoría"
+					>
+						Mira mis servicios
+					</a>
+				</div>
+			</section>
+
+			<!-- Clients section -->
+			<section class="mb-12 lg:mb-16">
+				<h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-accent-base mb-6 sm:mb-8">
+					Nuestros Clientes
+				</h2>
+				
+				<!-- Mobile: Cards layout, Desktop: Table -->
+				<div class="block lg:hidden space-y-4">
+					{[
+						{ name: "Ask Clio", url: "https://www.askclio.ai/", desc: "Copiloto Financiero para Corredurías, RIAs y FinTechs", industry: "Finanzas" },
+						{ name: "Xficient", url: "https://xficient.com/", desc: "Administración de documentación médica con IA", industry: "Salud" },
+						{ name: "WellAware", url: "https://wellaware.us/", desc: "Soluciones de automatización industrial y análisis de datos", industry: "Petróleo y Gas" },
+						{ name: "Proscai", url: "https://www.proscai.com/", desc: "Soluciones ERP para tu negocio", industry: "ERP, Ventas y Automatización" },
+						{ name: "Anaconda Org", url: "https://anaconda.org/", desc: "Plataforma de herramientas de ciencia de datos, MLOps y gestión de datos y modelos", industry: "IA, Datos y Herramientas para Desarrolladores" },
+						{ name: "Bonded LP", url: "https://www.bondedlp.com/", desc: "Diseño, instalación, inspección y certificación de sistemas de protección contra rayos", industry: "Construcción y seguridad" },
+						{ name: "Pentimenti.ai", url: "https://pentimenti.ai/", desc: "Plataforma especializada en soluciones de IA para simplificar el proceso de ventas y licitaciones", industry: "IA / Ventas" },
+						{ name: "Rotobot.ai", url: "https://rotobot.ai/", desc: "Chatbot de fantasy football impulsado por IA con datos deportivos actualizados", industry: "IA y Análisis Deportivo" },
+						{ name: "Intermate.de", url: "https://intermate.de/", desc: "Agencia de marketing social e influencer de servicio completo en Alemania", industry: "Marketing" },
+						{ name: "Bucket.io", url: "https://bucket.io/", desc: "Sistema Integral que Ayuda al Crecimiento de Leads y Ingresos con Embudos de QUIZ de Alta Conversión", industry: "Tecnología de Marketing" }
+					].map(client => (
+						<div class="bg-bgColor/50 border border-special-light rounded-lg p-4 hover:bg-bgColor/80 transition-colors">
+							<h3 class="font-semibold text-accent-base mb-2">
+								<a href={client.url} target="_blank" rel="noopener" class="citrus-link">
+									{client.name}
+								</a>
+							</h3>
+							<p class="text-sm text-light mb-2">{client.desc}</p>
+							<span class="inline-block px-2 py-1 bg-accent-base/10 text-accent-base text-xs rounded-md">
+								{client.industry}
+							</span>
+						</div>
+					))}
+				</div>
+
+				<!-- Desktop: Table layout -->
+				<div class="hidden lg:block overflow-x-auto">
+					<table class="min-w-full border-collapse">
+				<thead>
+							<tr class="border-b border-special-light">
+								<th class="text-left py-3 px-4 font-semibold text-accent-base">Cliente</th>
+								<th class="text-left py-3 px-4 font-semibold text-accent-base">Descripción</th>
+								<th class="text-left py-3 px-4 font-semibold text-accent-base">Industria</th>
+					</tr>
+				</thead>
+						<tbody class="text-sm">
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://www.askclio.ai/" target="_blank" rel="noopener" class="citrus-link font-medium">Ask Clio</a></td>
+								<td class="py-3 px-4">Copiloto Financiero para Corredurías, RIAs y FinTechs</td>
+								<td class="py-3 px-4">Finanzas</td>
+							</tr>
+
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://xficient.com/" target="_blank" rel="noopener" class="citrus-link font-medium">Xficient</a></td>
+								<td class="py-3 px-4">Administración de documentación médica con IA</td>
+								<td class="py-3 px-4">Salud</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://wellaware.us/" target="_blank" rel="noopener" class="citrus-link font-medium">WellAware</a></td>
+								<td class="py-3 px-4">Soluciones de automatización industrial y análisis de datos</td>
+								<td class="py-3 px-4">Petróleo y Gas</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://www.proscai.com/" target="_blank" rel="noopener" class="citrus-link font-medium">Proscai</a></td>
+								<td class="py-3 px-4">Soluciones ERP para tu negocio</td>
+								<td class="py-3 px-4">ERP, Ventas y Automatización</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://anaconda.org/" class="citrus-link font-medium">Anaconda Org</a></td>
+								<td class="py-3 px-4">Plataforma de herramientas de ciencia de datos, MLOps y gestión de datos y modelos</td>
+								<td class="py-3 px-4">IA, Datos y Herramientas para Desarrolladores</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://www.bondedlp.com/" class="citrus-link font-medium">Bonded LP</a></td>
+								<td class="py-3 px-4">Diseño, instalación, inspección y certificación de sistemas de protección contra rayos</td>
+								<td class="py-3 px-4">Construcción y seguridad</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://pentimenti.ai/" target="_blank" rel="noopener" class="citrus-link font-medium">Pentimenti.ai</a></td>
+								<td class="py-3 px-4">Plataforma especializada en soluciones de IA para simplificar el proceso de ventas y licitaciones</td>
+								<td class="py-3 px-4">IA / Ventas</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://rotobot.ai/" target="_blank" rel="noopener" class="citrus-link font-medium">Rotobot.ai</a></td>
+								<td class="py-3 px-4">Chatbot de fantasy football impulsado por IA con datos deportivos actualizados</td>
+								<td class="py-3 px-4">IA y Análisis Deportivo</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://intermate.de/" target="_blank" rel="noopener" class="citrus-link font-medium">Intermate.de</a></td>
+								<td class="py-3 px-4">Agencia de marketing social e influencer de servicio completo en Alemania</td>
+								<td class="py-3 px-4">Marketing</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://bucket.io/" target="_blank" rel="noopener" class="citrus-link font-medium">Bucket.io</a></td>
+								<td class="py-3 px-4">Sistema Integral que Ayuda al Crecimiento de Leads y Ingresos con Embudos de QUIZ de Alta Conversión</td>
+								<td class="py-3 px-4">Tecnología de Marketing</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+				<p class="mt-6 text-sm sm:text-base text-light">
+					... incluyendo otros como <a href="https://www.emerge.haus/" class="citrus-link">Emerge Haus</a>, <a href="https://www.aurelio.ai/" class="citrus-link">Aurelio.ai</a>, <a href="https://12tren.com/" class="citrus-link">12Tren</a>, <a href="https://acristoengine.com/" class="citrus-link">Acristo Engine</a>, <a href="https://ideaware.co/" class="citrus-link">Ideaware</a>, y <a href="https://www.eafit.edu.co/" class="citrus-link">Universidad EAFIT</a>.
+				</p>
+				
+				<!-- Projects CTA button -->
+				<div class="flex justify-center mt-8 mb-4">
+					<a 
+						href="/es/projects/" 
+						class="inline-flex items-center justify-center h-10 sm:h-12 px-6 sm:px-8 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest transition-all"
+						aria-label="Ver mi portafolio de proyectos"
+					>
+						<span class="bg-clip-text text-transparent font-semibold bg-gradient-to-r from-accent-one to-accent-two text-sm sm:text-base">
+							Ver algunos de los proyectos
+						</span>
+					</a>
+				</div>
+			</section>
+
+			<!-- Testimonials section -->
+			<section class="mb-12 lg:mb-16">
+				<h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-accent-base mb-6 sm:mb-8">
+					Lo que Dicen Nuestros Clientes
+				</h2>
+				
+				<!-- Mobile: Cards layout -->
+				<div class="block lg:hidden space-y-6">
+					{[
+						{ name: "Peter Quinn", role: "Cofundador de Ask Clio", quote: "¡Juan fue excelente para trabajar!"},
+						{ name: "Adan Ordoñez", role: "Fundador de ACristoEngine", quote: "Juan fue un verdadero profesional y muy conocedor. Con su ayuda, pudimos crear una aplicación RAG en un tiempo muy eficiente." },
+						{ name: "David Zinland", role: "Cofundador de Rotobot.ai", quote: "Juan es un excelente ingeniero de IA. Es muy reflexivo y se asegura de aclarar la conversación en todo momento. Tiene una vasta cantidad de experiencia y experiencia práctica que puede usar de manera muy efectiva." },
+						{ name: "Jose Gutierrez", role: "Cofundador de Codelum", quote: "Juan tiene mucho conocimiento en el área de IA y Machine Learning, me dio una idea de cómo comenzar nuestro proyecto. Definitivamente lo usaremos como mano derecha en nuestro desarrollo." }
+					].map(testimonial => (
+						<blockquote class="bg-bgColor/50 border border-special-light rounded-lg p-6">
+							<p class="text-sm sm:text-base leading-relaxed mb-4 italic text-light">
+								"{testimonial.quote}"
+							</p>
+							<footer class="text-sm">
+								<cite class="font-semibold text-accent-base not-italic">{testimonial.name}</cite>
+								<div class="text-xs text-lighter mt-1">{testimonial.role}</div>
+							</footer>
+						</blockquote>
+					))}
+	</div>
+
+				<!-- Desktop: Table layout -->
+				<div class="hidden lg:block overflow-x-auto">
+					<table class="min-w-full border-collapse">
+				<thead>
+							<tr class="border-b border-special-light">
+								<th class="text-left py-3 px-4 font-semibold text-accent-base w-1/6">Persona</th>
+								<th class="text-left py-3 px-4 font-semibold text-accent-base w-1/6">Rol</th>
+								<th class="text-left py-3 px-4 font-semibold text-accent-base w-2/3">Testimonio</th>
+					</tr>
+				</thead>
+						<tbody class="text-sm">
+						<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="align-top py-4 px-4 font-medium">Peter Quinn</td>
+								<td class="align-top py-4 px-4 text-lighter">Fundador de Ask Clio</td>
+								<td class="align-top py-4 px-4">"¡Juan fue excelente para trabajar!"</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="align-top py-4 px-4 font-medium">Adan Ordoñez</td>
+								<td class="align-top py-4 px-4 text-lighter">Fundador de ACristoEngine</td>
+								<td class="align-top py-4 px-4">"Juan fue un verdadero profesional y muy conocedor. Con su ayuda, pudimos <strong class="text-accent-base">crear una aplicación RAG en un tiempo muy eficiente</strong>."</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="align-top py-4 px-4 font-medium">David Zinland</td>
+								<td class="align-top py-4 px-4 text-lighter">Cofundador de Rotobot.ai</td>
+								<td class="align-top py-4 px-4">"Juan es un <strong class="text-accent-base">excelente ingeniero de IA</strong>. Es muy reflexivo y se asegura de aclarar la conversación en todo momento. Tiene una <strong class="text-accent-base">vasta cantidad de experiencia y experiencia práctica que puede usar de manera muy efectiva</strong>."</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="align-top py-4 px-4 font-medium">Jose Gutierrez</td>
+								<td class="align-top py-4 px-4 text-lighter">Cofundador de Codelum</td>
+								<td class="align-top py-4 px-4">"Juan tiene <strong class="text-accent-base">mucho conocimiento en el área de IA y Machine Learning</strong>, me dio una idea de cómo comenzar nuestro proyecto. Definitivamente lo usaremos como mano derecha en nuestro desarrollo."</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+			</section>
+
+			<!-- Main CTA -->
+			<div class="flex justify-center my-8 lg:my-12">
+				<a 
+					href="https://calendar.app.google/VALDzjK7GqCTvYz56" 
+					target="_blank" 
+					rel="noopener" 
+					class="inline-flex items-center justify-center h-12 sm:h-14 px-6 sm:px-8 rounded-lg shadow-xl hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-bgColor font-semibold text-base sm:text-lg"
+					aria-label="Agenda tu consulta de IA"
+				>
+					Agenda tu Consulta de IA
+		</a>
+	</div>
+
+			<!-- Posts section -->
+			<section aria-label="Publicaciones recientes del blog" class="mb-8">
+				<h2 class="text-xl sm:text-2xl lg:text-3xl font-bold mb-6 sm:mb-8">
+					<a href="/es/posts/" class="text-accent-two hover:text-accent-base transition-colors">
+						Últimas Publicaciones
+					</a>
+		</h2>
+				<div class="space-y-4 sm:space-y-6">
+					{allPostsByDate.map((p) => (
+						<article class="border-b border-special-light/50 pb-4 sm:pb-6 last:border-b-0">
+						<PostPreview post={p} />
+						</article>
+					))}
+		</div>
+				<div class="text-center mt-8">
+					<a 
+						href="/es/posts/" 
+						class="inline-flex items-center justify-center h-10 px-6 rounded-lg bg-accent-base/10 text-accent-base hover:bg-accent-base/20 transition-all font-medium"
+						aria-label="Ver todas las publicaciones del blog"
+					>
+						Ver Todas las Publicaciones →
+					</a>
+		</div>
+			</section>
+		</div>
+	</div>
+</PageLayout>
+

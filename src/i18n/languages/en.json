@@ -1,0 +1,53 @@
+{
+  "site.title": "MajupLabs - AI Consulting & Development",
+  "site.description": "Expert AI Consulting, ML, LLMs, RAG, and Applied AI Solutions for Your Business.",
+  
+  "nav.home": "Home",
+  "nav.services": "Services",
+  "nav.projects": "Projects",
+  "nav.blog": "Blog",
+  "nav.notes": "Notes",
+  "nav.about": "About",
+  
+  "hero.tagline": "AI Solutions That Drive Results",
+  "hero.title": "MajupLabs",
+  "hero.description": "We are an <strong>Applied AI Engineering Firm</strong> specializing in <strong>Data Science, Machine Learning, and AI Integration</strong> for startups and established companies looking to leverage AI effectively.",
+  "hero.expertise": "Our expertise includes <strong>ML, LLMs, RAG, Search and Recommendation systems, VRP, and Data-driven decisions</strong>.",
+  "hero.cta.blog": "Blog",
+  "hero.cta.services": "Services",
+  
+  "consulting.title": "On-Demand AI Consulting: From Concept to Production",
+  "consulting.intro": "<strong>Struggling to turn your AI ideas into reality?</strong> We specialize in helping startups and established tech companies bridge the gap between AI concepts and production-ready solutions.",
+  "consulting.clients": "Our clients leverage our expertise in <strong>ML, LLMs, RAG, Search, Evaluations, Recommendation systems, and data-driven decision-making</strong> to achieve tangible business outcomes.",
+  "consulting.challenges.title": "Are you facing these challenges?",
+  "consulting.challenge.1": "Difficulty integrating AI into existing products or workflows?",
+  "consulting.challenge.2": "Uncertainty about the right AI strategy for your business goals?",
+  "consulting.challenge.3": "Struggles with scaling AI prototypes to production-level systems?",
+  "consulting.help": "<strong>If so, we can help.</strong> We offer specialized <a href=\"/services/\" class=\"citrus-link font-semibold\">consulting services</a> designed to take your AI projects from ideation to successful deployment.",
+  "consulting.cta": "Look at my services",
+  
+  "clients.title": "Our Clients",
+  "clients.more": "... including others like",
+  
+  "testimonials.title": "What Clients Are Saying",
+  
+  "cta.schedule": "Schedule Your AI Consultation",
+  
+  "posts.title": "Latest Posts",
+  "posts.viewAll": "View All Posts →",
+  "posts.readMore": "Read more",
+  
+  "projects.title": "Projects",
+  "projects.viewSome": "View some of the projects",
+  
+  "footer.copyright": "© {author} {year}",
+  
+  "language.en": "English",
+  "language.es": "Spanish",
+  "language.switchTo": "Switch to {language}",
+  
+  "404.title": "Page Not Found",
+  "404.description": "Sorry, we couldn't find the page you're looking for.",
+  "404.backHome": "Back to Home"
+}
+

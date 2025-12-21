@@ -1,8 +1,20 @@
 ---
 import Search from "@/components/Search.astro";
 import ThemeToggle from "@/components/ThemeToggle.astro";
+import LanguageSwitcher from "@/components/LanguageSwitcher.astro";
 import { siteConfig, menuLinks } from "@/site.config";
 import { Icon } from "astro-icon/components";
+import { getLangFromUrl, useTranslations } from "@/i18n/ui";
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+// Add language prefix to menu links if not English
+const localizedMenuLinks = menuLinks.map((link) => ({
+	...link,
+	path: currentLang === "en" ? link.path : `/es${link.path}`,
+	title: t(`nav.${link.title.toLowerCase()}` as any) || link.title,
+}));
 // Removed: import { Image } from 'astro:assets';
 // Removed: import siteIcon from '@/assets/images/icon.svg';
 ---
@@ -30,9 +42,9 @@ import { Icon } from "astro-icon/components";
 		<div class="flex items-center gap-x-2">
 			<a
 				aria-label={siteConfig.title}
-				aria-current={Astro.url.pathname === "/" ? "page" : false}
+				aria-current={Astro.url.pathname === "/" || Astro.url.pathname === "/es/" ? "page" : false}
 				class="group flex h-8 items-center hover:filter-none sm:relative"
-				href="/"
+				href={currentLang === "en" ? "/" : "/es/"}
 			>	
 				<!-- Logo -->
 				<!--
@@ -101,7 +113,7 @@ import { Icon } from "astro-icon/components";
 
 				<!-- Menu links -->
 				{
-					menuLinks.map((link) => (
+					localizedMenuLinks.map((link) => (
 						<a
 							aria-current={Astro.url.pathname === link.path ? "page" : false}
 							class="underline-offset-2 hover:underline"
@@ -166,6 +178,7 @@ import { Icon } from "astro-icon/components";
 
 			<div class="ml-auto w-fit">
 				<div id="buttons-panel" class="top-4 md:top-8 -ml-[4.5rem] flex space-x-2">
+					<LanguageSwitcher />
 					<Search />
 					<ThemeToggle />
 				</div>
@@ -229,7 +242,7 @@ import { Icon } from "astro-icon/components";
 		>
 			<!-- Menu links -->
 			{
-				menuLinks.map((link) => (
+				localizedMenuLinks.map((link) => (
 					<a
 						aria-current={Astro.url.pathname === link.path ? "page" : false}
 						class="underline-offset-2 hover:underline"

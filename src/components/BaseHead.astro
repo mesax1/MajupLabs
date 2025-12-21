@@ -1,6 +1,7 @@
 ---
 import { WEBMENTION_PINGBACK, WEBMENTION_URL } from "astro:env/client";
 import { siteConfig } from "@/site.config";
+import { getLangFromUrl, getHreflangUrls } from "@/i18n/ui";
 import type { SiteMeta } from "@/types";
 import "@/styles/global.css";
 
@@ -8,12 +9,16 @@ type Props = SiteMeta;
 
 const { articleDate, description, ogImage, title } = Astro.props;
 
+const currentLang = getLangFromUrl(Astro.url);
 const titleSeparator = "•";
 const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = ogImage 
   ? (ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astro.site || Astro.url.origin).href)
   : new URL("/social-card.png", Astro.site || Astro.url.origin).href;
+
+// Get hreflang URLs for alternate languages
+const hreflangUrls = getHreflangUrls(Astro.url, Astro.site?.toString() || Astro.url.origin);
 ---
 
 <meta charset="utf-8" />
@@ -37,6 +42,14 @@ const socialImageURL = ogImage
 {/* Canonical URL */}
 <link href={canonicalURL} rel="canonical" />
 
+{/* Hreflang tags for SEO */}
+{hreflangUrls.map(({ lang, url }) => (
+	<link rel="alternate" hreflang={lang} href={url} />
+))}
+{hreflangUrls.length > 0 && (
+	<link rel="alternate" hreflang="x-default" href={hreflangUrls.find(h => h.lang === "en")?.url ?? hreflangUrls[0]?.url ?? "/"} />
+)}
+
 {/* Primary Meta Tags */}
 <meta content={siteTitle} name="title" />
 <meta content={description} name="description" />
@@ -52,6 +65,9 @@ const socialImageURL = ogImage
 <meta content={canonicalURL} property="og:url" />
 <meta content={siteConfig.title} property="og:site_name" />
 <meta content={siteConfig.ogLocale} property="og:locale" />
+{/* Alternate locales for Open Graph */}
+{currentLang === "en" && <meta content="es_ES" property="og:locale:alternate" />}
+{currentLang === "es" && <meta content="en_US" property="og:locale:alternate" />}
 <meta content={socialImageURL} property="og:image" />
 <meta content="1200" property="og:image:width" />
 <meta content="630" property="og:image:height" />

@@ -1,0 +1,60 @@
+---
+import { languages, getLangFromUrl, getAlternateLanguageUrl, type Language } from "@/i18n/ui";
+import { Icon } from "astro-icon/components";
+
+const currentLang = getLangFromUrl(Astro.url);
+const targetLang: Language = currentLang === "en" ? "es" : "en";
+const alternateUrl = getAlternateLanguageUrl(Astro.url, targetLang);
+
+// Language labels
+const languageLabels = {
+	en: "EN",
+	es: "ES",
+};
+---
+
+<div class="language-switcher">
+	<a
+		href={alternateUrl}
+		class="flex items-center gap-1.5 h-8 px-3 rounded-lg bg-accent-base/5 hover:bg-accent-base/10 text-accent-base font-medium text-sm transition-colors"
+		aria-label={`Switch to ${languages[targetLang]}`}
+		title={`Switch to ${languages[targetLang]}`}
+	>
+		<Icon name="hugeicons:translate" class="size-4" />
+		<span class="hidden xs:inline">{languageLabels[targetLang]}</span>
+	</a>
+</div>
+
+<script>
+	// Store language preference
+	document.addEventListener("DOMContentLoaded", () => {
+		const languageSwitcher = document.querySelector(".language-switcher a");
+		
+		if (languageSwitcher) {
+			languageSwitcher.addEventListener("click", (e) => {
+				const href = (e.currentTarget as HTMLAnchorElement).getAttribute("href");
+				if (href) {
+					const lang = href.startsWith("/es") ? "es" : "en";
+					localStorage.setItem("preferredLanguage", lang);
+				}
+			});
+		}
+		
+		// Check for language preference on page load
+		const preferredLang = localStorage.getItem("preferredLanguage");
+		const currentPath = window.location.pathname;
+		const isSpanish = currentPath.startsWith("/es");
+		const currentLang = isSpanish ? "es" : "en";
+		
+		// If user has a preference different from current page and hasn't been suggested yet
+		if (preferredLang && preferredLang !== currentLang) {
+			const hasSeenSuggestion = sessionStorage.getItem("languageSuggestionShown");
+			
+			if (!hasSeenSuggestion) {
+				// Show subtle suggestion banner (optional - implement if desired)
+				sessionStorage.setItem("languageSuggestionShown", "true");
+			}
+		}
+	});
+</script>
+

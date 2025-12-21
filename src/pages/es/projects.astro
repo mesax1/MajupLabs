@@ -1,0 +1,76 @@
+---
+import Base from "@/layouts/Base.astro";
+import { getCollection } from 'astro:content';
+import ProjectCard from "@/components/ProjectCard.astro";
+import type { SiteMeta } from "@/types";
+import type { CollectionEntry } from 'astro:content';
+
+const meta: SiteMeta = {
+  title: "Proyectos",
+  description: "Proyectos de IA de algunos de mis clientes.",
+  articleDate: undefined,
+  ogImage: undefined,
+};
+
+const allProjects: CollectionEntry<'projects'>[] = await getCollection('projects', ({ data }) => {
+  return data.draft !== true;
+});
+
+// Sort projects by the 'order' field in frontmatter, then by title if order is the same or undefined
+const sortedProjects = allProjects.sort((a, b) => {
+  const orderA = a.data.order ?? Infinity;
+  const orderB = b.data.order ?? Infinity;
+  if (orderA !== orderB) {
+    return orderA - orderB;
+  }
+  return a.data.title.localeCompare(b.data.title);
+});
+
+---
+
+<Base meta={meta}>
+  <!-- Override the base layout width constraints for projects page -->
+  <div class="w-full max-w-none">
+    <div class="mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-24" style="max-width: min(95vw, 1600px);">
+      <!-- Hero Section -->
+      <header class="text-center mb-16 bg-gradient-to-br from-accent-one/10 to-accent-two/10 rounded-2xl p-8 md:p-12 lg:p-16">
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-accent-one to-accent-two bg-clip-text text-transparent">
+          {meta.title}
+        </h1>
+        <p class="text-lg md:text-xl lg:text-2xl text-light max-w-4xl mx-auto leading-relaxed">
+          Explora algunos de los proyectos de IA que he entregado para clientes en diversas industrias. 
+          Cada proyecto muestra soluciones innovadoras que generan valor comercial real a través del machine learning, IA y automatización.
+        </p>
+      </header>
+
+      <!-- Projects Grid -->
+      <section class="mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8 lg:gap-10 xl:gap-12">
+          {sortedProjects.map(project => (
+            <ProjectCard project={project} />
+          ))}
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="text-center bg-gradient-to-br from-accent-one/10 to-accent-two/10 rounded-2xl p-8 md:p-12 lg:p-16">
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-accent-base">
+          ¿Listo para Comenzar tu Próximo Proyecto de IA?
+        </h2>
+        <p class="text-lg md:text-xl lg:text-2xl text-light mb-8 max-w-3xl mx-auto leading-relaxed">
+          Hablemos sobre cómo puedo ayudar a transformar tu negocio con soluciones de IA inteligentes y escalables adaptadas a tus necesidades específicas.
+        </p>
+        <a 
+          href="https://calendar.app.google/VALDzjK7GqCTvYz56" 
+          target="_blank" 
+          rel="noopener" 
+          class="inline-flex items-center justify-center h-14 lg:h-16 px-8 lg:px-12 rounded-lg shadow-xl hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-bgColor font-semibold text-lg lg:text-xl"
+          aria-label="Agenda tu cita de consulta de IA"
+        >
+          Agenda tu Consulta de IA
+        </a>
+      </section>
+    </div>
+  </div>
+</Base>
+

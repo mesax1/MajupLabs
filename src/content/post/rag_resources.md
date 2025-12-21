@@ -21,16 +21,16 @@ This is a collection of AI Products Development & Retrieval Augmented Generation
 
 - [I'm sorry, but those are vanity evals](https://hex.tech/blog/im-sorry-but-those-are-vanity-evals/) By Izzy Miller, Hex Team, April, 2025
 
-- [Start with the problem, not the solution: Integrating ML and Generative AI into your business](https://juanpml.com/posts/problem-first-approach/) By Juan Pablo Mesa Lopez (Myself), March 2025
+- [Start with the problem, not the solution: Integrating ML and Generative AI into your business](https://majuplabs.com/posts/problem-first-approach/) By Juan Pablo Mesa Lopez (MajupLabs), March 2025
 
 - [A Field Guide to Rapidly Improving AI Products](https://hamel.dev/blog/posts/field-guide/) By Hamel Husain, March, 2025
 
-- [Evaluating RAG-enhanced LLM systems](https://juanpml.com/posts/evaluating-rag-llm-systems/) By Juan Pablo Mesa Lopez (Myself), December, 2024
+- [Evaluating RAG-enhanced LLM systems](https://majuplabs.com/posts/evaluating-rag-llm-systems/) By Juan Pablo Mesa Lopez (MajupLabs), December, 2024
 
 
 - [Building AI Products—Part I: Back-end Architecture](https://philcalcado.com/2024/12/14/building-ai-products-part-i.html) By Phil Calçado, December, 2024
 
-- [Fine-Tuning in Sentence Transformers 3](https://www.aurelio.ai/learn/sentence-transformers-fine-tuning) By Juan Pablo Mesa Lopez (Myself), Aurelio, August, 2024
+- [Fine-Tuning in Sentence Transformers 3](https://www.aurelio.ai/learn/sentence-transformers-fine-tuning) By Juan Pablo Mesa Lopez (MajupLabs), Aurelio, August, 2024
 
 - [Evaluating Chunking Strategies for Retrieval](https://research.trychroma.com/evaluating-chunking) By Chroma DB Team, July, 2024
 

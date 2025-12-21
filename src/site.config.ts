@@ -35,7 +35,7 @@ export const i18nConfig = {
 		locale: "es-ES",
 		ogLocale: "es_ES",
 		title: "MajupLabs - Consultoría y Desarrollo de IA",
-		description: "Consultoría Experta en IA, ML, LLMs, RAG, y Soluciones de IA Aplicada para tu Negocio.",
+		description: "Consultoría Experta en IA, ML, LLMs, RAG, y Soluciones de IA Aplicada para tu Empresa.",
 	},
 } as const;
 

@@ -1,6 +1,6 @@
 {
   "site.title": "MajupLabs - Consultoría y Desarrollo de IA",
-  "site.description": "Consultoría Experta en IA, ML, LLMs, RAG, y Soluciones de IA Aplicada para tu Negocio.",
+  "site.description": "Consultoría Experta en IA, ML, LLMs, RAG, y Soluciones de IA Aplicada para tu Empresa.",
   
   "nav.home": "Inicio",
   "nav.services": "Servicios",
@@ -11,7 +11,7 @@
   
   "hero.tagline": "Soluciones de IA que Generan Resultados",
   "hero.title": "MajupLabs",
-  "hero.description": "Somos una <strong>Firma de Ingeniería de IA Aplicada</strong> especializada en <strong>Ciencia de Datos, Machine Learning e Integración de IA</strong> para startups y empresas establecidas que buscan aprovechar la IA de manera efectiva.",
+  "hero.description": "Somos una <strong>empresa de Ingeniería de IA Aplicada</strong> especializada en <strong>Ciencia de Datos, Machine Learning e Integración de IA</strong> para startups y empresas establecidas que buscan aprovechar la IA de manera efectiva.",
   "hero.expertise": "Nuestra experiencia incluye <strong>ML, LLMs, RAG, Sistemas de Búsqueda y Recomendación, VRP, y Decisiones basadas en Datos</strong>.",
   "hero.cta.blog": "Blog",
   "hero.cta.services": "Servicios",
@@ -21,10 +21,10 @@
   "consulting.clients": "Nuestros clientes aprovechan nuestra experiencia en <strong>ML, LLMs, RAG, Búsqueda, Evaluaciones, Sistemas de Recomendación y Toma de Decisiones basada en Datos</strong> para lograr resultados de negocio tangibles.",
   "consulting.challenges.title": "¿Enfrentas estos desafíos?",
   "consulting.challenge.1": "¿Dificultad para integrar IA en productos o flujos de trabajo existentes?",
-  "consulting.challenge.2": "¿Incertidumbre sobre la estrategia de IA adecuada para tus objetivos de negocio?",
+  "consulting.challenge.2": "¿Incertidumbre sobre la estrategia de IA adecuada para tus objetivos de empresa?",
   "consulting.challenge.3": "¿Problemas para escalar prototipos de IA a sistemas de nivel de producción?",
   "consulting.help": "<strong>Si es así, podemos ayudarte.</strong> Ofrecemos <a href=\"/es/services/\" class=\"citrus-link font-semibold\">servicios de consultoría</a> especializados diseñados para llevar tus proyectos de IA desde la ideación hasta el despliegue exitoso.",
-  "consulting.cta": "Mira mis servicios",
+  "consulting.cta": "Mira nuestros servicios",
   
   "clients.title": "Nuestros Clientes",
   "clients.more": "... incluyendo otros como",

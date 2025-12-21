@@ -14,7 +14,7 @@ This is a collection of AI Products Development & Retrieval Augmented Generation
 
 # Paid Courses
 
-- [Build Better LLM Applications](https://maven.com/arcturus-labs/build-better-llm-applications) By John Berryman, Arcturus Labs
+- [AI Evals For Engineers & PMs](https://maven.com/parlance-labs/evals) by Hamel Husain and Shreya Shankar, Parlance Labs
 
 # Blogposts
 

@@ -1,0 +1,179 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import type { SiteMeta } from '@/types';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects', ({ data }: CollectionEntry<'projects'>) => {
+    return data.draft !== true;
+  });
+  return projects.map((project: CollectionEntry<'projects'>) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const meta: SiteMeta = {
+  title: project.data.title,
+  description: project.data.shortDescription,
+  articleDate: undefined,
+  ogImage: project.data.imageUrls && project.data.imageUrls.length > 0 ? project.data.imageUrls[0] : undefined,
+};
+---
+
+<Base meta={meta}>
+  <article class="max-w-4xl mx-auto">
+    <!-- Hero Section -->
+    <header class="text-center mb-12 bg-gradient-to-br from-accent-one/10 to-accent-two/10 rounded-2xl p-8 md:p-12">
+      <h1 class="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-accent-one to-accent-two bg-clip-text text-transparent">
+        {project.data.title}
+      </h1>
+      {project.data.clientOrCompany && (
+        <p class="text-lg md:text-xl text-light mb-2">
+          <span class="font-medium">Client:</span> {project.data.clientOrCompany}
+        </p>
+      )}
+      <p class="text-base md:text-lg text-lighter mb-6">
+        <span class="font-medium">Year:</span> {project.data.displayYear}
+      </p>
+      <p class="text-lg md:text-xl text-textColor max-w-3xl mx-auto leading-relaxed">
+        {project.data.shortDescription}
+      </p>
+    </header>
+
+    <!-- Technologies Section -->
+    {project.data.technologies && project.data.technologies.length > 0 && (
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-6 text-accent-base">Technologies Used</h2>
+        <div class="flex flex-wrap gap-3">
+          {project.data.technologies.map(tech => (
+            <span class="px-4 py-2 bg-gradient-to-r from-accent-one/20 to-accent-two/20 text-accent-base rounded-full text-sm font-medium border border-accent-one/30 hover:border-accent-one/50 transition-colors">
+              {tech}
+            </span>
+        ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Project Images -->
+    {project.data.imageUrls && project.data.imageUrls.length > 0 && (
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-6 text-accent-base">Project Gallery</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {project.data.imageUrls.map((imageUrl, index) => (
+            <div class="group overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 bg-white dark:bg-gray-800">
+              <img 
+                src={imageUrl} 
+                alt={`${project.data.title} screenshot ${index + 1}`}
+                class="w-full h-auto max-h-80 object-contain group-hover:scale-105 transition-transform duration-300 p-4"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Main Content -->
+    <section class="prose prose-lg prose-citrus max-w-none mb-12 prose-headings:font-semibold prose-headings:text-accent-base prose-headings:before:text-accent-two">
+      <Content />
+    </section>
+
+    <!-- Action Links -->
+    <nav class="flex flex-wrap gap-4 justify-center mb-12 p-6 bg-special-lighter/50 rounded-xl">
+      {project.data.projectUrl && (
+        <a 
+          href={project.data.projectUrl} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-accent-one to-accent-two text-bgColor font-semibold rounded-lg shadow-lg hover:shadow-xl hover:brightness-110 transition-all"
+        >
+          View Clients Website →
+        </a>
+      )}
+      {project.data.contraLink && (
+        <a 
+          href={project.data.contraLink} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-6 py-3 border-2 border-accent-one text-accent-one font-semibold rounded-lg hover:bg-accent-one hover:text-bgColor transition-all"
+        >
+          View on Contra
+        </a>
+      )}
+      <a 
+        href="/projects/"
+        class="inline-flex items-center justify-center px-6 py-3 bg-special-light text-textColor font-semibold rounded-lg hover:bg-special-lighter transition-all"
+      >
+        ← Back to Projects
+      </a>
+    </nav>
+    
+    <!-- Main CTA -->
+    <div class="text-center bg-gradient-to-br from-accent-one/10 to-accent-two/10 rounded-2xl p-8 md:p-12">
+      <h3 class="text-2xl md:text-3xl font-bold mb-4 text-accent-base">
+        Ready to Start Your AI Project?
+      </h3>
+      <p class="text-lg text-light mb-8 max-w-2xl mx-auto">
+        Let's discuss how I can help transform your business with intelligent, scalable AI solutions like this one.
+      </p>
+      <a 
+        href="https://calendar.app.google/VALDzjK7GqCTvYz56" 
+        target="_blank" 
+        rel="noopener" 
+        class="inline-flex items-center justify-center h-14 px-8 rounded-lg shadow-xl hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-bgColor font-semibold text-lg"
+        aria-label="Schedule your AI consultation appointment"
+      >
+        Schedule Your AI Consultation
+      </a>
+    </div>
+  </article>
+</Base> 
+
+<!-- Copy code button script (same as BlogPost.astro) -->
+<script>
+	// Wait for the content to fully load
+	document.addEventListener("DOMContentLoaded", () => {
+		// Find all pre blocks
+		document.querySelectorAll("pre").forEach((pre) => {
+			// Check if the button already exists
+			if (!pre.querySelector(".copy-code")) {
+				// Create the button
+				const copyButton = document.createElement("button");
+				copyButton.className =
+				"absolute flex items-center justify-center bg-bgColor h-6 font-medium overflow-hidden rounded-md text-light hover:text-accent-two font-sans text-sm font-medium top-2 right-2";
+
+				// Create the span element that will hold the button text
+				const buttonText = document.createElement("span");
+				buttonText.innerText = "Copy"; // Initial text
+				buttonText.className = "flex items-center block w-full h-full px-2 bg-[var(--code-title-bg)]"; // Set the span to take up full width with background color
+
+				copyButton.appendChild(buttonText); // Append span to the button
+
+				// Add the button inside pre
+				pre.appendChild(copyButton);
+
+				// Event handler for copying text
+				copyButton.addEventListener("click", async () => {
+					const code = pre.querySelector("code")?.textContent;
+					if (code) {
+						await navigator.clipboard.writeText(code);
+						buttonText.innerText = "Copied!"; // Change text to "Copied!"
+
+						// After 1.5 seconds, change the text back to "Copy"
+						setTimeout(() => {
+							buttonText.innerText = "Copy";
+						}, 1500);
+					}
+				});
+			}
+		});
+	});
+</script> 

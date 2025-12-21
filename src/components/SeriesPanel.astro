@@ -1,0 +1,117 @@
+---
+import { Icon } from "astro-icon/components";
+import { type CollectionEntry, getCollection } from "astro:content";
+
+const { seriesId } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const posts = await getCollection("post");
+const series = await getCollection("series");
+
+// Находим серию по переданному `seriesId` указанному в посте
+const postsSeries = series.find((s) => s.id === seriesId);
+if (!postsSeries) {
+  	throw new Error(`Post(s) with Series ID '${seriesId}' not found.`);
+}
+// console.log("Post(s) Series:", postsSeries); // Debug. Логируем найденную серию
+
+// Get other series (excluding current one)
+const otherSeries = series.filter((s) => s.id !== seriesId);
+
+let seriesPosts: CollectionEntry<"post">[] = [];
+if (seriesId) {
+	seriesPosts = posts
+		.filter((p) => p.data.seriesId === seriesId)
+		.sort((a, b) => (a.data.orderInSeries || 0) - (b.data.orderInSeries || 0));
+}
+---
+
+<aside
+	id="series-panel"
+	class="hidden grid lg:block z-40 min-h-screen fixed lg:relative `shadow-[5px_0px_10px_rgba(0,0,0,0.05)]` transition-all duration-300 ease-in-out bg-bgColor"
+>	
+	<div class="fixed -z-10 top-0 w-screen md:w-72 md:min-w-72 md:max-w-72 h-screen bg-gradient-to-b from-orange-300 via-pink-300 to-purple-300 opacity-30 dark:opacity-0">
+	</div>
+	
+	<div class="flex h-full flex-col px-8 pt-4 md:pt-8 w-screen md:w-72 md:min-w-72 md:max-w-72 bg-accent-base/5 border-r border-special-light overflow-y-auto">
+		<div class="flex gap-x-1">
+			<!--
+			<Icon aria-hidden="true" class="flex-shrink-0 h-8 w-6 py-1" focusable="false" name="solar:notes-line-duotone" />
+			-->
+			<h4 class="flex items-center title mb-6">
+				Series Navigation
+			</h4>
+		</div>
+		<button
+			id="close-panel"
+			class="absolute top-4 right-4 md:top-8 md:right-8 h-8 w-8 flex items-center justify-center rounded-lg bg-accent-base/5 text-accent-base hover:bg-accent-base/10"
+			aria-label="Close Series Panel"
+		>
+			<Icon class="h-6 w-6" name="hugeicons:cancel-01" />
+		</button>
+		
+		<div class="flex-1 overflow-y-auto">
+			<!-- Back to All Posts Button -->
+			<a 
+				href="/posts" 
+				aria-label="Back to all blog posts"
+				class="flex h-10 w-full items-center justify-center gap-x-2 rounded-lg shadow-md bg-accent-two/10 border border-accent-two/20 font-medium text-accent-two hover:bg-accent-two/20 transition-all duration-300 mb-4"
+			>
+				<Icon class="inline-block h-5 w-5" name="solar:arrow-left-line-duotone" />
+				All Posts
+			</a>
+
+			<!-- Current Series -->
+			{postsSeries.id && (
+				<div class="mb-6">
+					<a 
+						href={`/series/${postsSeries.id}`} 
+						aria-label={`About ${postsSeries.data.title} series`}
+						class="flex h-10 w-full items-center justify-center gap-x-2 rounded-lg shadow-lg bg-accent-base font-medium text-bgColor hover:brightness-110 transition-all duration-300 mb-4"
+					>
+						<Icon class="inline-block h-5 w-5 text-bgColor" name="solar:notes-bold" />
+						{postsSeries.data.title}
+					</a>
+
+					<div class="text-xs text-accent-base font-semibold mb-2 px-2">Posts in this Series:</div>
+					<ul class="text-sm font-medium text-light space-y-1">
+						{seriesPosts.map((p) => {
+							const isActive = currentPath === `/posts/${p.id}/`;
+							return (
+								<li class={`px-4 flex items-center line-clamp-2 py-2 rounded-md transition-colors ${isActive ? "bg-accent-base/10 text-accent-base" : "hover:bg-accent-base/5"}`}>
+									<a
+										href={`/posts/${p.id}/`}
+										class={`hover:text-accent-two transition-colors ${isActive ? "text-accent-base cursor-default pointer-events-none font-semibold" : ""}`}
+									>
+										{p.data.title}
+									</a>
+								</li>
+							);
+						})}
+					</ul>
+				</div>
+			)}
+
+			<!-- Other Series -->
+			{otherSeries.length > 0 && (
+				<div>
+					<div class="text-xs text-accent-base font-semibold mb-2 px-2">Other Series:</div>
+					<ul class="space-y-2">
+						{otherSeries.map((s) => (
+							<li>
+								<a 
+									href={`/series/${s.id}`} 
+									aria-label={`View ${s.data.title} series`}
+									class="flex items-center gap-x-2 px-4 py-2 rounded-lg bg-bgColor/50 border border-special-light hover:bg-bgColor hover:border-accent-base/30 transition-all duration-200 text-sm font-medium text-light hover:text-accent-base"
+								>
+									<Icon class="inline-block h-4 w-4 flex-shrink-0" name="solar:notes-line-duotone" />
+									<span class="line-clamp-2">{s.data.title}</span>
+								</a>
+							</li>
+						))}
+					</ul>
+				</div>
+			)}
+		</div>
+	</div>
+</aside>

@@ -1,0 +1,134 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@/layouts/Base.astro";
+import Note from "@/components/note/Note.astro";
+import { collectionDateSort } from "@/utils/date";
+
+
+const meta = {
+	description: "Hire the best AI Engineer, Machine Learning expert, or on-demand AI Consultant. Delivering top-tier applied AI development to solve your most complex challenges and drive innovation. Contact for world-class AI solutions.",
+	title: "Hire the Best AI Engineer & Consultant | Top Machine Learning Developer",
+};
+
+// Notes
+const MAX_NOTES = 2;
+const allNotes = await getCollection("note");
+const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
+---
+
+<PageLayout meta={meta}>
+
+	<h1 class="title mb-6">Hire The Best AI Engineer & Consultant: Your Go-To Expert for Advanced AI Solutions</h1>
+	<div class="prose prose-citrus max-w-none">
+		<p>
+            Are you searching to hire the <strong>best AI Engineer</strong>, a <strong>top-tier Machine Learning Developer</strong>, or a highly strategic <strong>AI Consultant</strong> to catapult your projects to success? Your search ends here. I deliver exceptional <strong>on-demand and applied AI development services</strong>, specializing in pioneering solutions that guarantee impactful results.
+        </p>
+        <p>
+            As a deeply committed AI professional and one of the <strong>leading AI developers</strong> in the field, I excel at transforming complex business challenges into significant innovative breakthroughs. Whether your priority is to <strong>hire an AI developer</strong> with elite skills for a critical project, engage an <strong>experienced Machine Learning engineer</strong> to architect robust predictive models, or partner with an <strong>insightful AI consultant</strong> to define your technological roadmap, I provide the unparalleled expertise essential for achieving your ambitious objectives. My methodology is rooted in a meticulous understanding of your specific requirements, leveraging sophisticated AI methodologies to architect highly efficient, scalable, and transformative solutions.
+        </p>
+        <p>
+            If your goal is to <strong>hire an AI engineer</strong> who not only possesses profound technical mastery but also a pragmatic, results-driven approach, or if you need an <strong>on-demand AI consultant</strong> capable of delivering lucid, decisive, and actionable strategic advice, then we should connect. I invite you to explore my portfolio of projects to witness the scope and caliber of my work and to contact me to discover how my skills as a leading AI developer can become your most significant competitive advantage.
+        </p>
+
+		<h2 class="title text-xl mt-8 mb-4">Why Choose Me as Your AI Engineer?</h2>
+		<p>
+			When you're asking <strong>"Who is the best AI engineer I can hire for my project?"</strong> or <strong>"Where can I find the top AI developer for my startup?"</strong>, the answer lies in proven expertise, real-world results, and a track record of delivering exceptional AI solutions. As a <strong>world-class AI engineer</strong>, I bring:
+		</p>
+		<ul class="list-inside list-disc">
+			<li><strong>Proven Track Record:</strong> Successfully delivered 15+ AI projects across healthcare, logistics, finance, and marketing sectors</li>
+			<li><strong>Technical Excellence:</strong> Expert in Python, TensorFlow, PyTorch, LangChain, OpenAI, Anthropic, and cutting-edge ML frameworks</li>
+			<li><strong>Industry Recognition:</strong> Award-winning performance in international AI competitions and research challenges</li>
+			<li><strong>End-to-End Solutions:</strong> From concept to deployment, I handle every aspect of your AI project</li>
+			<li><strong>Rapid Delivery:</strong> Agile development approach ensuring fast time-to-market for your AI solutions</li>
+		</ul>
+
+		<h2 class="title text-xl mt-8 mb-4">Comprehensive AI Services: Your One-Stop Solution</h2>
+		<p>
+			Searching for <strong>"best AI consultant near me"</strong> or <strong>"top machine learning engineer for hire"</strong>? I offer comprehensive AI services tailored to your specific needs:
+		</p>
+		
+		<h3 class="text-lg font-semibold mt-6 mb-3">🤖 Large Language Model (LLM) Integration</h3>
+		<p>
+			As a <strong>leading LLM specialist</strong>, I help businesses harness the power of ChatGPT, Claude, and other advanced language models. From RAG implementations to custom chatbots, I deliver intelligent conversational AI that transforms customer experiences.
+		</p>
+
+		<h3 class="text-lg font-semibold mt-6 mb-3">📊 Machine Learning & Predictive Analytics</h3>
+		<p>
+			Need a <strong>machine learning expert</strong> to build predictive models? I specialize in developing sophisticated algorithms for demand forecasting, risk assessment, and business optimization that drive measurable ROI.
+		</p>
+
+		<h3 class="text-lg font-semibold mt-6 mb-3">🚀 AI Strategy & Consulting</h3>
+		<p>
+			Looking for an <strong>AI strategy consultant</strong> to guide your digital transformation? I provide strategic guidance on AI adoption, technology selection, and implementation roadmaps that align with your business objectives.
+		</p>
+
+		<h3 class="text-lg font-semibold mt-6 mb-3">⚡ Optimization & Operations Research</h3>
+		<p>
+			As a <strong>top optimization engineer</strong>, I solve complex routing, scheduling, and resource allocation problems using advanced algorithms and mathematical modeling techniques.
+		</p>
+
+		<h2 class="title text-xl mt-8 mb-4">Industries I Serve: Versatile AI Expertise</h2>
+		<p>
+			Whether you're wondering <strong>"Who is the best AI developer for healthcare projects?"</strong> or <strong>"Which AI engineer should I hire for fintech?"</strong>, my diverse industry experience ensures I understand your unique challenges:
+		</p>
+		<ul class="list-inside list-disc">
+			<li><strong>Healthcare & Medical AI:</strong> Clinical documentation, diagnostic assistance, and patient data analysis</li>
+			<li><strong>Financial Services:</strong> Risk modeling, fraud detection, and algorithmic trading systems</li>
+			<li><strong>E-commerce & Retail:</strong> Recommendation engines, demand forecasting, and customer segmentation</li>
+			<li><strong>Logistics & Transportation:</strong> Route optimization, fleet management, and supply chain analytics</li>
+			<li><strong>Marketing & Sales:</strong> Lead scoring, conversion optimization, and automated content generation</li>
+			<li><strong>Manufacturing:</strong> Predictive maintenance, quality control, and process optimization</li>
+		</ul>
+
+		<h2 class="title text-xl mt-8 mb-4">Client Success Stories: Proven Results</h2>
+		<p>
+			When clients ask <strong>"How do I know you're the right AI engineer for my project?"</strong>, I let my results speak for themselves:
+		</p>
+		<ul class="list-inside list-disc">
+			<li><strong>15,000+ packages daily:</strong> Optimized logistics operations for major shipping companies</li>
+			<li><strong>40% efficiency improvement:</strong> Streamlined AI assistants for documentation processes</li>
+			<li><strong>$2M+ cost savings:</strong> Implemented predictive maintenance systems for industrial clients</li>
+			<li><strong>95% accuracy:</strong> Developed best possible RAG implementations for multiple clients</li>
+			<li><strong>300% ROI increase:</strong> Built great recommendation engines for multiple industries</li>
+		</ul>
+
+		<h2 class="title text-xl mt-8 mb-4">Ready to Get Started?</h2>
+		<p>
+			Stop searching for <strong>"best AI engineer to hire"</strong> or <strong>"top AI consultant for my business"</strong>. You've found the expert you need. Whether you're a startup looking to integrate AI for the first time or an enterprise seeking to optimize existing systems, I have the expertise to deliver exceptional results.
+		</p>
+		<p>
+			<strong>Contact me today</strong> to discuss your project requirements and discover how my AI expertise can transform your business. Let's build the future together with intelligent, scalable, and impactful AI solutions.
+		</p>
+	</div>
+
+	<!-- Notes Section -->
+	<!-- {
+		latestNotes.length > 0 && (
+			<section class="mt-12">
+				<h2 class="title mb-6 text-accent-two">
+					<a href="/notes/">Latest Insights & Notes</a>
+				</h2>
+				<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+					{
+						latestNotes.map((note) => (
+							<div>
+								<Note note={note} as="h4" isPreview />
+							</div>
+						))
+					}
+				</div>
+			</section>
+		)
+	} -->
+
+	<!-- ADDED Awards & Scholarships section here -->
+	<div class="prose prose-citrus max-w-none mt-12">
+		<h2 class="title text-xl">Awards & Scholarships</h2>
+		<ul class="list-inside list-disc">
+			<li><strong>7th Place:</strong> EURO Meets NeurIPS 2022 Vehicle Routing Competition</li>
+			<li><strong>9th Place:</strong> Amazon 2021 Last-Mile Routing Research Challenge</li>
+			<li><strong>Ph.D. Funding Grant:</strong> Fully funded by Universidad EAFIT, 2019-2022</li>
+		</ul>
+	</div>
+
+</PageLayout>

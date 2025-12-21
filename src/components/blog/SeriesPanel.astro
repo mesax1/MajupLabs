@@ -1,0 +1,33 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Badge from "@/components/Badge.astro";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  allSeries: CollectionEntry<"series">[];
+}
+
+const { allSeries } = Astro.props;
+---
+
+<aside class="md:min-w-[14rem] md:max-w-[14rem] md:basis-[14rem]">
+  <h4 class="title mb-4 flex items-center gap-2">
+    <Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="solar:notes-bold" />
+    Series
+  </h4>
+  {
+    allSeries && allSeries.length > 0 ? (
+      <ul class="flex flex-col gap-2">
+        {allSeries.map((series) => (
+          <li>
+            <a aria-label={`View all posts in the series: ${series.data.title}`} href={`/series/${series.id}`}>
+              <Badge variant="accent-base" title={series.data.title} showHash={false} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="text-sm text-lightest">No series found.</p>
+    )
+  }
+</aside> 

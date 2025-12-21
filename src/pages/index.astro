@@ -1,0 +1,359 @@
+---
+import { type CollectionEntry } from "astro:content";
+import SocialList from "@/components/SocialList.astro";
+import PostPreview from "@/components/blog/PostPreview.astro";
+import { getAllPosts } from "@/data/post";
+import PageLayout from "@/layouts/Base.astro";
+import { collectionDateSort } from "@/utils/date";
+import heroImage from "@/assets/images/foto_mia.JPG";
+
+// Posts
+const MAX_POSTS = 10;
+const allPosts = await getAllPosts();
+const allPostsByDate = allPosts
+	.sort(collectionDateSort)
+	.slice(0, MAX_POSTS) as CollectionEntry<"post">[];
+
+---
+
+<PageLayout meta={{ title: "Home" }}>
+	<!-- Background blur - optimized for mobile -->
+	<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-screen pointer-events-none blur-3xl opacity-40 dark:opacity-20 overflow-hidden">
+		<div class="absolute top-[5%] right-[10%] w-[40%] h-[60%] bg-gradient-to-b from-purple-300 via-blue-300 to-transparent rounded-full opacity-60"></div>
+		<div class="absolute top-[5%] left-[10%] w-[40%] h-[60%] bg-gradient-to-b from-blue-300 via-pink-300 to-transparent rounded-full opacity-60"></div>
+		<div class="absolute top-[-10%] left-[20%] w-[60%] h-[80%] bg-gradient-to-b from-indigo-300 via-orange-300 to-transparent rounded-full opacity-30"></div>
+	</div>
+
+	<!-- Hero section -->
+	<section class="relative px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+		<div class="max-w-6xl mx-auto">
+			<div class="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+				<!-- Image section -->
+				<div class="flex-shrink-0 order-1 lg:order-1">
+					<img 
+						src={heroImage.src} 
+						alt="Juan Pablo Mesa Lopez - Applied AI Consultant" 
+						class="rounded-full w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 object-cover shadow-xl ring-4 ring-accent-base/20" 
+						loading="eager"
+					/>
+	</div>
+				
+				<!-- Content section -->
+				<div class="flex-1 text-center lg:text-left order-2 lg:order-2 max-w-2xl">
+					<span class="inline-block text-xs sm:text-sm uppercase tracking-wider bg-gradient-to-r from-accent-two/85 via-accent-one/85 to-accent-two/85 dark:from-accent-two dark:via-accent-one dark:to-accent-two bg-clip-text text-transparent font-semibold">
+				Welcome, I'm
+			</span>
+					<h1 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mt-2 mb-3 lg:mb-4 leading-tight">
+						Juan Pablo Mesa Lopez
+					</h1>
+					<p class="text-base sm:text-lg lg:text-xl leading-relaxed mb-6 text-textColor">
+						I'm an <strong class="text-accent-base">Applied AI Consultant</strong> with a strong background in <strong class="text-accent-base">Data Science and Machine Learning</strong>, currently working as an independent consultant, specializing in integrating AI and machine learning into various applications.
+					</p>
+					<p class="text-sm sm:text-base lg:text-lg leading-relaxed mb-6 text-light">
+						I focus mainly on <strong class="text-accent-two">ML, LLMs, RAG, Search and Recommendation systems, VRP, and Data-driven decisions</strong>.
+					</p>
+					
+					<!-- Social links -->
+					<div class="flex justify-center lg:justify-start mb-6">
+				<SocialList />
+			</div>
+					
+					<!-- CTA buttons -->
+					<div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 sm:gap-4">
+						<a 
+							href="/posts/" 
+							class="inline-flex items-center justify-center h-10 sm:h-12 px-6 sm:px-8 rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-bgColor font-semibold text-sm sm:text-base"
+							aria-label="View my blog posts"
+						>
+							Blog
+						</a>
+						<a 
+							href="/services/" 
+							class="inline-flex items-center justify-center h-10 sm:h-12 px-6 sm:px-8 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest transition-all"
+							aria-label="View my consulting services"
+						>
+							<span class="bg-clip-text text-transparent font-semibold bg-gradient-to-r from-accent-one to-accent-two text-sm sm:text-base">
+						Services
+					</span>
+				</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Main content container -->
+	<div class="relative px-4 sm:px-6 lg:px-8">
+		<div class="max-w-4xl mx-auto">
+			
+			<!-- Consulting section -->
+			<section class="prose prose-citrus prose-lg max-w-none mb-12 lg:mb-16">
+				<h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-accent-base mb-4 sm:mb-6">
+					On-Demand AI Consulting: From Concept to Production
+				</h2>
+				
+				<p class="text-base sm:text-lg leading-relaxed mb-4">
+					<strong class="text-accent-base">Struggling to turn your AI ideas into reality?</strong> I specialize in helping startups and established tech companies bridge the gap between AI concepts and production-ready solutions.
+				</p>
+				
+				<p class="text-base sm:text-lg leading-relaxed mb-4">
+					My clients leverage my expertise in <strong class="text-accent-two">ML, LLMs, RAG, Search, Evaluations, Recommendation systems, and data-driven decision-making</strong> to achieve tangible business outcomes.
+				</p>
+				
+				<h3 class="text-lg sm:text-xl font-semibold text-accent-base mb-3 sm:mb-4">
+					Are you facing these challenges?
+				</h3>
+				
+				<ul class="space-y-2 mb-6 text-base sm:text-lg">
+					<li class="flex items-start gap-2">
+						<span class="text-accent-two mt-1">•</span>
+						<span>Difficulty integrating AI into existing products or workflows?</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<span class="text-accent-two mt-1">•</span>
+						<span>Uncertainty about the right AI strategy for your business goals?</span>
+					</li>
+					<li class="flex items-start gap-2">
+						<span class="text-accent-two mt-1">•</span>
+						<span>Struggles with scaling AI prototypes to production-level systems?</span>
+					</li>
+		</ul>
+		
+				<p class="text-base sm:text-lg leading-relaxed mb-6">
+					<strong class="text-accent-base">If so, I can help.</strong> I offer specialized <a href="/services/" class="citrus-link font-semibold">consulting services</a> designed to take your AI projects from ideation to successful deployment.
+				</p>
+				
+				<!-- CTA button -->
+				<div class="flex justify-center my-8">
+					<a 
+						href="/services/" 
+						class="inline-flex items-center justify-center h-10 sm:h-12 px-6 sm:px-8 rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-bgColor font-semibold text-sm sm:text-base"
+						aria-label="Learn more about my consulting services"
+					>
+						Look at my services
+					</a>
+				</div>
+			</section>
+
+			<!-- Clients section -->
+			<section class="mb-12 lg:mb-16">
+				<h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-accent-base mb-6 sm:mb-8">
+					Some of my clients
+				</h2>
+				
+				<!-- Mobile: Cards layout, Desktop: Table -->
+				<div class="block lg:hidden space-y-4">
+					{[
+						{ name: "Ask Clio", url: "https://www.askclio.ai/", desc: "Financial Copilot Built For Brokerages, RIAs and FinTechs", industry: "Finance" },
+						{ name: "Xficient", url: "https://xficient.com/", desc: "AI-powered healthcare documentation administration", industry: "Healthcare" },
+						{ name: "WellAware", url: "https://wellaware.us/", desc: "Industrial automation and data analytics solutions", industry: "Oil & Gas" },
+						{ name: "Proscai", url: "https://www.proscai.com/", desc: "ERP solutions for your business", industry: "ERP, Sales, and Automation" },
+						{ name: "Anaconda Org", url: "https://anaconda.org/", desc: "Platform that provides data science tools, MLOps, and data & model management", industry: "AI, Data, & Developer Tools" },
+						{ name: "Bonded LP", url: "https://www.bondedlp.com/", desc: "Design, installation, inspection, and certification of lightning protection systems", industry: "Construction and safety" },
+						{ name: "Pentimenti.ai", url: "https://pentimenti.ai/", desc: "Platform that specializes in developing AI solutions to simplify and streamline the sales and tender process.", industry: "AI / Sales" },
+						{ name: "Rotobot.ai", url: "https://rotobot.ai/", desc: "AI-driven fantasy football chatbot utilizing up-to-date sports data", industry: "AI & Sports Analytics" },
+						{ name: "Intermate.de", url: "https://intermate.de/", desc: "Full-service social and influencer marketing agency in Germany", industry: "Marketing" },
+						{ name: "Bucket.io", url: "https://bucket.io/", desc: "Fully Integrated System That Helps Your Lead Growth and Business Revenue with High-Converting QUIZ Funnels", industry: "Marketing Technology" }
+					].map(client => (
+						<div class="bg-bgColor/50 border border-special-light rounded-lg p-4 hover:bg-bgColor/80 transition-colors">
+							<h3 class="font-semibold text-accent-base mb-2">
+								<a href={client.url} target="_blank" rel="noopener" class="citrus-link">
+									{client.name}
+								</a>
+							</h3>
+							<p class="text-sm text-light mb-2">{client.desc}</p>
+							<span class="inline-block px-2 py-1 bg-accent-base/10 text-accent-base text-xs rounded-md">
+								{client.industry}
+							</span>
+						</div>
+					))}
+				</div>
+
+				<!-- Desktop: Table layout -->
+				<div class="hidden lg:block overflow-x-auto">
+					<table class="min-w-full border-collapse">
+				<thead>
+							<tr class="border-b border-special-light">
+								<th class="text-left py-3 px-4 font-semibold text-accent-base">Client</th>
+								<th class="text-left py-3 px-4 font-semibold text-accent-base">Description</th>
+								<th class="text-left py-3 px-4 font-semibold text-accent-base">Industry</th>
+					</tr>
+				</thead>
+						<tbody class="text-sm">
+							<!-- Add Ask Clio - website is www.askclio.ai -->
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://www.askclio.ai/" target="_blank" rel="noopener" class="citrus-link font-medium">Ask Clio</a></td>
+								<td class="py-3 px-4">Financial Copilot Built For Brokerages, RIAs and FinTechs</td>
+								<td class="py-3 px-4">Finance</td>
+							</tr>
+
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://xficient.com/" target="_blank" rel="noopener" class="citrus-link font-medium">Xficient</a></td>
+								<td class="py-3 px-4">AI-powered healthcare documentation administration</td>
+								<td class="py-3 px-4">Healthcare</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://wellaware.us/" target="_blank" rel="noopener" class="citrus-link font-medium">WellAware</a></td>
+								<td class="py-3 px-4">Industrial automation and data analytics solutions</td>
+								<td class="py-3 px-4">Oil & Gas</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://www.proscai.com/" target="_blank" rel="noopener" class="citrus-link font-medium">Proscai</a></td>
+								<td class="py-3 px-4">ERP solutions for your business</td>
+								<td class="py-3 px-4">ERP, Sales, and Automation</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://anaconda.org/" class="citrus-link font-medium">Anaconda Org</a></td>
+								<td class="py-3 px-4">Platform that provides data science tools, MLOps, and data & model management</td>
+								<td class="py-3 px-4">AI, Data, & Developer Tools</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://www.bondedlp.com/" class="citrus-link font-medium">Bonded LP</a></td>
+								<td class="py-3 px-4">Design, installation, inspection, and certification of lightning protection systems</td>
+								<td class="py-3 px-4">Construction and safety</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://pentimenti.ai/" target="_blank" rel="noopener" class="citrus-link font-medium">Pentimenti.ai</a></td>
+								<td class="py-3 px-4">Platform that specializes in developing AI solutions to simplify and streamline the sales and tender process.</td>
+								<td class="py-3 px-4">AI / Sales</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://rotobot.ai/" target="_blank" rel="noopener" class="citrus-link font-medium">Rotobot.ai</a></td>
+								<td class="py-3 px-4">AI-driven fantasy football chatbot utilizing up-to-date sports data</td>
+								<td class="py-3 px-4">AI & Sports Analytics</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://intermate.de/" target="_blank" rel="noopener" class="citrus-link font-medium">Intermate.de</a></td>
+								<td class="py-3 px-4">Full-service social and influencer marketing agency in Germany</td>
+								<td class="py-3 px-4">Marketing</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="py-3 px-4"><a href="https://bucket.io/" target="_blank" rel="noopener" class="citrus-link font-medium">Bucket.io</a></td>
+								<td class="py-3 px-4">Fully Integrated System That Helps Your Lead Growth and Business Revenue with High-Converting QUIZ Funnels</td>
+								<td class="py-3 px-4">Marketing Technology</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+				<p class="mt-6 text-sm sm:text-base text-light">
+					... including others like <a href="https://www.emerge.haus/" class="citrus-link">Emerge Haus</a>, <a href="https://www.aurelio.ai/" class="citrus-link">Aurelio.ai</a>, <a href="https://12tren.com/" class="citrus-link">12Tren</a>, <a href="https://acristoengine.com/" class="citrus-link">Acristo Engine</a>, <a href="https://ideaware.co/" class="citrus-link">Ideaware</a>, and <a href="https://www.eafit.edu.co/" class="citrus-link">Universidad EAFIT</a>.
+				</p>
+				
+				<!-- Projects CTA button -->
+				<div class="flex justify-center mt-8 mb-4">
+					<a 
+						href="/projects/" 
+						class="inline-flex items-center justify-center h-10 sm:h-12 px-6 sm:px-8 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest transition-all"
+						aria-label="View my project portfolio"
+					>
+						<span class="bg-clip-text text-transparent font-semibold bg-gradient-to-r from-accent-one to-accent-two text-sm sm:text-base">
+							View some of the projects
+						</span>
+					</a>
+				</div>
+			</section>
+
+			<!-- Testimonials section -->
+			<section class="mb-12 lg:mb-16">
+				<h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-accent-base mb-6 sm:mb-8">
+					What Clients Are Saying
+				</h2>
+				
+				<!-- Mobile: Cards layout -->
+				<div class="block lg:hidden space-y-6">
+					{[
+						{ name: "Peter Quinn", role: "Cofounder of Ask Clio", quote: "Juan was great to work with!"},
+						{ name: "Adan Ordoñez", role: "Founder of ACristoEngine", quote: "Juan was a true professional and was very knowledgeable. With his help, we were able to create a RAG application in a very efficient time frame." },
+						{ name: "David Zinland", role: "Cofounder of Rotobot.ai", quote: "Juan is an excellent AI engineer. He is very thoughtful and makes sure to clarify the conversation at all times. He has a vast amount of experience and practical expertise which he can use very effectively." },
+						{ name: "Jose Gutierrez", role: "Cofounder of Codelum", quote: "Juan has a lot of knowledge in the area of AI and Machine Learning, he gave me an idea of how to start our project. We will definitely use him as a right-hand man in our development." }
+					].map(testimonial => (
+						<blockquote class="bg-bgColor/50 border border-special-light rounded-lg p-6">
+							<p class="text-sm sm:text-base leading-relaxed mb-4 italic text-light">
+								"{testimonial.quote}"
+							</p>
+							<footer class="text-sm">
+								<cite class="font-semibold text-accent-base not-italic">{testimonial.name}</cite>
+								<div class="text-xs text-lighter mt-1">{testimonial.role}</div>
+							</footer>
+						</blockquote>
+					))}
+	</div>
+
+				<!-- Desktop: Table layout -->
+				<div class="hidden lg:block overflow-x-auto">
+					<table class="min-w-full border-collapse">
+				<thead>
+							<tr class="border-b border-special-light">
+								<th class="text-left py-3 px-4 font-semibold text-accent-base w-1/6">Person</th>
+								<th class="text-left py-3 px-4 font-semibold text-accent-base w-1/6">Role</th>
+								<th class="text-left py-3 px-4 font-semibold text-accent-base w-2/3">Quote</th>
+					</tr>
+				</thead>
+						<tbody class="text-sm">
+						<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="align-top py-4 px-4 font-medium">Peter Quinn</td>
+								<td class="align-top py-4 px-4 text-lighter">Founder of Ask Clio</td>
+								<td class="align-top py-4 px-4">"Juan was great to work with!"</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="align-top py-4 px-4 font-medium">Adan Ordoñez</td>
+								<td class="align-top py-4 px-4 text-lighter">Founder of ACristoEngine</td>
+								<td class="align-top py-4 px-4">"Juan was a true professional and was very knowledgeable. With his help, we were able to <strong class="text-accent-base">create a RAG application in a very efficient time frame</strong>."</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="align-top py-4 px-4 font-medium">David Zinland</td>
+								<td class="align-top py-4 px-4 text-lighter">Cofounder of Rotobot.ai</td>
+								<td class="align-top py-4 px-4">"Juan is an <strong class="text-accent-base">excellent AI engineer</strong>. He is very thoughtful and makes sure to clarify the conversation at all times. He has a <strong class="text-accent-base">vast amount of experience and practical expertise which he can use very effectively</strong>."</td>
+					</tr>
+							<tr class="border-b border-special-light/50 hover:bg-bgColor/30 transition-colors">
+								<td class="align-top py-4 px-4 font-medium">Jose Gutierrez</td>
+								<td class="align-top py-4 px-4 text-lighter">Cofounder of Codelum</td>
+								<td class="align-top py-4 px-4">"Juan has a <strong class="text-accent-base">lot of knowledge in the area of AI and Machine Learning</strong>, he gave me an idea of how to start our project. We will definitely use him as a right-hand man in our development."</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+			</section>
+
+			<!-- Main CTA -->
+			<div class="flex justify-center my-8 lg:my-12">
+				<a 
+					href="https://calendar.app.google/VALDzjK7GqCTvYz56" 
+					target="_blank" 
+					rel="noopener" 
+					class="inline-flex items-center justify-center h-12 sm:h-14 px-6 sm:px-8 rounded-lg shadow-xl hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-bgColor font-semibold text-base sm:text-lg"
+					aria-label="Schedule your AI consultation appointment"
+				>
+					Schedule Your AI Consultation
+		</a>
+	</div>
+
+			<!-- Posts section -->
+			<section aria-label="Recent blog posts" class="mb-8">
+				<h2 class="text-xl sm:text-2xl lg:text-3xl font-bold mb-6 sm:mb-8">
+					<a href="/posts/" class="text-accent-two hover:text-accent-base transition-colors">
+						Latest Posts
+					</a>
+		</h2>
+				<div class="space-y-4 sm:space-y-6">
+					{allPostsByDate.map((p) => (
+						<article class="border-b border-special-light/50 pb-4 sm:pb-6 last:border-b-0">
+						<PostPreview post={p} />
+						</article>
+					))}
+		</div>
+				<div class="text-center mt-8">
+					<a 
+						href="/posts/" 
+						class="inline-flex items-center justify-center h-10 px-6 rounded-lg bg-accent-base/10 text-accent-base hover:bg-accent-base/20 transition-all font-medium"
+						aria-label="View all blog posts"
+					>
+						View All Posts →
+					</a>
+		</div>
+			</section>
+		</div>
+	</div>
+</PageLayout>
+

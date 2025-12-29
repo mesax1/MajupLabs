@@ -4,6 +4,7 @@
   
   "nav.home": "Inicio",
   "nav.services": "Servicios",
+  "nav.training": "Capacitaciones",
   "nav.projects": "Proyectos",
   "nav.blog": "Blog",
   "nav.notes": "Notas",
@@ -50,5 +51,8 @@
   "404.description": "Lo sentimos, no pudimos encontrar la página que buscas.",
   "404.backHome": "Volver al Inicio"
 }
+
+
+
 
 

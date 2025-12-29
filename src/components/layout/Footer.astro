@@ -22,7 +22,7 @@ const localizedMenuLinks = menuLinks.map((link) => ({
 		{year}
 	</div>
 	<nav
-		aria-label="More on this site"
+		aria-label={currentLang === "es" ? "Más en este sitio" : "More on this site"}
 		class="flex justify-between space-x-4 font-medium text-light md:w-[14rem] w-auto"
 	>
 		{

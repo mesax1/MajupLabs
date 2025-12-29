@@ -91,7 +91,7 @@ const hreflangUrls = getHreflangUrls(Astro.url, Astro.site?.toString() || Astro.
 <link href="/sitemap-index.xml" rel="sitemap" />
 
 {/* RSS auto-discovery */}
-<link href="/rss.xml" rel="alternate" title={siteConfig.title} type="application/rss+xml" />
+<link href={currentLang === "es" ? "/es/rss.xml" : "/rss.xml"} rel="alternate" title={siteConfig.title} type="application/rss+xml" />
 
 {/* Webmentions */}
 {
@@ -104,3 +104,69 @@ const hreflangUrls = getHreflangUrls(Astro.url, Astro.site?.toString() || Astro.
 }
 
 <meta content={Astro.generator} name="generator" />
+
+{/* Structured Data (JSON-LD) */}
+<script type="application/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	"name": "MajupLabs",
+	"url": Astro.site?.toString() || "https://majuplabs.com",
+	"logo": new URL("/logo_azul_fondo_transparente.png", Astro.site || Astro.url.origin).href,
+	"description": currentLang === "es" 
+		? "Consultoría Experta en IA, ML, LLMs, RAG, y Soluciones de IA Aplicada para tu Empresa."
+		: "Expert AI Consulting, ML, LLMs, RAG, and Applied AI Solutions for Your Business.",
+	"address": {
+		"@type": "PostalAddress",
+		"addressCountry": "CO"
+	},
+	"sameAs": [
+		"https://www.linkedin.com/company/majuplabs",
+		"https://twitter.com/majuplabs"
+	],
+	"contactPoint": {
+		"@type": "ContactPoint",
+		"contactType": currentLang === "es" ? "Ventas" : "Sales",
+		"availableLanguage": ["en", "es"]
+	}
+})} />
+
+<script type="application/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	"name": siteConfig.title,
+	"url": Astro.site?.toString() || "https://majuplabs.com",
+	"description": description,
+	"inLanguage": currentLang === "es" ? "es-ES" : "en-US",
+	"publisher": {
+		"@type": "Organization",
+		"name": "MajupLabs"
+	}
+})} />
+
+{articleDate && (
+	<script type="application/ld+json" set:html={JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "BlogPosting",
+		"headline": title,
+		"description": description,
+		"image": socialImageURL,
+		"datePublished": articleDate,
+		"author": {
+			"@type": "Organization",
+			"name": siteConfig.author
+		},
+		"publisher": {
+			"@type": "Organization",
+			"name": "MajupLabs",
+			"logo": {
+				"@type": "ImageObject",
+				"url": new URL("/logo_azul_fondo_transparente.png", Astro.site || Astro.url.origin).href
+			}
+		},
+		"mainEntityOfPage": {
+			"@type": "WebPage",
+			"@id": canonicalURL.toString()
+		},
+		"inLanguage": currentLang === "es" ? "es-ES" : "en-US"
+	})} />
+)}

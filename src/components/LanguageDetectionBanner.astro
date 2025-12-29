@@ -1,0 +1,160 @@
+---
+/**
+ * Language Detection Banner
+ * Shows a non-intrusive suggestion to switch language based on browser preference
+ */
+import { languages, getLangFromUrl, getAlternateLanguageUrl, type Language } from "@/i18n/ui";
+import { Icon } from "astro-icon/components";
+
+const currentLang = getLangFromUrl(Astro.url);
+---
+
+<div id="language-suggestion-banner" class="hidden fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-96 z-50 animate-slide-up">
+	<div class="bg-bgColor border-2 border-accent-base/20 rounded-lg shadow-xl p-4 backdrop-blur-sm">
+		<div class="flex items-start gap-3">
+			<Icon name="hugeicons:translate" class="size-5 text-accent-base shrink-0 mt-0.5" />
+			<div class="flex-1 min-w-0">
+				<p id="banner-message" class="text-sm text-textColor/90 mb-3"></p>
+				<div class="flex gap-2">
+					<a
+						id="switch-language-btn"
+						href="#"
+						class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-accent-base text-white rounded-md text-sm font-medium hover:bg-accent-base/90 transition-colors"
+					>
+						<span id="switch-language-text"></span>
+					</a>
+					<button
+						id="dismiss-banner-btn"
+						class="px-3 py-1.5 text-sm text-textColor/70 hover:text-textColor transition-colors"
+					>
+						<span id="dismiss-text"></span>
+					</button>
+				</div>
+			</div>
+			<button
+				id="close-banner-btn"
+				class="text-textColor/50 hover:text-textColor transition-colors shrink-0"
+				aria-label="Close"
+			>
+				<Icon name="mdi:close" class="size-5" />
+			</button>
+		</div>
+	</div>
+</div>
+
+<script>
+	// Language detection and suggestion logic
+	function detectAndSuggestLanguage() {
+		const banner = document.getElementById("language-suggestion-banner");
+		if (!banner) return;
+
+		// Check if user has already dismissed or seen the banner in this session
+		const hasSeenBanner = sessionStorage.getItem("languageSuggestionDismissed");
+		if (hasSeenBanner) return;
+
+		// Check if user has manually selected a language before
+		const userSelectedLanguage = localStorage.getItem("preferredLanguage");
+		if (userSelectedLanguage) return; // Respect user's manual choice
+
+		// Get browser language preference
+		const browserLang = navigator.language.toLowerCase();
+		const isSpanishBrowser = browserLang.startsWith("es");
+
+		// Get current page language
+		const currentPath = window.location.pathname;
+		const isSpanishPage = currentPath.startsWith("/es");
+		const currentLang = isSpanishPage ? "es" : "en";
+
+		// Determine if we should suggest switching
+		const shouldSuggestSpanish = isSpanishBrowser && currentLang === "en";
+		const shouldSuggestEnglish = !isSpanishBrowser && currentLang === "es";
+
+		if (!shouldSuggestSpanish && !shouldSuggestEnglish) return;
+
+		// Prepare banner content based on suggestion
+		const messages = {
+			en: {
+				message: "We noticed your browser is set to English. Would you like to view this site in English?",
+				switch: "Switch to English",
+				dismiss: "No, thanks"
+			},
+			es: {
+				message: "Notamos que tu navegador está en español. ¿Te gustaría ver este sitio en español?",
+				switch: "Cambiar a Español",
+				dismiss: "No, gracias"
+			}
+		};
+
+		const targetLang: "en" | "es" = shouldSuggestSpanish ? "es" : "en";
+		const content = messages[targetLang];
+
+		// Update banner content
+		const messageEl = document.getElementById("banner-message");
+		const switchTextEl = document.getElementById("switch-language-text");
+		const dismissTextEl = document.getElementById("dismiss-text");
+		const switchBtn = document.getElementById("switch-language-btn") as HTMLAnchorElement;
+
+		if (messageEl) messageEl.textContent = content.message;
+		if (switchTextEl) switchTextEl.textContent = content.switch;
+		if (dismissTextEl) dismissTextEl.textContent = content.dismiss;
+
+		// Set the correct URL for language switching
+		if (switchBtn) {
+			let targetUrl = window.location.pathname;
+			if (targetLang === "es" && !targetUrl.startsWith("/es")) {
+				targetUrl = "/es" + targetUrl;
+			} else if (targetLang === "en" && targetUrl.startsWith("/es")) {
+				targetUrl = targetUrl.replace(/^\/es/, "");
+			}
+			switchBtn.href = targetUrl || "/";
+		}
+
+		// Show banner with animation
+		banner.classList.remove("hidden");
+
+		// Handle switch button click
+		switchBtn?.addEventListener("click", () => {
+			localStorage.setItem("preferredLanguage", targetLang);
+			sessionStorage.setItem("languageSuggestionDismissed", "true");
+		});
+
+		// Handle dismiss button click
+		const dismissBtn = document.getElementById("dismiss-banner-btn");
+		dismissBtn?.addEventListener("click", () => {
+			banner.classList.add("hidden");
+			sessionStorage.setItem("languageSuggestionDismissed", "true");
+		});
+
+		// Handle close button click
+		const closeBtn = document.getElementById("close-banner-btn");
+		closeBtn?.addEventListener("click", () => {
+			banner.classList.add("hidden");
+			sessionStorage.setItem("languageSuggestionDismissed", "true");
+		});
+	}
+
+	// Run detection after DOM is loaded
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", detectAndSuggestLanguage);
+	} else {
+		detectAndSuggestLanguage();
+	}
+</script>
+
+<style>
+	@keyframes slide-up {
+		from {
+			transform: translateY(100%);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+	.animate-slide-up {
+		animation: slide-up 0.3s ease-out;
+	}
+</style>
+

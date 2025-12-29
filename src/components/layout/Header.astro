@@ -82,7 +82,7 @@ const localizedMenuLinks = menuLinks.map((link) => ({
 				</strong>
 			</a>
 			<nav
-				aria-label="Main menu"
+				aria-label={currentLang === "es" ? "Menú principal" : "Main menu"}
 				class="top-20 text-sm mx-auto ml-4 ml-auto hidden flex-col items-end justify-center gap-x-4 rounded-md bg-bgColor font-medium text-accent-two shadow backdrop-blur group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:flex-row sm:items-center sm:rounded-none sm:bg-transparent sm:shadow-none sm:backdrop-blur-none md:flex"
 				id="main-navigation-menu"
 			>	
@@ -187,7 +187,7 @@ const localizedMenuLinks = menuLinks.map((link) => ({
 			<mobile-button
 				aria-expanded="false"
 				aria-haspopup="menu"
-				aria-label="Open main menu"
+				aria-label={currentLang === "es" ? "Abrir menú principal" : "Open main menu"}
 				class="group relative h-8 w-8 rounded-lg bg-color-100 hover:bg-accent-base/10 text-accent-base md:invisible md:hidden"
 				id="toggle-nav-menu-mobile"
 				type="button"
@@ -236,7 +236,7 @@ const localizedMenuLinks = menuLinks.map((link) => ({
 		</div>	
 		
 		<nav
-			aria-label="Mobile navigation menu"
+			aria-label={currentLang === "es" ? "Menú de navegación móvil" : "Mobile navigation menu"}
 			class="text-lg absolute inset-0 flex flex-col items-center justify-center gap-y-4 text-center font-medium text-accent-two"
 			id="nav-menu-mobile"
 		>

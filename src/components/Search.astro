@@ -3,6 +3,12 @@
 
 import "@pagefind/default-ui/css/ui.css";
 import { Icon } from "astro-icon/components";
+import { getLangFromUrl } from "@/i18n/ui";
+
+const currentLang = getLangFromUrl(Astro.url);
+const searchLabel = currentLang === "es" ? "buscar" : "search";
+const searchTitle = currentLang === "es" ? "Buscar" : "Search";
+const closeLabel = currentLang === "es" ? "Cerrar" : "Close";
 ---
 
 <site-search class="ms-auto" id="search">
@@ -10,21 +16,23 @@ import { Icon } from "astro-icon/components";
 		class="flex h-8 w-8 items-center justify-center rounded-lg drop-shadow-[0px_1.5px_1.5px_rgba(0,0,0,0.175)] hover:text-accent-two"
 		data-open-modal
 		disabled
+		aria-label={searchLabel}
 	>
 		<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="hugeicons:search-01" />
 	</button>
 
 	<dialog
-		aria-label="search"
+		aria-label={searchLabel}
 		class="h-full max-h-full w-full max-w-full md:h-fit bg-bgColor backdrop:backdrop-blur-xl md:my-8 md:min-h-[6.5rem] 'md:w-5/6' md:max-w-[44rem] md:rounded-lg overflow-y-hidden"
 	>	
 		<div class="dialog-frame flex flex-col h-[100%] px-4 pt-4 pb-4 md:px-8 md:py-8 gap-4">
-			<!-- Заголовок и кнопка закрытия -->
+			<!-- Header and close button -->
 			<div class="md:hidden sticky top-0 z-20 flex items-center justify-between bg-bgColor">
-				<h4 class="title flex items-end font-semibold">Search</h4>
+				<h4 class="title flex items-end font-semibold">{searchTitle}</h4>
 			 	<button
 					class="flex size-8 cursor-pointer items-center justify-center rounded-lg bg-color-100 text-textColor hover:text-accent-base hover:bg-accent-base/5"
 					data-close-modal
+					aria-label={closeLabel}
 				>	
 					<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="hugeicons:cancel-01" />
 				</button>

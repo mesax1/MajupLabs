@@ -1,13 +1,18 @@
 ---
 import { Icon } from "astro-icon/components";
+import { getLangFromUrl } from "@/i18n/ui";
+
+const currentLang = getLangFromUrl(Astro.url);
+const themeToggleLabel = currentLang === "es" ? "Alternar tema" : "Toggle theme";
 ---
 
 <theme-toggle class="sticky top-0">
 	<button
 		class="sticky top-0 flex h-8 w-8 items-center justify-center rounded-lg drop-shadow-[0px_1.5px_1.5px_rgba(0,0,0,0.175)] hover:text-accent-two"
 		type="button"
+		aria-label={themeToggleLabel}
 	>
-		<span class="sr-only">Dark Theme</span>
+		<span class="sr-only">{themeToggleLabel}</span>
 		<Icon
 			aria-hidden="true"
 			class="absolute start-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 scale-100 opacity-100 transition-all dark:scale-0 dark:opacity-0"

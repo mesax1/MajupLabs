@@ -232,6 +232,13 @@
 
 	html {
 		letter-spacing: 0.025em;
+		overflow-x: hidden;
+	}
+
+	body {
+		overflow-x: hidden;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
 	}
 
 	h1 {
@@ -340,7 +347,7 @@
 
 	/* Basic style for pre block */
 	pre {
-		@apply bg-[var(--code-bg)] text-[var(--theme-text)] rounded-lg leading-loose m-0;
+		@apply bg-[var(--code-bg)] text-[var(--theme-text)] rounded-lg leading-loose m-0 overflow-x-auto;
 		/* @apply bg-[var(--code-bg)] text-[var(--theme-accent)] rounded-lg leading-loose m-0; */
 	}
 
@@ -363,5 +370,18 @@
 	/* Overriding styles for <mark> in article */
 	article mark {
 		@apply bg-transparent;
+	}
+
+	/* Ensure prose content wraps properly on mobile */
+	.prose {
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+		max-width: 100%;
+	}
+
+	/* Ensure long links break properly */
+	.prose a {
+		word-break: break-word;
+		overflow-wrap: anywhere;
 	}
 }

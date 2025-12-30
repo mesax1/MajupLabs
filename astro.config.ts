@@ -54,7 +54,18 @@ export default defineConfig({
       },
     }),
     mdx(),
-    robotsTxt(),
+    robotsTxt({
+      sitemap: [
+        "https://majuplabs.com/sitemap-index.xml",
+      ],
+      policy: [
+        {
+          userAgent: "*",
+          allow: "/",
+          disallow: [],
+        },
+      ],
+    }),
     webmanifest({
       // See: https://github.com/alextim/astro-lib/blob/main/packages/astro-webmanifest/README.md
       /**

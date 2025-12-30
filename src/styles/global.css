@@ -230,40 +230,53 @@
 		--code-line-diff-remove: rgba(248, 85, 82, 0.15);
 	}
 
+	/* MOBILE RESPONSIVE FIX - Bulletproof approach */
+	html, body {
+		width: 100% !important;
+		max-width: 100% !important;
+		overflow-x: hidden !important;
+		margin: 0 !important;
+		padding: 0;
+	}
+
 	html {
 		letter-spacing: 0.025em;
-		overflow-x: hidden;
-		max-width: 100vw;
 	}
 
-	body {
-		overflow-x: hidden;
-		word-wrap: break-word;
-		overflow-wrap: break-word;
-		max-width: 100vw;
-	}
-
-	/* Ensure all block elements respect viewport width */
+	/* Universal box-sizing - CRITICAL */
 	*, *::before, *::after {
-		box-sizing: border-box;
+		box-sizing: border-box !important;
 	}
 
-	/* Override for elements that need to be wider */
-	.w-screen, [class*="w-screen"] {
-		max-width: 100vw;
+	/* Force content width on all non-decorative elements */
+	body > div,
+	#container,
+	main,
+	main > * {
+		max-width: 100% !important;
+		overflow-x: hidden;
 	}
 
-	/* Force content to stay within viewport on all devices */
-	#container, main, article, section {
-		max-width: 100%;
-		width: 100%;
+	/* Exception for fixed/absolute positioned decorative elements */
+	.pointer-events-none,
+	.pointer-events-none *,
+	[class*="blur-"] {
+		max-width: none !important;
 	}
 
-	/* Force text wrapping for headings and paragraphs */
-	h1, h2, h3, h4, h5, h6, p, span, a, li {
+	/* Force content containers to stay within bounds */
+	main, article, section, div, header, footer, nav {
 		word-wrap: break-word;
 		overflow-wrap: break-word;
+	}
+
+	/* Force text wrapping for all text elements */
+	h1, h2, h3, h4, h5, h6, p, span, a, li, strong, em, label {
+		word-wrap: break-word !important;
+		overflow-wrap: break-word !important;
 		hyphens: auto;
+		-webkit-hyphens: auto;
+		-ms-hyphens: auto;
 	}
 
 	h1 {
@@ -411,25 +424,4 @@
 		overflow-wrap: anywhere;
 	}
 
-	/* Mobile-first: ensure all content fits within viewport */
-	@media (max-width: 768px) {
-		main, section, article, div, p, h1, h2, h3, h4, h5, h6, span, a {
-			max-width: 100% !important;
-			overflow-wrap: break-word !important;
-			word-wrap: break-word !important;
-		}
-		
-		/* Ensure centered text doesn't overflow */
-		.text-center {
-			padding-left: 1rem;
-			padding-right: 1rem;
-		}
-		
-		/* Ensure title class doesn't overflow */
-		.title {
-			max-width: 100%;
-			overflow-wrap: break-word;
-			word-wrap: break-word;
-		}
-	}
 }

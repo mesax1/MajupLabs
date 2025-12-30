@@ -10,28 +10,28 @@ const meta = {
 
 <PageLayout meta={meta}>
 	<!-- Hero Section with gradient background -->
-	<div class="relative w-full max-w-full overflow-hidden">
-		<!-- Background gradient -->
-		<div class="absolute inset-0 -z-10 overflow-hidden">
+	<div class="relative overflow-hidden">
+		<!-- Background gradient - decorative only -->
+		<div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
 			<div class="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-accent-one/20 to-accent-two/20 rounded-full blur-3xl"></div>
 			<div class="absolute top-20 right-1/4 w-80 h-80 bg-gradient-to-bl from-cyan-400/15 to-blue-400/15 rounded-full blur-3xl"></div>
 		</div>
 
-		<div class="text-center mb-12 w-full max-w-full px-2 sm:px-4">
+		<div class="text-center mb-12">
 			<span class="inline-block text-xs sm:text-sm uppercase tracking-wider bg-gradient-to-r from-accent-two/85 via-accent-one/85 to-accent-two/85 dark:from-accent-two dark:via-accent-one dark:to-accent-two bg-clip-text text-transparent font-semibold mb-3">
 				Corporate Training Programs
 			</span>
-			<h1 class="title text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6">
+			<h1 class="title text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6 px-1">
 				Transform your company with <br class="hidden sm:block" />
 				<span class="bg-gradient-to-r from-accent-one to-accent-two bg-clip-text text-transparent">Automation & AI</span>
 			</h1>
-			<p class="text-base sm:text-lg md:text-xl text-light max-w-3xl mx-auto leading-relaxed">
+			<p class="text-base sm:text-lg md:text-xl text-light max-w-3xl mx-auto leading-relaxed px-1">
 				Train your team in the most in-demand <strong class="text-accent-base">automation and artificial intelligence</strong> tools. We help startups and companies scale operations, reduce costs, and free up time for what truly matters.
 			</p>
 		</div>
 	</div>
 
-	<div class="prose prose-citrus max-w-none w-full overflow-hidden">
+	<div class="prose prose-citrus max-w-none overflow-hidden">
 		
 		<!-- Value Proposition Cards - B2B focused -->
 		<section class="not-prose mb-16">

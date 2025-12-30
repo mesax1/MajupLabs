@@ -233,12 +233,37 @@
 	html {
 		letter-spacing: 0.025em;
 		overflow-x: hidden;
+		max-width: 100vw;
 	}
 
 	body {
 		overflow-x: hidden;
 		word-wrap: break-word;
 		overflow-wrap: break-word;
+		max-width: 100vw;
+	}
+
+	/* Ensure all block elements respect viewport width */
+	*, *::before, *::after {
+		box-sizing: border-box;
+	}
+
+	/* Override for elements that need to be wider */
+	.w-screen, [class*="w-screen"] {
+		max-width: 100vw;
+	}
+
+	/* Force content to stay within viewport on all devices */
+	#container, main, article, section {
+		max-width: 100%;
+		width: 100%;
+	}
+
+	/* Force text wrapping for headings and paragraphs */
+	h1, h2, h3, h4, h5, h6, p, span, a, li {
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+		hyphens: auto;
 	}
 
 	h1 {
@@ -377,11 +402,34 @@
 		word-wrap: break-word;
 		overflow-wrap: break-word;
 		max-width: 100%;
+		width: 100%;
 	}
 
 	/* Ensure long links break properly */
 	.prose a {
 		word-break: break-word;
 		overflow-wrap: anywhere;
+	}
+
+	/* Mobile-first: ensure all content fits within viewport */
+	@media (max-width: 768px) {
+		main, section, article, div, p, h1, h2, h3, h4, h5, h6, span, a {
+			max-width: 100% !important;
+			overflow-wrap: break-word !important;
+			word-wrap: break-word !important;
+		}
+		
+		/* Ensure centered text doesn't overflow */
+		.text-center {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+		
+		/* Ensure title class doesn't overflow */
+		.title {
+			max-width: 100%;
+			overflow-wrap: break-word;
+			word-wrap: break-word;
+		}
 	}
 }

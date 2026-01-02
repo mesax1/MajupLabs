@@ -2,7 +2,7 @@
 title: "N8N + Agentes de IA"
 slug: "n8n-agentes-ia"
 shortDescription: "Aprende a construir flujos de trabajo automatizados y agentes inteligentes que ejecutan tareas de forma semi-autónoma con N8N e inteligencia artificial."
-duration: "1 a 2 semanas"
+duration: "2 a 3 semanas"
 format: ["Virtual en vivo", "Presencial", "Híbrido"]
 targetAudience:
   - "Emprendedores y fundadores"

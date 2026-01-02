@@ -2,7 +2,7 @@
 title: "Google Workspace Automations"
 slug: "google-workspace-automatizaciones"
 shortDescription: "Maximiza la productividad de tu equipo automatizando tareas repetitivas en Gmail, Sheets, Drive, Calendar y más con Google Workspace Studio, Apps Script y Gemini AI."
-duration: "1 semana"
+duration: "2 a 3 semanas"
 format: ["Virtual en vivo", "Presencial", "Híbrido"]
 targetAudience:
   - "Empresas que usan G Suite / Google Workspace"
@@ -107,4 +107,5 @@ Aprendizaje práctico desde el primer minuto:
 - Cuenta de Google Workspace
 - Familiaridad básica con Google Sheets
 - No se requiere experiencia en programación
+
 

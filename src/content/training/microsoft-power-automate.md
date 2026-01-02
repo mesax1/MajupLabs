@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Power Automate + Copilot"
+title: "Microsoft Copilot + Power Automate"
 slug: "microsoft-power-automate"
 shortDescription: "Domina el ecosistema de automatización de Microsoft. Crea flujos con Power Automate y aprovecha Copilot para multiplicar tu productividad."
-duration: "1 a 2 semanas"
+duration: "2 a 3 semanas"
 format: ["Virtual en vivo", "Presencial", "Híbrido"]
 targetAudience:
-  - "Empresas con Microsoft 365"
+  - "Empresas con Microsoft 365 y Microsoft Copilot"
   - "Equipos corporativos y de TI"
   - "Analistas de negocio"
   - "Power Users de Excel y SharePoint"

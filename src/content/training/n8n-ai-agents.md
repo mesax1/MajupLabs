@@ -2,7 +2,7 @@
 title: "N8N + AI Agents"
 slug: "n8n-ai-agents"
 shortDescription: "Learn to build automated workflows and intelligent agents that execute tasks semi-autonomously with N8N and artificial intelligence."
-duration: "1 to 2 weeks"
+duration: "2 to 3 weeks"
 format: ["Live Virtual", "On-site", "Hybrid"]
 targetAudience:
   - "Entrepreneurs and founders"

@@ -28,7 +28,7 @@ export const trainingSlugMappings: Record<string, string> = {
 	// English -> Spanish
 	"n8n-ai-agents": "n8n-agentes-ia",
 	"google-workspace-automations": "google-workspace-automatizaciones",
-	"microsoft-power-automate": "microsoft-power-automate",
+	"microsoft-power-automate-en": "microsoft-power-automate",
 	"ai-prototype-accelerator": "acelerador-prototipos-ia",
 	"digital-transformation-lab": "laboratorio-transformacion-digital",
 	"innovation-bootcamp-ai": "bootcamp-innovacion-ia",
@@ -38,6 +38,7 @@ export const trainingSlugMappings: Record<string, string> = {
 	"acelerador-prototipos-ia": "ai-prototype-accelerator",
 	"laboratorio-transformacion-digital": "digital-transformation-lab",
 	"bootcamp-innovacion-ia": "innovation-bootcamp-ai",
+	"microsoft-power-automate": "microsoft-power-automate-es",
 };
 
 /**

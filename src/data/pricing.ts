@@ -6,23 +6,24 @@
 
 // Training Programs
 export const trainingPricing = {
-  // Individual course prices
+  // Specialized Programs (team-based)
   bootcampInnovacion: {
-    startingPrice: 3000,
+    startingPrice: 2500,
     currency: "USD",
     unit: "per team",
     label: {
-      en: "Starting at $3,000 USD per team",
-      es: "Desde $3,000 USD por equipo",
+      en: "$2,500 USD per team (max. 10 participants per team)",
+      es: "$2,500 USD por equipo (máx. 10 participantes por equipo)",
     },
   },
   aceleradorPrototipos: {
-    startingPrice: 500,
+    startingPrice: 200,
     currency: "USD",
     unit: "per participant",
+    minParticipants: 5,
     label: {
-      en: "Starting at $500 USD per participant",
-      es: "Desde $500 USD por participante",
+      en: "$200 USD per participant (min. 5)",
+      es: "$200 USD por participante (mín. 5)",
     },
   },
   laboratorioTransformacion: {
@@ -30,34 +31,64 @@ export const trainingPricing = {
     currency: "USD",
     unit: "per team",
     label: {
-      en: "Starting at $4,000 USD per team",
-      es: "Desde $4,000 USD por equipo",
+      en: "$4,000 USD per team (max. 10 participants per team)",
+      es: "$4,000 USD por equipo (máx. 10 participantes por equipo)",
+    },
+  },
+
+  // Tools & Technologies Training
+  n8nAiAgents: {
+    startingPrice: 2000,
+    currency: "USD",
+    unit: "per team",
+    label: {
+      en: "$2,000 USD per team (max. 10 participants per team)",
+      es: "$2,000 USD por equipo (máx. 10 participantes por equipo)",
+    },
+  },
+  googleWorkspace: {
+    startingPrice: 2000,
+    currency: "USD",
+    unit: "per team",
+    label: {
+      en: "$2,000 USD per team (max. 10 participants per team)",
+      es: "$2,000 USD por equipo (máx. 10 participantes por equipo)",
+    },
+  },
+  microsoftPowerAutomate: {
+    startingPrice: 2000,
+    currency: "USD",
+    unit: "per team",
+    label: {
+      en: "$2,000 USD per team (max. 10 participants per team)",
+      es: "$2,000 USD por equipo (máx. 10 participantes por equipo)",
     },
   },
 
   // Generic training formats (used on services page)
   weekWorkshop: {
-    startingPrice: 1500,
+    startingPrice: 2500,
     currency: "USD",
     label: {
-      en: "Starting at $1,500",
-      es: "Desde $1,500",
+      en: "Starting at $2,500",
+      es: "Desde $2,500",
     },
   },
   monthProgram: {
-    pricePerEmployee: 100,
+    pricePerEmployee: 150,
     currency: "USD",
+    minEmployees: 10,
     label: {
-      en: "$100 per employee",
-      es: "$100 por empleado",
+      en: "$150 per employee (min. 10)",
+      es: "$150 por empleado (mín. 10)",
     },
   },
   ongoingProgram: {
-    monthlyPrice: 2000,
+    monthlyPrice: 3000,
     currency: "USD",
     label: {
-      en: "$2,000/month",
-      es: "$2,000/mes",
+      en: "$3,000/month",
+      es: "$3,000/mes",
     },
   },
   intensiveProgram: {
@@ -137,4 +168,15 @@ export function formatPrice(amount: number, currency: string = "USD"): string {
 // Type exports for TypeScript support
 export type TrainingPricingKey = keyof typeof trainingPricing;
 export type ConsultingPricingKey = keyof typeof consultingPricing;
+
+// Helper function to get localized price label from training pricing key
+export function getTrainingPriceLabel(
+  key: string,
+  lang: "en" | "es" = "en"
+): string {
+  if (key in trainingPricing) {
+    return trainingPricing[key as TrainingPricingKey].label[lang];
+  }
+  return lang === "es" ? "Precio a consultar" : "Contact for pricing";
+}
 

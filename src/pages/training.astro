@@ -171,15 +171,21 @@ function getPriceLabel(pricingKey: string): string | null {
 			</p>
 
 			<!-- N8N + AI Agents -->
-			<div class="not-prose bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-8 mb-8 border border-special-light">
+			<a href="/training/n8n-ai-agents/" class="group block not-prose bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-8 mb-8 border border-special-light hover:border-accent-base/50 transition-all hover:shadow-xl">
 				<div class="flex flex-col lg:flex-row gap-8 items-start">
 					<div class="flex-shrink-0">
-						<div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center shadow-lg">
+						<div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
 							<Icon name="solar:chart-square-bold" class="w-10 h-10 text-white" />
 						</div>
 					</div>
 					<div class="flex-1">
-						<h3 class="text-2xl font-bold text-accent-base mb-3">N8N + AI Agents</h3>
+						<div class="flex items-center justify-between mb-3">
+							<h3 class="text-2xl font-bold text-accent-base group-hover:text-accent-one transition-colors">N8N + AI Agents</h3>
+							<span class="hidden sm:inline-flex items-center gap-1 text-sm font-medium text-accent-two group-hover:gap-2 transition-all">
+								View program
+								<Icon name="solar:arrow-right-linear" class="w-4 h-4" />
+							</span>
+						</div>
 						<p class="text-light mb-4">
 							Learn to build automated workflows and intelligent agents that execute tasks semi-autonomously. From basic automations to complex systems with artificial intelligence.
 						</p>
@@ -209,21 +215,30 @@ function getPriceLabel(pricingKey: string): string | null {
 								<span class="text-sm">Lead automation</span>
 							</div>
 						</div>
-						<p class="text-sm text-accent-base font-semibold">Ideal for: Entrepreneurs, operations, marketing and sales teams</p>
+						<div class="flex flex-wrap items-center justify-between gap-4">
+							<p class="text-sm text-light">Ideal for: Entrepreneurs, operations, marketing and sales teams</p>
+							<span class="text-sm font-semibold text-accent-base">{trainingPricing.n8nAiAgents.label.en}</span>
+						</div>
 					</div>
 				</div>
-			</div>
+			</a>
 
 			<!-- Google Workspace -->
-			<div class="not-prose bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-8 mb-8 border border-special-light">
+			<a href="/training/google-workspace-automations/" class="group block not-prose bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-8 mb-8 border border-special-light hover:border-accent-base/50 transition-all hover:shadow-xl">
 				<div class="flex flex-col lg:flex-row gap-8 items-start">
 					<div class="flex-shrink-0">
-						<div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center shadow-lg">
+						<div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
 							<Icon name="solar:document-bold" class="w-10 h-10 text-white" />
 						</div>
 					</div>
 					<div class="flex-1">
-						<h3 class="text-2xl font-bold text-accent-base mb-3">Google Workspace Automations</h3>
+						<div class="flex items-center justify-between mb-3">
+							<h3 class="text-2xl font-bold text-accent-base group-hover:text-accent-one transition-colors">Google Workspace Automations</h3>
+							<span class="hidden sm:inline-flex items-center gap-1 text-sm font-medium text-accent-two group-hover:gap-2 transition-all">
+								View program
+								<Icon name="solar:arrow-right-linear" class="w-4 h-4" />
+							</span>
+						</div>
 						<p class="text-light mb-4">
 							Maximize your team's productivity by automating repetitive tasks in Gmail, Google Sheets, Drive, Calendar and more. Connect your Google tools with the rest of your business ecosystem.
 						</p>
@@ -253,21 +268,30 @@ function getPriceLabel(pricingKey: string): string | null {
 								<span class="text-sm">Automatic reports</span>
 							</div>
 						</div>
-						<p class="text-sm text-accent-base font-semibold">Ideal for: Companies using G Suite, administrative and management teams</p>
+						<div class="flex flex-wrap items-center justify-between gap-4">
+							<p class="text-sm text-light">Ideal for: Companies using G Suite, administrative and management teams</p>
+							<span class="text-sm font-semibold text-accent-base">{trainingPricing.googleWorkspace.label.en}</span>
+						</div>
 					</div>
 				</div>
-			</div>
+			</a>
 
 			<!-- Microsoft Power Automate + Copilot -->
-			<div class="not-prose bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-8 mb-8 border border-special-light">
+			<a href="/training/microsoft-power-automate/" class="group block not-prose bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-8 mb-8 border border-special-light hover:border-accent-base/50 transition-all hover:shadow-xl">
 				<div class="flex flex-col lg:flex-row gap-8 items-start">
 					<div class="flex-shrink-0">
-						<div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+						<div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
 							<Icon name="solar:bolt-bold" class="w-10 h-10 text-white" />
 						</div>
 					</div>
 					<div class="flex-1">
-						<h3 class="text-2xl font-bold text-accent-base mb-3">Microsoft Power Automate + Copilot</h3>
+						<div class="flex items-center justify-between mb-3">
+							<h3 class="text-2xl font-bold text-accent-base group-hover:text-accent-one transition-colors">Microsoft Power Automate + Copilot</h3>
+							<span class="hidden sm:inline-flex items-center gap-1 text-sm font-medium text-accent-two group-hover:gap-2 transition-all">
+								View program
+								<Icon name="solar:arrow-right-linear" class="w-4 h-4" />
+							</span>
+						</div>
 						<p class="text-light mb-4">
 							Master Microsoft's automation ecosystem. Learn to create powerful flows with Power Automate and leverage Microsoft Copilot to multiply your productivity in Excel, Word, Outlook and Teams.
 						</p>
@@ -297,10 +321,13 @@ function getPriceLabel(pricingKey: string): string | null {
 								<span class="text-sm">AI Builder</span>
 							</div>
 						</div>
-						<p class="text-sm text-accent-base font-semibold">Ideal for: Companies with Microsoft 365, corporate and IT teams</p>
+						<div class="flex flex-wrap items-center justify-between gap-4">
+							<p class="text-sm text-light">Ideal for: Companies with Microsoft 365, corporate and IT teams</p>
+							<span class="text-sm font-semibold text-accent-base">{trainingPricing.microsoftPowerAutomate.label.en}</span>
+						</div>
 					</div>
 				</div>
-			</div>
+			</a>
 		</section>
 
 		<!-- What You'll Build Section -->

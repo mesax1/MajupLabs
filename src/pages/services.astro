@@ -1,5 +1,6 @@
 ---
 import PageLayout from "@/layouts/Base.astro";
+import { consultingPricing, trainingPricing } from "@/data/pricing";
 
 const meta = {
 	description: "Expert AI engineering, consulting, and training services offering on-demand expertise, strategic guidance, hands-on development, and corporate AI workshops for startups and established tech companies.",
@@ -164,33 +165,34 @@ const meta = {
 		<ol>
 			<li><strong>Standard Subscription Consulting:</strong>
 				<ul>
-					<li>$1,000 per month</li>
-					<li>Weekly meetings</li>
-					<li>Unlimited email/Slack access</li>
+					<li>{consultingPricing.standardSubscription.label.en}</li>
+					{consultingPricing.standardSubscription.features.en.map((feature) => (
+						<li>{feature}</li>
+					))}
 				</ul>
 			</li>
 			<li><strong>Enhanced Subscription Consulting:</strong>
 				<ul>
-					<li>$3,000 per month</li>
-					<li>Daily 45-minute syncs</li>
-					<li>Unlimited email/Slack/WhatsApp access</li>
-					<li>Network access</li>
+					<li>{consultingPricing.enhancedSubscription.label.en}</li>
+					{consultingPricing.enhancedSubscription.features.en.map((feature) => (
+						<li>{feature}</li>
+					))}
 				</ul>
 			</li>
 			<li><strong>Hands-On AI Consulting and Development:</strong>
 				<ul>
-					<li>Starting at $8,000</li>
-					<li>Complete hands-on development and implementation</li>
-					<li>All included services as detailed above</li>
-					<li>Custom scope and pricing based on project requirements</li>
+					<li>{consultingPricing.handsOnDevelopment.label.en}</li>
+					{consultingPricing.handsOnDevelopment.features.en.map((feature) => (
+						<li>{feature}</li>
+					))}
 				</ul>
 			</li>
 			<li><strong>Corporate Training & Workshops:</strong>
 				<ul>
-					<li>Full-week workshop: Starting at $1,500</li>
-					<li>One-month training: Starting at $100 per employee</li>
-					<li>Ongoing team training programs: Starting at $2,000/month</li>
-					<li>Multi-day intensive programs: Custom pricing</li>
+					<li>Full-week workshop: {trainingPricing.weekWorkshop.label.en}</li>
+					<li>One-month training: {trainingPricing.monthProgram.label.en}</li>
+					<li>Ongoing team training programs: {trainingPricing.ongoingProgram.label.en}</li>
+					<li>Multi-day intensive programs: {trainingPricing.intensiveProgram.label.en}</li>
 					<li>Pricing varies based on group size, customization level, and delivery format</li>
 				</ul>
 			</li>

@@ -1,5 +1,6 @@
 ---
 import PageLayout from "@/layouts/Base.astro";
+import { consultingPricing, trainingPricing } from "@/data/pricing";
 
 const meta = {
 	description: "Servicios expertos de ingeniería, consultoría y capacitación en IA que ofrecen experiencia bajo demanda, orientación estratégica, desarrollo práctico y talleres corporativos de IA para startups y empresas tecnológicas establecidas.",
@@ -164,33 +165,34 @@ const meta = {
 		<ol>
 			<li><strong>Consultoría por Suscripción Estándar:</strong>
 				<ul>
-					<li>$1,000 por mes</li>
-					<li>Reuniones semanales</li>
-					<li>Acceso ilimitado por email/Slack</li>
+					<li>{consultingPricing.standardSubscription.label.es}</li>
+					{consultingPricing.standardSubscription.features.es.map((feature) => (
+						<li>{feature}</li>
+					))}
 				</ul>
 			</li>
 			<li><strong>Consultoría por Suscripción Mejorada:</strong>
 				<ul>
-					<li>$3,000 por mes</li>
-					<li>Sincronizaciones diarias de 45 minutos</li>
-					<li>Acceso ilimitado por email/Slack/WhatsApp</li>
-					<li>Acceso a la red</li>
+					<li>{consultingPricing.enhancedSubscription.label.es}</li>
+					{consultingPricing.enhancedSubscription.features.es.map((feature) => (
+						<li>{feature}</li>
+					))}
 				</ul>
 			</li>
 			<li><strong>Consultoría y Desarrollo de IA Práctico:</strong>
 				<ul>
-					<li>Desde $8,000</li>
-					<li>Desarrollo e implementación práctica completa</li>
-					<li>Todos los servicios incluidos como se detalla arriba</li>
-					<li>Alcance y precios personalizados según requisitos del proyecto</li>
+					<li>{consultingPricing.handsOnDevelopment.label.es}</li>
+					{consultingPricing.handsOnDevelopment.features.es.map((feature) => (
+						<li>{feature}</li>
+					))}
 				</ul>
 			</li>
 			<li><strong>Capacitación Corporativa y Talleres:</strong>
 				<ul>
-					<li>Taller de semana completa: Desde $1,500</li>
-					<li>Capacitación de un mes: Desde $100 por empleado</li>
-					<li>Programas de capacitación continua del equipo: Desde $2,000/mes</li>
-					<li>Programas intensivos de varios días: Precios personalizados</li>
+					<li>Taller de semana completa: {trainingPricing.weekWorkshop.label.es}</li>
+					<li>Capacitación de un mes: {trainingPricing.monthProgram.label.es}</li>
+					<li>Programas de capacitación continua del equipo: {trainingPricing.ongoingProgram.label.es}</li>
+					<li>Programas intensivos de varios días: {trainingPricing.intensiveProgram.label.es}</li>
 					<li>Los precios varían según el tamaño del grupo, nivel de personalización y formato de entrega</li>
 				</ul>
 			</li>
@@ -228,6 +230,7 @@ const meta = {
 	</div>
 
 </PageLayout>
+
 
 
 

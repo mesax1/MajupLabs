@@ -80,5 +80,30 @@ const projects = defineCollection({
 });
 // End
 
-// Series
-export const collections = { post, note, series, projects };
+// Training Courses
+const training = defineCollection({
+	loader: glob({ base: "./src/content/training", pattern: "**/*.{md,mdx}" }),
+	schema: z.object({
+		title: z.string(),
+		slug: z.string(), // URL slug for the course
+		shortDescription: z.string(), // For the card on the training page
+		duration: z.string(), // e.g., "1 semana", "4 semanas"
+		format: z.array(z.string()), // e.g., ["Presencial", "Virtual", "Híbrido"]
+		targetAudience: z.array(z.string()), // Who is this for
+		outcomes: z.array(z.string()), // What they'll achieve
+		modules: z.array(z.object({
+			title: z.string(),
+			topics: z.array(z.string()),
+		})).optional(),
+		pricingKey: z.string(), // Key to look up price in centralized pricing config
+		featured: z.boolean().default(false), // Highlight this course
+		order: z.number().optional(), // For ordering on the listing page
+		draft: z.boolean().optional().default(false),
+		lang: z.enum(["en", "es"]).default("es"), // Language for i18n
+		icon: z.string().optional(), // Icon name for display
+		gradient: z.string().optional(), // Tailwind gradient classes
+	}),
+});
+// End
+
+export const collections = { post, note, series, projects, training };

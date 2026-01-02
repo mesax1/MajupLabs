@@ -1,118 +1,95 @@
 ---
 import PageLayout from "@/layouts/Base.astro";
 import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { trainingPricing, formatPrice } from "@/data/pricing";
 
 const meta = {
-	description: "Capacitaciones corporativas en automatización e inteligencia artificial con N8N, Google Workspace, Microsoft Power Automate y Copilot. Transforma tu equipo y escala tu empresa con IA.",
-	title: "Capacitaciones Corporativas en IA y Automatización | MajupLabs",
+	description: "Capacitaciones y cursos de automatización e inteligencia artificial con N8N, Google Workspace, Microsoft Power Automate y Copilot. Transforma tu empresa con IA.",
+	title: "Capacitaciones en IA y Automatización | MajupLabs",
 };
+
+// Get training courses for Spanish
+const trainingCourses: CollectionEntry<'training'>[] = await getCollection('training', ({ data }) => {
+	return data.draft !== true && data.lang === 'es';
+});
+
+// Sort by order
+const sortedCourses = trainingCourses.sort((a, b) => {
+	const orderA = a.data.order ?? Infinity;
+	const orderB = b.data.order ?? Infinity;
+	return orderA - orderB;
+});
+
+// Helper to get price label from centralized config
+function getPriceLabel(pricingKey: string): string | null {
+	const pricing = trainingPricing[pricingKey as keyof typeof trainingPricing];
+	if (pricing && 'label' in pricing) {
+		return pricing.label.es;
+	}
+	return null;
+}
 ---
 
 <PageLayout meta={meta}>
 	<!-- Hero Section with gradient background -->
-	<div class="relative overflow-hidden">
-		<!-- Background gradient - decorative only -->
-		<div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+	<div class="relative">
+		<!-- Background gradient -->
+		<div class="absolute inset-0 -z-10 overflow-hidden">
 			<div class="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-accent-one/20 to-accent-two/20 rounded-full blur-3xl"></div>
-			<div class="absolute top-20 right-1/4 w-80 h-80 bg-gradient-to-bl from-cyan-400/15 to-blue-400/15 rounded-full blur-3xl"></div>
+			<div class="absolute top-20 right-1/4 w-80 h-80 bg-gradient-to-bl from-purple-400/15 to-blue-400/15 rounded-full blur-3xl"></div>
 		</div>
 
 		<div class="text-center mb-12">
 			<span class="inline-block text-xs sm:text-sm uppercase tracking-wider bg-gradient-to-r from-accent-two/85 via-accent-one/85 to-accent-two/85 dark:from-accent-two dark:via-accent-one dark:to-accent-two bg-clip-text text-transparent font-semibold mb-3">
-				Capacitaciones Corporativas
+				Automatización e Inteligencia Artificial
 			</span>
-			<h1 class="title text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6 px-1">
-				Transforma tu empresa con <br class="hidden sm:block" />
-				<span class="bg-gradient-to-r from-accent-one to-accent-two bg-clip-text text-transparent">Automatización e IA</span>
+			<h1 class="title text-3xl sm:text-4xl lg:text-5xl mb-6">
+				Conviértete en la persona <br class="hidden sm:block" />
+				<span class="bg-gradient-to-r from-accent-one to-accent-two bg-clip-text text-transparent">más valiosa</span> de tu empresa
 			</h1>
-			<p class="text-base sm:text-lg md:text-xl text-light max-w-3xl mx-auto leading-relaxed px-1">
-				Capacita a tu equipo en las herramientas de <strong class="text-accent-base">automatización e inteligencia artificial</strong> más demandadas. Ayudamos a startups y empresas a escalar operaciones, reducir costos y liberar tiempo para lo que realmente importa.
+			<p class="text-lg sm:text-xl text-light max-w-3xl mx-auto leading-relaxed">
+				Domina herramientas de <strong class="text-accent-base">automatización e inteligencia artificial</strong> sin necesidad de ser técnico. Crea sistemas que liberan tiempo y multiplican tus resultados.
 			</p>
 		</div>
 	</div>
 
-	<div class="prose prose-citrus max-w-none overflow-hidden">
+	<div class="prose prose-citrus max-w-none">
 		
-		<!-- Value Proposition Cards - B2B focused -->
+		<!-- Value Proposition Cards -->
 		<section class="not-prose mb-16">
 			<h2 class="text-2xl sm:text-3xl font-bold text-accent-base mb-8 text-center">
-				¿Por qué invertir en capacitación de IA?
+				¿Qué vas a lograr?
 			</h2>
 			<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 				<div class="bg-bgColor/50 border border-special-light rounded-xl p-6 hover:border-accent-base/30 transition-all hover:shadow-lg">
 					<div class="w-12 h-12 bg-gradient-to-br from-accent-one to-accent-two rounded-lg flex items-center justify-center mb-4">
-						<Icon name="mdi:trending-up" class="w-6 h-6 text-white" />
+						<Icon name="solar:cpu-bolt-bold" class="w-6 h-6 text-white" />
 					</div>
-					<h3 class="font-semibold text-lg mb-2">Escala sin contratar</h3>
-					<p class="text-sm text-light">Automatiza tareas repetitivas y multiplica la capacidad de tu equipo actual sin aumentar la nómina.</p>
+					<h3 class="font-semibold text-lg mb-2">Dominar herramientas de IA</h3>
+					<p class="text-sm text-light">Aprende a usar herramientas reales de inteligencia artificial y automatización para tu día a día.</p>
 				</div>
 				<div class="bg-bgColor/50 border border-special-light rounded-xl p-6 hover:border-accent-base/30 transition-all hover:shadow-lg">
 					<div class="w-12 h-12 bg-gradient-to-br from-accent-one to-accent-two rounded-lg flex items-center justify-center mb-4">
-						<Icon name="mdi:clock-fast" class="w-6 h-6 text-white" />
+						<Icon name="solar:code-square-bold" class="w-6 h-6 text-white" />
 					</div>
-					<h3 class="font-semibold text-lg mb-2">Reduce tiempo operativo</h3>
-					<p class="text-sm text-light">Elimina horas de trabajo manual con flujos automatizados que funcionan 24/7.</p>
+					<h3 class="font-semibold text-lg mb-2">Crear sin programar</h3>
+					<p class="text-sm text-light">Construye tus propios sistemas y automatizaciones sin depender de programadores.</p>
 				</div>
 				<div class="bg-bgColor/50 border border-special-light rounded-xl p-6 hover:border-accent-base/30 transition-all hover:shadow-lg">
 					<div class="w-12 h-12 bg-gradient-to-br from-accent-one to-accent-two rounded-lg flex items-center justify-center mb-4">
-						<Icon name="mdi:shield-check" class="w-6 h-6 text-white" />
+						<Icon name="solar:star-bold" class="w-6 h-6 text-white" />
 					</div>
-					<h3 class="font-semibold text-lg mb-2">Reduce errores humanos</h3>
-					<p class="text-sm text-light">Estandariza procesos críticos y minimiza errores costosos con automatización inteligente.</p>
+					<h3 class="font-semibold text-lg mb-2">Destacarte profesionalmente</h3>
+					<p class="text-sm text-light">Conviértete en esa persona que todos buscan cuando hay que resolver algo con tecnología.</p>
 				</div>
 				<div class="bg-bgColor/50 border border-special-light rounded-xl p-6 hover:border-accent-base/30 transition-all hover:shadow-lg">
 					<div class="w-12 h-12 bg-gradient-to-br from-accent-one to-accent-two rounded-lg flex items-center justify-center mb-4">
-						<Icon name="mdi:account-group" class="w-6 h-6 text-white" />
+						<Icon name="solar:rocket-bold" class="w-6 h-6 text-white" />
 					</div>
-					<h3 class="font-semibold text-lg mb-2">Empodera a tu equipo</h3>
-					<p class="text-sm text-light">Dale a tu equipo las habilidades para resolver problemas con tecnología de vanguardia.</p>
-				</div>
-			</div>
-		</section>
-
-		<!-- Technologies Section with Logos -->
-		<section class="not-prose mb-16">
-			<h2 class="text-2xl sm:text-3xl font-bold text-accent-base mb-4 text-center">
-				Tecnologías que Dominamos
-			</h2>
-			<p class="text-center text-light mb-8 max-w-2xl mx-auto">
-				Capacitamos a tu equipo en las plataformas líderes de automatización e inteligencia artificial.
-			</p>
-			<div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-				<!-- n8n -->
-				<div class="flex flex-col items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
-					<img src="/logos/n8n.svg" alt="n8n" class="w-10 h-10" />
-					<span class="text-xs font-medium">n8n</span>
-				</div>
-				<!-- Google Workspace -->
-				<div class="flex flex-col items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
-					<img src="/logos/google.svg" alt="Google Workspace" class="w-10 h-10" />
-					<span class="text-xs font-medium">Google Workspace</span>
-				</div>
-				<!-- Microsoft 365 -->
-				<div class="flex flex-col items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
-					<img src="/logos/microsoft.svg" alt="Microsoft 365" class="w-10 h-10" />
-					<span class="text-xs font-medium">Microsoft 365</span>
-				</div>
-				<!-- Power Automate -->
-				<div class="flex flex-col items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
-					<img src="/logos/power-automate.svg" alt="Power Automate" class="w-10 h-10" />
-					<span class="text-xs font-medium">Power Automate</span>
-				</div>
-				<!-- OpenAI -->
-				<div class="flex flex-col items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
-					<img src="/logos/openai.svg" alt="OpenAI" class="w-10 h-10" />
-					<span class="text-xs font-medium">OpenAI</span>
-				</div>
-				<!-- Anthropic/Claude -->
-				<div class="flex flex-col items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
-					<img src="/logos/anthropic.svg" alt="Claude" class="w-10 h-10" />
-					<span class="text-xs font-medium">Claude</span>
-				</div>
-				<!-- Gemini -->
-				<div class="flex flex-col items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
-					<img src="/logos/gemini.svg" alt="Gemini" class="w-10 h-10" />
-					<span class="text-xs font-medium">Gemini</span>
+					<h3 class="font-semibold text-lg mb-2">Acelerar tu crecimiento</h3>
+					<p class="text-sm text-light">Impulsa tu carrera profesional en menos de 8 semanas con habilidades de alta demanda.</p>
 				</div>
 			</div>
 		</section>
@@ -124,11 +101,73 @@ const meta = {
 			</a>
 		</div>
 
+		<!-- Featured Courses Section -->
+		<section class="not-prose mb-16">
+			<h2 class="text-2xl sm:text-3xl font-bold text-accent-base mb-4 text-center">Programas Especializados</h2>
+			<p class="text-center text-lg text-light mb-8 max-w-3xl mx-auto">
+				Explora nuestros programas diseñados para acelerar la transformación digital de tu empresa. Haz clic en cualquier programa para ver los detalles completos.
+			</p>
+
+			<div class="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
+				{sortedCourses.map((course) => {
+					const gradientClasses = course.data.gradient || 'from-accent-one to-accent-two';
+					const priceLabel = getPriceLabel(course.data.pricingKey);
+					return (
+						<a 
+							href={`/es/capacitaciones/${course.data.slug}/`}
+							class="group block bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-6 border border-special-light hover:border-accent-base/50 transition-all hover:shadow-xl hover:-translate-y-1"
+						>
+							<div class="flex items-start gap-4 mb-4">
+								<div class={`w-14 h-14 bg-gradient-to-br ${gradientClasses} rounded-xl flex items-center justify-center shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform`}>
+									{course.data.icon && (
+										<Icon name={course.data.icon} class="w-7 h-7 text-white" />
+									)}
+								</div>
+								<div class="flex-1 min-w-0">
+									<h3 class="text-lg font-bold text-accent-base mb-1 group-hover:text-accent-one transition-colors line-clamp-2">
+										{course.data.title}
+									</h3>
+									<div class="flex items-center gap-2 text-xs text-light">
+										<Icon name="solar:clock-circle-linear" class="w-4 h-4" />
+										<span>{course.data.duration}</span>
+									</div>
+								</div>
+							</div>
+							
+							<p class="text-sm text-light mb-4 line-clamp-3">
+								{course.data.shortDescription}
+							</p>
+
+							<div class="flex flex-wrap gap-2 mb-4">
+								{course.data.format.slice(0, 2).map((f) => (
+									<span class="text-xs px-2 py-1 bg-bgColor/50 rounded-full text-lighter">
+										{f}
+									</span>
+								))}
+							</div>
+
+							<div class="flex items-center justify-between">
+								{priceLabel && (
+									<span class="text-sm font-semibold text-accent-base">
+										{priceLabel}
+									</span>
+								)}
+								<span class="inline-flex items-center gap-1 text-sm font-medium text-accent-two group-hover:gap-2 transition-all">
+									Ver programa
+									<Icon name="solar:arrow-right-linear" class="w-4 h-4" />
+								</span>
+							</div>
+						</a>
+					);
+				})}
+			</div>
+		</section>
+
 		<!-- Training Programs Section -->
 		<section class="mb-16">
-			<h2 class="text-center">Nuestros Programas de Capacitación</h2>
+			<h2 class="text-center">Herramientas y Tecnologías</h2>
 			<p class="text-center text-lg mb-8">
-				Programas diseñados para equipos que quieren implementar automatización e IA de forma práctica e inmediata. Cada capacitación incluye casos de uso reales y proyectos aplicados a tu negocio.
+				Además de nuestros programas especializados, ofrecemos capacitaciones en las herramientas de automatización e IA más demandadas del mercado.
 			</p>
 
 			<!-- N8N + AI Agents -->
@@ -136,41 +175,41 @@ const meta = {
 				<div class="flex flex-col lg:flex-row gap-8 items-start">
 					<div class="flex-shrink-0">
 						<div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center shadow-lg">
-							<Icon name="mdi:chart-box" class="w-10 h-10 text-white" />
+							<Icon name="solar:chart-square-bold" class="w-10 h-10 text-white" />
 						</div>
 					</div>
 					<div class="flex-1">
 						<h3 class="text-2xl font-bold text-accent-base mb-3">N8N + Agentes de IA</h3>
 						<p class="text-light mb-4">
-							Capacita a tu equipo para construir flujos de trabajo automatizados y agentes inteligentes. Ideal para equipos de operaciones, marketing y ventas que quieren escalar sin aumentar headcount.
+							Aprende a construir flujos de trabajo automatizados y agentes inteligentes que ejecutan tareas de forma semi-autónoma. Desde automatizaciones básicas hasta sistemas complejos con inteligencia artificial.
 						</p>
 						<div class="grid sm:grid-cols-2 gap-4 mb-6">
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
 								<span class="text-sm">Automatización de flujos de trabajo</span>
 							</div>
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
 								<span class="text-sm">Integración con APIs y servicios</span>
 							</div>
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Agentes de IA con LLMs (GPT, Claude)</span>
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<span class="text-sm">Agentes de IA con LLMs</span>
 							</div>
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Web scraping y extracción de datos</span>
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<span class="text-sm">Web scraping con IA</span>
 							</div>
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Chatbots para atención al cliente</span>
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<span class="text-sm">Chatbots inteligentes</span>
 							</div>
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Automatización de leads y CRM</span>
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<span class="text-sm">Automatización de leads</span>
 							</div>
 						</div>
-						<p class="text-sm text-accent-base font-semibold">Ideal para: Startups, equipos de operaciones, marketing y ventas</p>
+						<p class="text-sm text-accent-base font-semibold">Ideal para: Emprendedores, equipos de operaciones, marketing y ventas</p>
 					</div>
 				</div>
 			</div>
@@ -180,41 +219,41 @@ const meta = {
 				<div class="flex flex-col lg:flex-row gap-8 items-start">
 					<div class="flex-shrink-0">
 						<div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center shadow-lg">
-							<Icon name="mdi:file-document" class="w-10 h-10 text-white" />
+							<Icon name="solar:document-bold" class="w-10 h-10 text-white" />
 						</div>
 					</div>
 					<div class="flex-1">
 						<h3 class="text-2xl font-bold text-accent-base mb-3">Google Workspace Automations</h3>
 						<p class="text-light mb-4">
-							Maximiza la productividad de tu equipo automatizando Gmail, Google Sheets, Drive y Calendar. Perfecto para empresas que ya usan G Suite y quieren exprimir todo su potencial.
+							Maximiza la productividad de tu equipo automatizando tareas repetitivas en Gmail, Google Sheets, Drive, Calendar y más. Conecta tus herramientas de Google con el resto de tu ecosistema empresarial.
 						</p>
 						<div class="grid sm:grid-cols-2 gap-4 mb-6">
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
 								<span class="text-sm">Google Apps Script avanzado</span>
 							</div>
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Automatización de correos y seguimientos</span>
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<span class="text-sm">Automatización de correos</span>
 							</div>
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Dashboards en Sheets con IA (Gemini)</span>
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<span class="text-sm">Dashboards en Sheets con IA</span>
 							</div>
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Flujos de aprobación automatizados</span>
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<span class="text-sm">Integración con Gemini AI</span>
 							</div>
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Reportes automáticos para gerencia</span>
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<span class="text-sm">Flujos de aprobación</span>
 							</div>
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Integración con herramientas externas</span>
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<span class="text-sm">Reportes automáticos</span>
 							</div>
 						</div>
-						<p class="text-sm text-accent-base font-semibold">Ideal para: Empresas con G Suite, equipos administrativos, finanzas y RRHH</p>
+						<p class="text-sm text-accent-base font-semibold">Ideal para: Empresas que usan G Suite, equipos administrativos y de gestión</p>
 					</div>
 				</div>
 			</div>
@@ -224,80 +263,80 @@ const meta = {
 				<div class="flex flex-col lg:flex-row gap-8 items-start">
 					<div class="flex-shrink-0">
 						<div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
-							<Icon name="mdi:lightning-bolt" class="w-10 h-10 text-white" />
+							<Icon name="solar:bolt-bold" class="w-10 h-10 text-white" />
 						</div>
 					</div>
 					<div class="flex-1">
 						<h3 class="text-2xl font-bold text-accent-base mb-3">Microsoft Power Automate + Copilot</h3>
 						<p class="text-light mb-4">
-							Domina el ecosistema de automatización de Microsoft. Ideal para empresas corporativas que usan Microsoft 365 y quieren implementar RPA y asistentes de IA en sus procesos.
+							Domina el ecosistema de automatización de Microsoft. Aprende a crear flujos potentes con Power Automate y a aprovechar Microsoft Copilot para multiplicar tu productividad en Excel, Word, Outlook y Teams.
 						</p>
 						<div class="grid sm:grid-cols-2 gap-4 mb-6">
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
 								<span class="text-sm">Power Automate Cloud & Desktop</span>
 							</div>
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Microsoft Copilot para productividad</span>
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<span class="text-sm">Microsoft Copilot avanzado</span>
 							</div>
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Automatización en SharePoint y Teams</span>
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<span class="text-sm">Automatización en SharePoint</span>
 							</div>
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">RPA para procesos legacy</span>
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<span class="text-sm">Integración con Teams</span>
 							</div>
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">AI Builder para análisis de documentos</span>
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<span class="text-sm">RPA (Automatización robótica)</span>
 							</div>
 							<div class="flex items-start gap-2">
-								<Icon name="mdi:check-circle" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Integración con Dynamics y SAP</span>
+								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
+								<span class="text-sm">AI Builder</span>
 							</div>
 						</div>
-						<p class="text-sm text-accent-base font-semibold">Ideal para: Corporativos con Microsoft 365, equipos de TI y transformación digital</p>
+						<p class="text-sm text-accent-base font-semibold">Ideal para: Empresas con Microsoft 365, equipos corporativos y de TI</p>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<!-- What Teams Will Build Section -->
+		<!-- What You'll Build Section -->
 		<section class="mb-16">
-			<h2 class="text-center">Lo que tu equipo podrá construir</h2>
+			<h2 class="text-center">Sistemas que podrás construir</h2>
 			<p class="text-center text-lg mb-8">
-				Al finalizar la capacitación, tu equipo tendrá las habilidades para implementar soluciones reales que impactan el negocio.
+				Al terminar nuestras capacitaciones, tendrás las habilidades para crear soluciones reales que impactan tu negocio.
 			</p>
 			
 			<div class="not-prose grid md:grid-cols-2 gap-6">
 				<div class="flex items-start gap-4 p-4 rounded-lg bg-bgColor/30 border border-special-light/50">
-					<Icon name="mdi:account-group" class="w-8 h-8 text-accent-one flex-shrink-0" />
+					<Icon name="solar:users-group-rounded-bold" class="w-8 h-8 text-accent-one flex-shrink-0" />
 					<div>
-						<h4 class="font-semibold mb-1">Sistemas de generación y enriquecimiento de leads</h4>
-						<p class="text-sm text-light">Automatiza la captura, calificación y enriquecimiento de leads para tu equipo comercial.</p>
+						<h4 class="font-semibold mb-1">Sistemas de obtención y enriquecimiento de leads</h4>
+						<p class="text-sm text-light">Accede a mejores bases de datos, reduce la intervención manual y mejora la calidad de tu información comercial.</p>
 					</div>
 				</div>
 				<div class="flex items-start gap-4 p-4 rounded-lg bg-bgColor/30 border border-special-light/50">
-					<Icon name="mdi:cog" class="w-8 h-8 text-accent-one flex-shrink-0" />
+					<Icon name="solar:settings-bold" class="w-8 h-8 text-accent-one flex-shrink-0" />
 					<div>
-						<h4 class="font-semibold mb-1">Automatizaciones operativas</h4>
-						<p class="text-sm text-light">Elimina tareas manuales en finanzas, RRHH, compras y operaciones.</p>
+						<h4 class="font-semibold mb-1">Automatizaciones a la medida</h4>
+						<p class="text-sm text-light">Elimina fricción en tus procesos operativos y escala con menos esfuerzo.</p>
 					</div>
 				</div>
 				<div class="flex items-start gap-4 p-4 rounded-lg bg-bgColor/30 border border-special-light/50">
-					<Icon name="mdi:chat" class="w-8 h-8 text-accent-one flex-shrink-0" />
+					<Icon name="solar:chat-round-dots-bold" class="w-8 h-8 text-accent-one flex-shrink-0" />
 					<div>
-						<h4 class="font-semibold mb-1">Chatbots de atención al cliente</h4>
-						<p class="text-sm text-light">Implementa asistentes de IA que resuelven consultas 24/7 y escalan a humanos cuando es necesario.</p>
+						<h4 class="font-semibold mb-1">Chatbots de ventas y atención al cliente</h4>
+						<p class="text-sm text-light">Asistentes que integran bien con tu negocio, responden con precisión y aumentan tu capacidad de atención.</p>
 					</div>
 				</div>
 				<div class="flex items-start gap-4 p-4 rounded-lg bg-bgColor/30 border border-special-light/50">
-					<Icon name="mdi:robot" class="w-8 h-8 text-accent-one flex-shrink-0" />
+					<Icon name="solar:cpu-bolt-bold" class="w-8 h-8 text-accent-one flex-shrink-0" />
 					<div>
-						<h4 class="font-semibold mb-1">Agentes de IA especializados</h4>
-						<p class="text-sm text-light">Crea agentes que ejecutan tareas específicas: investigación, análisis de documentos, reportes.</p>
+						<h4 class="font-semibold mb-1">Agentes inteligentes semi-autónomos</h4>
+						<p class="text-sm text-light">Desarrolla agentes capaces de ejecutar tareas específicas con mínima supervisión.</p>
 					</div>
 				</div>
 			</div>
@@ -307,46 +346,46 @@ const meta = {
 		<section class="mb-16">
 			<h2>Formatos de Entrega</h2>
 			<p>
-				Adaptamos el programa a las necesidades de tu empresa. Elige el formato que mejor funcione para tu equipo:
+				Adaptamos nuestras capacitaciones a las necesidades de tu equipo. Elige el formato que mejor se ajuste a tu organización:
 			</p>
 			
 			<ul class="list-inside list-disc space-y-3">
-				<li><strong>Talleres presenciales en tu empresa:</strong> Capacitación intensiva de 1-5 días en tus instalaciones. Ideal para equipos que prefieren aprendizaje hands-on.</li>
-				<li><strong>Sesiones virtuales en vivo:</strong> Cursos interactivos online perfectos para equipos distribuidos o remotos.</li>
-				<li><strong>Programas híbridos:</strong> Combinación de sesiones virtuales con workshops presenciales para máxima retención.</li>
-				<li><strong>Train the Trainer:</strong> Capacitamos a tus líderes internos para que repliquen el conocimiento en la organización.</li>
-				<li><strong>Briefings ejecutivos:</strong> Sesiones de 2-4 horas para directivos y tomadores de decisiones.</li>
+				<li><strong>Talleres presenciales en tu empresa:</strong> Capacitaciones intensivas de uno o varios días en tus instalaciones con práctica hands-on.</li>
+				<li><strong>Sesiones virtuales en vivo:</strong> Cursos interactivos online que se adaptan a equipos distribuidos en diferentes ubicaciones.</li>
+				<li><strong>Programas híbridos:</strong> Combinación de sesiones virtuales con talleres presenciales para máxima efectividad.</li>
+				<li><strong>Autoestudio + Coaching:</strong> Materiales flexibles de aprendizaje combinados con sesiones de coaching personalizadas.</li>
+				<li><strong>Briefings ejecutivos:</strong> Sesiones condensadas de 2-4 horas para directivos y tomadores de decisiones.</li>
 			</ul>
 			
 			<p>
-				<strong>Programas personalizados:</strong> Diseñamos el programa basado en tus procesos actuales, herramientas existentes y objetivos de negocio específicos.
+				<strong>Programas personalizados:</strong> Todas nuestras capacitaciones se adaptan a las necesidades específicas de tu organización, tu industria y el nivel técnico de tu equipo.
 			</p>
 		</section>
 
 		<!-- For Who Section -->
 		<section class="not-prose mb-16">
-			<h2 class="text-2xl sm:text-3xl font-bold text-accent-base mb-8 text-center">¿Para qué tipo de empresas?</h2>
+			<h2 class="text-2xl sm:text-3xl font-bold text-accent-base mb-8 text-center">¿Para quién son estas capacitaciones?</h2>
 			<div class="grid md:grid-cols-3 gap-6">
 				<div class="text-center p-6 rounded-xl bg-gradient-to-b from-special-lighter to-transparent border border-special-light">
 					<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-base/10 flex items-center justify-center">
-						<Icon name="mdi:rocket-launch" class="w-8 h-8 text-accent-base" />
+						<Icon name="solar:user-id-bold" class="w-8 h-8 text-accent-base" />
 					</div>
-					<h3 class="font-semibold text-lg mb-2">Startups en crecimiento</h3>
-					<p class="text-sm text-light">Que necesitan escalar operaciones sin aumentar headcount exponencialmente.</p>
+					<h3 class="font-semibold text-lg mb-2">Personas no técnicas</h3>
+					<p class="text-sm text-light">Que quieren aprender IA y automatización sin necesidad de programar.</p>
 				</div>
 				<div class="text-center p-6 rounded-xl bg-gradient-to-b from-special-lighter to-transparent border border-special-light">
 					<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-base/10 flex items-center justify-center">
-						<Icon name="mdi:office-building" class="w-8 h-8 text-accent-base" />
+						<Icon name="solar:buildings-bold" class="w-8 h-8 text-accent-base" />
 					</div>
-					<h3 class="font-semibold text-lg mb-2">Empresas establecidas</h3>
-					<p class="text-sm text-light">Que buscan modernizar procesos y adoptar IA de forma estratégica.</p>
+					<h3 class="font-semibold text-lg mb-2">Equipos empresariales</h3>
+					<p class="text-sm text-light">Que quieren liberar tiempo y mejorar sus procesos operativos.</p>
 				</div>
 				<div class="text-center p-6 rounded-xl bg-gradient-to-b from-special-lighter to-transparent border border-special-light">
 					<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-base/10 flex items-center justify-center">
-						<Icon name="mdi:account-multiple" class="w-8 h-8 text-accent-base" />
+						<Icon name="solar:chart-bold" class="w-8 h-8 text-accent-base" />
 					</div>
-					<h3 class="font-semibold text-lg mb-2">Equipos específicos</h3>
-					<p class="text-sm text-light">Operaciones, marketing, ventas, finanzas o TI que quieren automatizar su área.</p>
+					<h3 class="font-semibold text-lg mb-2">Emprendedores y profesionales</h3>
+					<p class="text-sm text-light">Que buscan escalar sus resultados con tecnología de vanguardia.</p>
 				</div>
 			</div>
 		</section>
@@ -354,61 +393,60 @@ const meta = {
 		<!-- Pricing Section -->
 		<section class="mb-16">
 			<h2>Inversión</h2>
-			<p>Programas de capacitación diseñados para maximizar el ROI de tu inversión en formación:</p>
+			<p>Nuestros programas de capacitación están diseñados para ofrecer el máximo valor para tu organización:</p>
 			
 			<div class="not-prose grid md:grid-cols-2 lg:grid-cols-4 gap-6 my-8">
 				<div class="bg-bgColor border border-special-light rounded-xl p-6 hover:border-accent-base/40 transition-all">
-					<h3 class="text-sm font-medium text-light uppercase tracking-wide mb-2">Taller intensivo</h3>
+					<h3 class="text-sm font-medium text-light uppercase tracking-wide mb-2">Taller de una semana</h3>
 					<div class="flex items-baseline gap-1 mb-4">
-						<span class="text-3xl font-bold text-accent-base">$1,500</span>
+						<span class="text-3xl font-bold text-accent-base">{formatPrice(trainingPricing.weekWorkshop.startingPrice)}</span>
 						<span class="text-sm text-light">USD</span>
 					</div>
-					<p class="text-sm text-light">Workshop de una semana. Hasta 10 participantes incluidos.</p>
+					<p class="text-sm text-light">Capacitación intensiva de 5 días con práctica hands-on.</p>
 				</div>
 				<div class="bg-bgColor border border-special-light rounded-xl p-6 hover:border-accent-base/40 transition-all">
-					<h3 class="text-sm font-medium text-light uppercase tracking-wide mb-2">Programa mensual</h3>
+					<h3 class="text-sm font-medium text-light uppercase tracking-wide mb-2">Programa de un mes</h3>
 					<div class="flex items-baseline gap-1 mb-4">
-						<span class="text-3xl font-bold text-accent-base">$100</span>
-						<span class="text-sm text-light">USD / persona</span>
+						<span class="text-3xl font-bold text-accent-base">{formatPrice(trainingPricing.monthProgram.pricePerEmployee)}</span>
+						<span class="text-sm text-light">USD / empleado</span>
 					</div>
-					<p class="text-sm text-light">4 semanas de capacitación progresiva con seguimiento semanal.</p>
+					<p class="text-sm text-light">Capacitación progresiva con seguimiento semanal.</p>
 				</div>
 				<div class="bg-bgColor border border-special-light rounded-xl p-6 hover:border-accent-base/40 transition-all">
 					<h3 class="text-sm font-medium text-light uppercase tracking-wide mb-2">Programa continuo</h3>
 					<div class="flex items-baseline gap-1 mb-4">
-						<span class="text-3xl font-bold text-accent-base">$2,000</span>
+						<span class="text-3xl font-bold text-accent-base">{formatPrice(trainingPricing.ongoingProgram.monthlyPrice)}</span>
 						<span class="text-sm text-light">USD / mes</span>
 					</div>
-					<p class="text-sm text-light">Soporte ongoing, nuevos módulos y actualizaciones mensuales.</p>
+					<p class="text-sm text-light">Capacitación ongoing para equipos con soporte dedicado.</p>
 				</div>
 				<div class="bg-gradient-to-b from-accent-base/10 to-transparent border border-accent-base/30 rounded-xl p-6">
-					<h3 class="text-sm font-medium text-accent-base uppercase tracking-wide mb-2">Enterprise</h3>
+					<h3 class="text-sm font-medium text-accent-base uppercase tracking-wide mb-2">Programa intensivo</h3>
 					<div class="flex items-baseline gap-1 mb-4">
 						<span class="text-2xl font-bold text-accent-base">Personalizado</span>
 					</div>
-					<p class="text-sm text-light">Programas a la medida para organizaciones grandes con necesidades específicas.</p>
+					<p class="text-sm text-light">Programas multi-día adaptados a tus necesidades específicas.</p>
 				</div>
 			</div>
 			
 			<p class="text-sm text-light text-center">
-				* Precios varían según tamaño del equipo, personalización y formato. <a href="https://calendar.app.google/VALDzjK7GqCTvYz56" class="citrus-link">Conversemos</a> para diseñar el programa ideal.
+				* Los precios varían según el tamaño del grupo, nivel de personalización y formato de entrega. <a href="https://calendar.app.google/VALDzjK7GqCTvYz56" class="citrus-link">Conversemos</a> para diseñar el programa ideal para tu equipo.
 			</p>
 		</section>
 
 		<!-- Why Us Section -->
 		<section class="mb-16">
-			<h2>¿Por qué MajupLabs?</h2>
+			<h2>¿Por qué entrenar con MajupLabs?</h2>
 			<ul class="list-inside list-disc space-y-2">
-				<li><strong>Experiencia real:</strong> Hemos implementado soluciones de IA (ML, RAG, LLMs) en startups y empresas de diversos sectores.</li>
-				<li><strong>Enfoque práctico:</strong> No solo teoría. Tus equipos construyen proyectos reales durante la capacitación.</li>
-				<li><strong>Adaptado a tu negocio:</strong> Usamos tus procesos y casos de uso reales como ejercicios de la capacitación.</li>
-				<li><strong>Rigor técnico:</strong> Con PhD en IA y Machine Learning, aportamos profundidad cuando se necesita.</li>
-				<li><strong>Soporte post-capacitación:</strong> No te dejamos solo. Ofrecemos seguimiento para asegurar la adopción.</li>
-				<li><strong>En tu idioma:</strong> Trabajamos en español, entendemos el contexto de negocios en Latinoamérica.</li>
+				<li><strong>Rigor académico:</strong> Con PhD en IA y Machine Learning, aportamos profundidad de conocimiento a problemas complejos.</li>
+				<li><strong>Experiencia práctica:</strong> Hemos implementado exitosamente soluciones de IA (ML, RAG, LLMs) en diversas industrias.</li>
+				<li><strong>Enfoque pragmático:</strong> Nos enfocamos en estrategias prácticas orientadas a resultados que se alinean con tus objetivos de negocio.</li>
+				<li><strong>Resultados rápidos:</strong> Nuestro enfoque entrega resultados tangibles en pocas semanas.</li>
+				<li><strong>Comunicación en español:</strong> Trabajamos en tu idioma, entendemos tu contexto cultural y de negocio en Latinoamérica.</li>
 			</ul>
 		</section>
 
-		<!-- Testimonials -->
+		<!-- Testimonials placeholder -->
 		<section class="not-prose mb-16">
 			<h2 class="text-2xl sm:text-3xl font-bold text-accent-base mb-8 text-center">Lo que dicen nuestros clientes</h2>
 			<div class="grid md:grid-cols-2 gap-6">
@@ -435,9 +473,9 @@ const meta = {
 
 		<!-- Final CTA -->
 		<section class="text-center mb-8">
-			<h2 class="text-2xl sm:text-3xl font-bold mb-4">¿Listo para capacitar a tu equipo?</h2>
+			<h2 class="text-2xl sm:text-3xl font-bold mb-4">¿Listo para transformar tu equipo?</h2>
 			<p class="text-lg text-light mb-8 max-w-2xl mx-auto">
-				Agenda una llamada de consulta gratuita. Analizamos tus procesos y diseñamos el programa de capacitación ideal para tu organización.
+				Agenda una llamada de consulta gratuita para diseñar el programa de capacitación ideal para tu organización.
 			</p>
 			<div class="flex flex-col sm:flex-row justify-center gap-4">
 				<a href="https://calendar.app.google/VALDzjK7GqCTvYz56" target="_blank" rel="noopener" class="inline-flex items-center justify-center min-h-[3rem] px-8 py-3 rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-bgColor font-semibold text-base sm:text-lg">
@@ -453,3 +491,4 @@ const meta = {
 	</div>
 
 </PageLayout>
+

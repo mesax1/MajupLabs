@@ -230,53 +230,8 @@
 		--code-line-diff-remove: rgba(248, 85, 82, 0.15);
 	}
 
-	/* MOBILE RESPONSIVE FIX - Bulletproof approach */
-	html, body {
-		width: 100% !important;
-		max-width: 100% !important;
-		overflow-x: hidden !important;
-		margin: 0 !important;
-		padding: 0;
-	}
-
 	html {
 		letter-spacing: 0.025em;
-	}
-
-	/* Universal box-sizing - CRITICAL */
-	*, *::before, *::after {
-		box-sizing: border-box !important;
-	}
-
-	/* Force content width on all non-decorative elements */
-	body > div,
-	#container,
-	main,
-	main > * {
-		max-width: 100% !important;
-		overflow-x: hidden;
-	}
-
-	/* Exception for fixed/absolute positioned decorative elements */
-	.pointer-events-none,
-	.pointer-events-none *,
-	[class*="blur-"] {
-		max-width: none !important;
-	}
-
-	/* Force content containers to stay within bounds */
-	main, article, section, div, header, footer, nav {
-		word-wrap: break-word;
-		overflow-wrap: break-word;
-	}
-
-	/* Force text wrapping for all text elements */
-	h1, h2, h3, h4, h5, h6, p, span, a, li, strong, em, label {
-		word-wrap: break-word !important;
-		overflow-wrap: break-word !important;
-		hyphens: auto;
-		-webkit-hyphens: auto;
-		-ms-hyphens: auto;
 	}
 
 	h1 {
@@ -385,7 +340,7 @@
 
 	/* Basic style for pre block */
 	pre {
-		@apply bg-[var(--code-bg)] text-[var(--theme-text)] rounded-lg leading-loose m-0 overflow-x-auto;
+		@apply bg-[var(--code-bg)] text-[var(--theme-text)] rounded-lg leading-loose m-0;
 		/* @apply bg-[var(--code-bg)] text-[var(--theme-accent)] rounded-lg leading-loose m-0; */
 	}
 
@@ -409,19 +364,4 @@
 	article mark {
 		@apply bg-transparent;
 	}
-
-	/* Ensure prose content wraps properly on mobile */
-	.prose {
-		word-wrap: break-word;
-		overflow-wrap: break-word;
-		max-width: 100%;
-		width: 100%;
-	}
-
-	/* Ensure long links break properly */
-	.prose a {
-		word-break: break-word;
-		overflow-wrap: anywhere;
-	}
-
 }

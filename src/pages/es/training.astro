@@ -6,8 +6,8 @@ import type { CollectionEntry } from "astro:content";
 import { trainingPricing, formatPrice } from "@/data/pricing";
 
 const meta = {
-	description: "Capacitaciones y cursos de automatización e inteligencia artificial con N8N, Google Workspace, Microsoft Power Automate y Copilot. Transforma tu empresa con IA.",
-	title: "Capacitaciones en IA y Automatización | MajupLabs",
+	description: "Capacitaciones corporativas en automatización e inteligencia artificial con N8N, Google Workspace, Microsoft Copilot y Power Automate. Transforma tu equipo y escala tu empresa con IA.",
+	title: "Capacitaciones Corporativas en IA y Automatización | MajupLabs",
 };
 
 // Get training courses for Spanish
@@ -43,53 +43,53 @@ function getPriceLabel(pricingKey: string): string | null {
 
 		<div class="text-center mb-12">
 			<span class="inline-block text-xs sm:text-sm uppercase tracking-wider bg-gradient-to-r from-accent-two/85 via-accent-one/85 to-accent-two/85 dark:from-accent-two dark:via-accent-one dark:to-accent-two bg-clip-text text-transparent font-semibold mb-3">
-				Automatización e Inteligencia Artificial
+				Capacitaciones Corporativas
 			</span>
 			<h1 class="title text-3xl sm:text-4xl lg:text-5xl mb-6">
-				Conviértete en la persona <br class="hidden sm:block" />
-				<span class="bg-gradient-to-r from-accent-one to-accent-two bg-clip-text text-transparent">más valiosa</span> de tu empresa
+				Transforma tu empresa con <br class="hidden sm:block" />
+				<span class="bg-gradient-to-r from-accent-one to-accent-two bg-clip-text text-transparent">Automatización e IA</span>
 			</h1>
 			<p class="text-lg sm:text-xl text-light max-w-3xl mx-auto leading-relaxed">
-				Domina herramientas de <strong class="text-accent-base">automatización e inteligencia artificial</strong> sin necesidad de ser técnico. Crea sistemas que liberan tiempo y multiplican tus resultados.
+				Capacita a tu equipo en las herramientas de <strong class="text-accent-base">automatización e inteligencia artificial</strong> más demandadas. Ayudamos a startups y empresas a escalar operaciones, reducir costos y liberar tiempo para lo que realmente importa.
 			</p>
 		</div>
 	</div>
 
 	<div class="prose prose-citrus max-w-none">
 		
-		<!-- Value Proposition Cards -->
+		<!-- Value Proposition Cards - B2B focused -->
 		<section class="not-prose mb-16">
 			<h2 class="text-2xl sm:text-3xl font-bold text-accent-base mb-8 text-center">
-				¿Qué vas a lograr?
+				¿Por qué invertir en capacitación de IA?
 			</h2>
 			<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 				<div class="bg-bgColor/50 border border-special-light rounded-xl p-6 hover:border-accent-base/30 transition-all hover:shadow-lg">
 					<div class="w-12 h-12 bg-gradient-to-br from-accent-one to-accent-two rounded-lg flex items-center justify-center mb-4">
-						<Icon name="solar:cpu-bolt-bold" class="w-6 h-6 text-white" />
+						<Icon name="solar:chart-2-bold" class="w-6 h-6 text-white" />
 					</div>
-					<h3 class="font-semibold text-lg mb-2">Dominar herramientas de IA</h3>
-					<p class="text-sm text-light">Aprende a usar herramientas reales de inteligencia artificial y automatización para tu día a día.</p>
+					<h3 class="font-semibold text-lg mb-2">Escala sin contratar</h3>
+					<p class="text-sm text-light">Automatiza tareas repetitivas y multiplica la capacidad de tu equipo actual sin aumentar la nómina.</p>
 				</div>
 				<div class="bg-bgColor/50 border border-special-light rounded-xl p-6 hover:border-accent-base/30 transition-all hover:shadow-lg">
 					<div class="w-12 h-12 bg-gradient-to-br from-accent-one to-accent-two rounded-lg flex items-center justify-center mb-4">
-						<Icon name="solar:code-square-bold" class="w-6 h-6 text-white" />
+						<Icon name="solar:clock-circle-bold" class="w-6 h-6 text-white" />
 					</div>
-					<h3 class="font-semibold text-lg mb-2">Crear sin programar</h3>
-					<p class="text-sm text-light">Construye tus propios sistemas y automatizaciones sin depender de programadores.</p>
+					<h3 class="font-semibold text-lg mb-2">Reduce tiempo operativo</h3>
+					<p class="text-sm text-light">Elimina horas de trabajo manual con flujos automatizados que funcionan 24/7.</p>
 				</div>
 				<div class="bg-bgColor/50 border border-special-light rounded-xl p-6 hover:border-accent-base/30 transition-all hover:shadow-lg">
 					<div class="w-12 h-12 bg-gradient-to-br from-accent-one to-accent-two rounded-lg flex items-center justify-center mb-4">
-						<Icon name="solar:star-bold" class="w-6 h-6 text-white" />
+						<Icon name="solar:shield-check-bold" class="w-6 h-6 text-white" />
 					</div>
-					<h3 class="font-semibold text-lg mb-2">Destacarte profesionalmente</h3>
-					<p class="text-sm text-light">Conviértete en esa persona que todos buscan cuando hay que resolver algo con tecnología.</p>
+					<h3 class="font-semibold text-lg mb-2">Reduce errores humanos</h3>
+					<p class="text-sm text-light">Estandariza procesos críticos y minimiza errores costosos con automatización inteligente.</p>
 				</div>
 				<div class="bg-bgColor/50 border border-special-light rounded-xl p-6 hover:border-accent-base/30 transition-all hover:shadow-lg">
 					<div class="w-12 h-12 bg-gradient-to-br from-accent-one to-accent-two rounded-lg flex items-center justify-center mb-4">
-						<Icon name="solar:rocket-bold" class="w-6 h-6 text-white" />
+						<Icon name="solar:users-group-rounded-bold" class="w-6 h-6 text-white" />
 					</div>
-					<h3 class="font-semibold text-lg mb-2">Acelerar tu crecimiento</h3>
-					<p class="text-sm text-light">Impulsa tu carrera profesional en menos de 8 semanas con habilidades de alta demanda.</p>
+					<h3 class="font-semibold text-lg mb-2">Empodera a tu equipo</h3>
+					<p class="text-sm text-light">Dale a tu equipo las habilidades para resolver problemas con tecnología de vanguardia.</p>
 				</div>
 			</div>
 		</section>
@@ -114,7 +114,7 @@ function getPriceLabel(pricingKey: string): string | null {
 					const priceLabel = getPriceLabel(course.data.pricingKey);
 					return (
 						<a 
-							href={`/es/capacitaciones/${course.data.slug}/`}
+							href={`/es/training/${course.data.slug}/`}
 							class="group block bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-6 border border-special-light hover:border-accent-base/50 transition-all hover:shadow-xl hover:-translate-y-1"
 						>
 							<div class="flex items-start gap-4 mb-4">
@@ -167,11 +167,11 @@ function getPriceLabel(pricingKey: string): string | null {
 		<section class="mb-16">
 			<h2 class="text-center">Herramientas y Tecnologías</h2>
 			<p class="text-center text-lg mb-8">
-				Además de nuestros programas especializados, ofrecemos capacitaciones en las herramientas de automatización e IA más demandadas del mercado.
+				Programas diseñados para equipos que quieren implementar automatización e IA de forma práctica e inmediata. Cada capacitación incluye casos de uso reales y proyectos aplicados a tu negocio.
 			</p>
 
 			<!-- N8N + AI Agents -->
-			<a href="/es/capacitaciones/n8n-agentes-ia/" class="group block not-prose bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-8 mb-8 border border-special-light hover:border-accent-base/50 transition-all hover:shadow-xl">
+			<a href="/es/training/n8n-agentes-ia/" class="group block not-prose bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-8 mb-8 border border-special-light hover:border-accent-base/50 transition-all hover:shadow-xl">
 				<div class="flex flex-col lg:flex-row gap-8 items-start">
 					<div class="flex-shrink-0">
 						<div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
@@ -187,7 +187,7 @@ function getPriceLabel(pricingKey: string): string | null {
 							</span>
 						</div>
 						<p class="text-light mb-4">
-							Aprende a construir flujos de trabajo automatizados y agentes inteligentes que ejecutan tareas de forma semi-autónoma. Desde automatizaciones básicas hasta sistemas complejos con inteligencia artificial.
+							Capacita a tu equipo para construir flujos de trabajo automatizados y agentes inteligentes. Ideal para equipos de operaciones, marketing y ventas que quieren escalar sin aumentar headcount.
 						</p>
 						<div class="grid sm:grid-cols-2 gap-4 mb-6">
 							<div class="flex items-start gap-2">
@@ -212,11 +212,11 @@ function getPriceLabel(pricingKey: string): string | null {
 							</div>
 							<div class="flex items-start gap-2">
 								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Automatización de leads</span>
+								<span class="text-sm">Automatización de leads y CRM</span>
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center justify-between gap-4">
-							<p class="text-sm text-light">Ideal para: Emprendedores, equipos de operaciones, marketing y ventas</p>
+							<p class="text-sm text-light">Ideal para: Startups, equipos de operaciones, marketing y ventas</p>
 							<span class="text-sm font-semibold text-accent-base">{trainingPricing.n8nAiAgents.label.es}</span>
 						</div>
 					</div>
@@ -224,7 +224,7 @@ function getPriceLabel(pricingKey: string): string | null {
 			</a>
 
 			<!-- Google Workspace -->
-			<a href="/es/capacitaciones/google-workspace-automatizaciones/" class="group block not-prose bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-8 mb-8 border border-special-light hover:border-accent-base/50 transition-all hover:shadow-xl">
+			<a href="/es/training/google-workspace-automatizaciones/" class="group block not-prose bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-8 mb-8 border border-special-light hover:border-accent-base/50 transition-all hover:shadow-xl">
 				<div class="flex flex-col lg:flex-row gap-8 items-start">
 					<div class="flex-shrink-0">
 						<div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
@@ -240,7 +240,7 @@ function getPriceLabel(pricingKey: string): string | null {
 							</span>
 						</div>
 						<p class="text-light mb-4">
-							Maximiza la productividad de tu equipo automatizando tareas repetitivas en Gmail, Google Sheets, Drive, Calendar y más. Conecta tus herramientas de Google con el resto de tu ecosistema empresarial.
+							Maximiza la productividad de tu equipo automatizando Gmail, Google Sheets, Drive y Calendar. Perfecto para empresas que ya usan G Suite y quieren desbloquear todo su potencial.
 						</p>
 						<div class="grid sm:grid-cols-2 gap-4 mb-6">
 							<div class="flex items-start gap-2">
@@ -249,35 +249,35 @@ function getPriceLabel(pricingKey: string): string | null {
 							</div>
 							<div class="flex items-start gap-2">
 								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Automatización de correos</span>
+								<span class="text-sm">Automatización de correos y seguimientos</span>
 							</div>
 							<div class="flex items-start gap-2">
 								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Dashboards en Sheets con IA</span>
+								<span class="text-sm">Dashboards en Sheets con IA (Gemini)</span>
 							</div>
 							<div class="flex items-start gap-2">
 								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Integración con Gemini AI</span>
+								<span class="text-sm">Flujos de aprobación automatizados</span>
 							</div>
 							<div class="flex items-start gap-2">
 								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Flujos de aprobación</span>
+								<span class="text-sm">Reportes de gestión automáticos</span>
 							</div>
 							<div class="flex items-start gap-2">
 								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Reportes automáticos</span>
+								<span class="text-sm">Integración con herramientas externas</span>
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center justify-between gap-4">
-							<p class="text-sm text-light">Ideal para: Empresas que usan G Suite, equipos administrativos y de gestión</p>
+							<p class="text-sm text-light">Ideal para: Empresas con G Suite, equipos administrativos, finanzas y RRHH</p>
 							<span class="text-sm font-semibold text-accent-base">{trainingPricing.googleWorkspace.label.es}</span>
 						</div>
 					</div>
 				</div>
 			</a>
 
-			<!-- Microsoft Power Automate + Copilot -->
-			<a href="/es/capacitaciones/microsoft-power-automate/" class="group block not-prose bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-8 mb-8 border border-special-light hover:border-accent-base/50 transition-all hover:shadow-xl">
+			<!-- Microsoft Copilot + Power Automate -->
+			<a href="/es/training/microsoft-power-automate/" class="group block not-prose bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-8 mb-8 border border-special-light hover:border-accent-base/50 transition-all hover:shadow-xl">
 				<div class="flex flex-col lg:flex-row gap-8 items-start">
 					<div class="flex-shrink-0">
 						<div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
@@ -286,14 +286,14 @@ function getPriceLabel(pricingKey: string): string | null {
 					</div>
 					<div class="flex-1">
 						<div class="flex items-center justify-between mb-3">
-							<h3 class="text-2xl font-bold text-accent-base group-hover:text-accent-one transition-colors">Microsoft Power Automate + Copilot</h3>
+							<h3 class="text-2xl font-bold text-accent-base group-hover:text-accent-one transition-colors">Microsoft Copilot + Power Automate</h3>
 							<span class="hidden sm:inline-flex items-center gap-1 text-sm font-medium text-accent-two group-hover:gap-2 transition-all">
 								Ver programa
 								<Icon name="solar:arrow-right-linear" class="w-4 h-4" />
 							</span>
 						</div>
 						<p class="text-light mb-4">
-							Domina el ecosistema de automatización de Microsoft. Aprende a crear flujos potentes con Power Automate y a aprovechar Microsoft Copilot para multiplicar tu productividad en Excel, Word, Outlook y Teams.
+							Domina el ecosistema de automatización de Microsoft. Ideal para empresas corporativas que usan Microsoft 365 y buscan implementar RPA y asistentes de IA en sus procesos.
 						</p>
 						<div class="grid sm:grid-cols-2 gap-4 mb-6">
 							<div class="flex items-start gap-2">
@@ -302,27 +302,27 @@ function getPriceLabel(pricingKey: string): string | null {
 							</div>
 							<div class="flex items-start gap-2">
 								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Microsoft Copilot avanzado</span>
+								<span class="text-sm">Microsoft Copilot para productividad</span>
 							</div>
 							<div class="flex items-start gap-2">
 								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Automatización en SharePoint</span>
+								<span class="text-sm">Automatización en SharePoint y Teams</span>
 							</div>
 							<div class="flex items-start gap-2">
 								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">Integración con Teams</span>
+								<span class="text-sm">RPA para procesos legacy</span>
 							</div>
 							<div class="flex items-start gap-2">
 								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">RPA (Automatización robótica)</span>
+								<span class="text-sm">AI Builder para análisis de documentos</span>
 							</div>
 							<div class="flex items-start gap-2">
 								<Icon name="solar:check-circle-bold" class="w-5 h-5 text-accent-two flex-shrink-0 mt-0.5" />
-								<span class="text-sm">AI Builder</span>
+								<span class="text-sm">Integración con Dynamics y SAP</span>
 							</div>
 						</div>
 						<div class="flex flex-wrap items-center justify-between gap-4">
-							<p class="text-sm text-light">Ideal para: Empresas con Microsoft 365, equipos corporativos y de TI</p>
+							<p class="text-sm text-light">Ideal para: Empresas con Microsoft 365, equipos de TI y transformación digital</p>
 							<span class="text-sm font-semibold text-accent-base">{trainingPricing.microsoftPowerAutomate.label.es}</span>
 						</div>
 					</div>
@@ -330,40 +330,40 @@ function getPriceLabel(pricingKey: string): string | null {
 			</a>
 		</section>
 
-		<!-- What You'll Build Section -->
+		<!-- What Teams Will Build Section -->
 		<section class="mb-16">
-			<h2 class="text-center">Sistemas que podrás construir</h2>
+			<h2 class="text-center">Lo que tu equipo podrá construir</h2>
 			<p class="text-center text-lg mb-8">
-				Al terminar nuestras capacitaciones, tendrás las habilidades para crear soluciones reales que impactan tu negocio.
+				Al terminar la capacitación, tu equipo tendrá las habilidades para implementar soluciones reales que impactan el negocio.
 			</p>
 			
 			<div class="not-prose grid md:grid-cols-2 gap-6">
 				<div class="flex items-start gap-4 p-4 rounded-lg bg-bgColor/30 border border-special-light/50">
 					<Icon name="solar:users-group-rounded-bold" class="w-8 h-8 text-accent-one flex-shrink-0" />
 					<div>
-						<h4 class="font-semibold mb-1">Sistemas de obtención y enriquecimiento de leads</h4>
-						<p class="text-sm text-light">Accede a mejores bases de datos, reduce la intervención manual y mejora la calidad de tu información comercial.</p>
+						<h4 class="font-semibold mb-1">Sistemas de generación y enriquecimiento de leads</h4>
+						<p class="text-sm text-light">Automatiza la captura, calificación y enriquecimiento de leads para tu equipo de ventas.</p>
 					</div>
 				</div>
 				<div class="flex items-start gap-4 p-4 rounded-lg bg-bgColor/30 border border-special-light/50">
 					<Icon name="solar:settings-bold" class="w-8 h-8 text-accent-one flex-shrink-0" />
 					<div>
-						<h4 class="font-semibold mb-1">Automatizaciones a la medida</h4>
-						<p class="text-sm text-light">Elimina fricción en tus procesos operativos y escala con menos esfuerzo.</p>
+						<h4 class="font-semibold mb-1">Automatizaciones operativas</h4>
+						<p class="text-sm text-light">Elimina tareas manuales en finanzas, RRHH, compras y operaciones.</p>
 					</div>
 				</div>
 				<div class="flex items-start gap-4 p-4 rounded-lg bg-bgColor/30 border border-special-light/50">
 					<Icon name="solar:chat-round-dots-bold" class="w-8 h-8 text-accent-one flex-shrink-0" />
 					<div>
-						<h4 class="font-semibold mb-1">Chatbots de ventas y atención al cliente</h4>
-						<p class="text-sm text-light">Asistentes que integran bien con tu negocio, responden con precisión y aumentan tu capacidad de atención.</p>
+						<h4 class="font-semibold mb-1">Chatbots de atención al cliente</h4>
+						<p class="text-sm text-light">Despliega asistentes de IA que resuelven consultas 24/7 y escalan a humanos cuando es necesario.</p>
 					</div>
 				</div>
 				<div class="flex items-start gap-4 p-4 rounded-lg bg-bgColor/30 border border-special-light/50">
 					<Icon name="solar:cpu-bolt-bold" class="w-8 h-8 text-accent-one flex-shrink-0" />
 					<div>
-						<h4 class="font-semibold mb-1">Agentes inteligentes semi-autónomos</h4>
-						<p class="text-sm text-light">Desarrolla agentes capaces de ejecutar tareas específicas con mínima supervisión.</p>
+						<h4 class="font-semibold mb-1">Agentes de IA especializados</h4>
+						<p class="text-sm text-light">Crea agentes que ejecutan tareas específicas: investigación, análisis de documentos, reportes.</p>
 					</div>
 				</div>
 			</div>
@@ -373,46 +373,46 @@ function getPriceLabel(pricingKey: string): string | null {
 		<section class="mb-16">
 			<h2>Formatos de Entrega</h2>
 			<p>
-				Adaptamos nuestras capacitaciones a las necesidades de tu equipo. Elige el formato que mejor se ajuste a tu organización:
+				Adaptamos el programa a las necesidades de tu empresa. Elige el formato que mejor funcione para tu equipo:
 			</p>
 			
 			<ul class="list-inside list-disc space-y-3">
-				<li><strong>Talleres presenciales en tu empresa:</strong> Capacitaciones intensivas de uno o varios días en tus instalaciones con práctica hands-on.</li>
-				<li><strong>Sesiones virtuales en vivo:</strong> Cursos interactivos online que se adaptan a equipos distribuidos en diferentes ubicaciones.</li>
-				<li><strong>Programas híbridos:</strong> Combinación de sesiones virtuales con talleres presenciales para máxima efectividad.</li>
-				<li><strong>Autoestudio + Coaching:</strong> Materiales flexibles de aprendizaje combinados con sesiones de coaching personalizadas.</li>
-				<li><strong>Briefings ejecutivos:</strong> Sesiones condensadas de 2-4 horas para directivos y tomadores de decisiones.</li>
+				<li><strong>Talleres presenciales en tu empresa:</strong> Capacitaciones intensivas de 1-5 días en tus instalaciones. Ideal para equipos que prefieren aprender de forma práctica.</li>
+				<li><strong>Sesiones virtuales en vivo:</strong> Cursos interactivos online perfectos para equipos distribuidos o remotos.</li>
+				<li><strong>Programas híbridos:</strong> Combinación de sesiones virtuales con talleres presenciales para máxima retención.</li>
+				<li><strong>Train the Trainer:</strong> Capacitamos a tus líderes internos para replicar el conocimiento en toda la organización.</li>
+				<li><strong>Briefings ejecutivos:</strong> Sesiones de 2-4 horas para directivos y tomadores de decisiones.</li>
 			</ul>
 			
 			<p>
-				<strong>Programas personalizados:</strong> Todas nuestras capacitaciones se adaptan a las necesidades específicas de tu organización, tu industria y el nivel técnico de tu equipo.
+				<strong>Programas personalizados:</strong> Diseñamos el programa basándonos en tus procesos actuales, herramientas existentes y objetivos de negocio específicos.
 			</p>
 		</section>
 
 		<!-- For Who Section -->
 		<section class="not-prose mb-16">
-			<h2 class="text-2xl sm:text-3xl font-bold text-accent-base mb-8 text-center">¿Para quién son estas capacitaciones?</h2>
+			<h2 class="text-2xl sm:text-3xl font-bold text-accent-base mb-8 text-center">¿Para quién es esta capacitación?</h2>
 			<div class="grid md:grid-cols-3 gap-6">
 				<div class="text-center p-6 rounded-xl bg-gradient-to-b from-special-lighter to-transparent border border-special-light">
 					<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-base/10 flex items-center justify-center">
-						<Icon name="solar:user-id-bold" class="w-8 h-8 text-accent-base" />
+						<Icon name="solar:rocket-bold" class="w-8 h-8 text-accent-base" />
 					</div>
-					<h3 class="font-semibold text-lg mb-2">Personas no técnicas</h3>
-					<p class="text-sm text-light">Que quieren aprender IA y automatización sin necesidad de programar.</p>
+					<h3 class="font-semibold text-lg mb-2">Startups y Scale-ups</h3>
+					<p class="text-sm text-light">Que buscan escalar operaciones sin aumentar proporcionalmente el headcount.</p>
 				</div>
 				<div class="text-center p-6 rounded-xl bg-gradient-to-b from-special-lighter to-transparent border border-special-light">
 					<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-base/10 flex items-center justify-center">
 						<Icon name="solar:buildings-bold" class="w-8 h-8 text-accent-base" />
 					</div>
-					<h3 class="font-semibold text-lg mb-2">Equipos empresariales</h3>
-					<p class="text-sm text-light">Que quieren liberar tiempo y mejorar sus procesos operativos.</p>
+					<h3 class="font-semibold text-lg mb-2">Equipos Corporativos</h3>
+					<p class="text-sm text-light">Equipos de operaciones, ventas, marketing, RRHH y TI que quieren liberar tiempo y optimizar procesos.</p>
 				</div>
 				<div class="text-center p-6 rounded-xl bg-gradient-to-b from-special-lighter to-transparent border border-special-light">
 					<div class="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-base/10 flex items-center justify-center">
 						<Icon name="solar:chart-bold" class="w-8 h-8 text-accent-base" />
 					</div>
-					<h3 class="font-semibold text-lg mb-2">Emprendedores y profesionales</h3>
-					<p class="text-sm text-light">Que buscan escalar sus resultados con tecnología de vanguardia.</p>
+					<h3 class="font-semibold text-lg mb-2">Líderes de Transformación Digital</h3>
+					<p class="text-sm text-light">CTOs, COOs y gerentes que lideran iniciativas de modernización tecnológica.</p>
 				</div>
 			</div>
 		</section>
@@ -448,7 +448,7 @@ function getPriceLabel(pricingKey: string): string | null {
 					<p class="text-sm text-light">Capacitación ongoing para equipos con soporte dedicado.</p>
 				</div>
 				<div class="bg-gradient-to-b from-accent-base/10 to-transparent border border-accent-base/30 rounded-xl p-6">
-					<h3 class="text-sm font-medium text-accent-base uppercase tracking-wide mb-2">Programa intensivo</h3>
+					<h3 class="text-sm font-medium text-accent-base uppercase tracking-wide mb-2">Programa personalizado</h3>
 					<div class="flex items-baseline gap-1 mb-4">
 						<span class="text-2xl font-bold text-accent-base">Personalizado</span>
 					</div>
@@ -518,4 +518,3 @@ function getPriceLabel(pricingKey: string): string | null {
 	</div>
 
 </PageLayout>
-

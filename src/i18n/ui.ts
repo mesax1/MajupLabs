@@ -21,6 +21,26 @@ export const ui = {
 } as const;
 
 /**
+ * Training slug mappings between English and Spanish
+ * Maps English slug -> Spanish slug (and vice versa)
+ */
+export const trainingSlugMappings: Record<string, string> = {
+	// English -> Spanish
+	"n8n-ai-agents": "n8n-agentes-ia",
+	"google-workspace-automations": "google-workspace-automatizaciones",
+	"microsoft-power-automate": "microsoft-power-automate",
+	"ai-prototype-accelerator": "acelerador-prototipos-ia",
+	"digital-transformation-lab": "laboratorio-transformacion-digital",
+	"innovation-bootcamp-ai": "bootcamp-innovacion-ia",
+	// Spanish -> English
+	"n8n-agentes-ia": "n8n-ai-agents",
+	"google-workspace-automatizaciones": "google-workspace-automations",
+	"acelerador-prototipos-ia": "ai-prototype-accelerator",
+	"laboratorio-transformacion-digital": "digital-transformation-lab",
+	"bootcamp-innovacion-ia": "innovation-bootcamp-ai",
+};
+
+/**
  * Get translation string by key and language
  */
 export function useTranslations(lang: Language = defaultLang) {
@@ -61,6 +81,16 @@ export function getAlternateLanguageUrl(currentUrl: URL, targetLang: Language): 
 	// Remove current language prefix if exists
 	if (currentLang !== defaultLang) {
 		path = path.replace(`/${currentLang}`, "");
+	}
+	
+	// Handle training slug mappings
+	const trainingMatch = path.match(/^\/training\/([^/]+)\/?$/);
+	if (trainingMatch) {
+		const currentSlug = trainingMatch[1];
+		const mappedSlug = trainingSlugMappings[currentSlug];
+		if (mappedSlug) {
+			path = `/training/${mappedSlug}/`;
+		}
 	}
 	
 	// Add target language prefix if not default

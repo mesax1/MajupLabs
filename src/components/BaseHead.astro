@@ -10,7 +10,7 @@ type Props = SiteMeta;
 const { articleDate, description, ogImage, title } = Astro.props;
 
 const currentLang = getLangFromUrl(Astro.url);
-const titleSeparator = "ΓÇó";
+const titleSeparator = "•";
 const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = ogImage 

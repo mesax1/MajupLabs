@@ -13,7 +13,7 @@ draft: false
 
 ## Project Overview
 
-Xficient is an innovative healthcare technology company focused on revolutionizing healthcare documentation through Generative AI-powered solutions. I worked with their team as an AI Consultant to develop and implement advanced AI systems for automating healthcare documentation administration.
+Xficient is an innovative healthcare technology company focused on revolutionizing healthcare documentation through Generative AI-powered solutions. We worked with their team as AI Consultants to develop and implement advanced AI systems for automating healthcare documentation administration.
 
 Xficient's main product is a document processing system that uses LLMs to process healthcare administrative documents. The system leverages Generative AI to process TPA documents that are typically unstructured, scattered across formats, platforms, and systems, and require a lot of human intervention to be processed accurately.
 

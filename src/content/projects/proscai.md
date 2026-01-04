@@ -13,7 +13,7 @@ draft: false
 
 ## Project Overview
 
-Proscai specializes in providing comprehensive ERP solutions for businesses. I worked with their team to integrate advanced Generative AI into their ERP platform, especially customer-facing business intelligence features and data analytics.
+Proscai specializes in providing comprehensive ERP solutions for businesses. We worked with their team to integrate advanced Generative AI into their ERP platform, especially customer-facing business intelligence features and data analytics.
 
 ## Key Contributions
 

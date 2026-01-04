@@ -13,7 +13,7 @@ draft: false
 
 ## Project Overview
 
-Bucket.io is a comprehensive marketing technology platform that helps businesses grow leads and increase revenue through high-converting quiz funnels. I collaborated with their team to integrate Generative AI capabilities for automated marketing funnel quiz creation, and chatbot integration.
+Bucket.io is a comprehensive marketing technology platform that helps businesses grow leads and increase revenue through high-converting quiz funnels. We collaborated with their team to integrate Generative AI capabilities for automated marketing funnel quiz creation, and chatbot integration.
 
 ## Key Contributions
 

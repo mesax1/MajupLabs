@@ -13,7 +13,7 @@ draft: false
 
 ## Project Overview
 
-Bonded LP specializes in the design, installation, inspection, and certification of lightning protection systems for construction and safety applications. I worked with their team to integrate Generative AI and machine learning technologies to enhance their document inspection processes and accelerating their construction planning phase.
+Bonded LP specializes in the design, installation, inspection, and certification of lightning protection systems for construction and safety applications. We worked with their team to integrate Generative AI and machine learning technologies to enhance their document inspection processes and accelerating their construction planning phase.
 
 ## Key Contributions
 

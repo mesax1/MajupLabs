@@ -13,7 +13,7 @@ draft: false
 
 ## Project Overview
 
-Anaconda Org is a leading platform that provides comprehensive data science tools, MLOps capabilities, and data & model management solutions. I contributed to enhancing their internal HR processes with the development of an specialized AI chatbot assistant.
+Anaconda Org is a leading platform that provides comprehensive data science tools, MLOps capabilities, and data & model management solutions. We contributed to enhancing their internal HR processes with the development of an specialized AI chatbot assistant.
 
 ## Key Contributions
 

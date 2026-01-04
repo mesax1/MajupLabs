@@ -13,7 +13,7 @@ draft: false
 
 ## Project Overview
 
-Pentimenti.ai is a specialized platform that develops AI solutions to simplify and streamline the sales and tender process. I collaborated with their team to enhance their AI capabilities for automated proposal generation, tender analysis, and sales process optimization.
+Pentimenti.ai is a specialized platform that develops AI solutions to simplify and streamline the sales and tender process. We collaborated with their team to enhance their AI capabilities for automated proposal generation, tender analysis, and sales process optimization.
 
 ## Key Contributions
 

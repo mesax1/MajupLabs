@@ -11,7 +11,7 @@ order: 18
 ---
 
 ### Project Overview
-Extensive experience in expanding vehicle routing algorithms' capabilities, converting prototypes for novel optimization algorithms into production-ready products, improving traffic/transit predictions, and developing data-driven metaheuristics for route sequencing and VRPs.
+We provided extensive expertise in expanding vehicle routing algorithms' capabilities, converting prototypes for novel optimization algorithms into production-ready products, improving traffic/transit predictions, and developing data-driven metaheuristics for route sequencing and VRPs.
 
 ### Key Contributions
 - Developed a VRP microservice for Coordinadora.

@@ -13,7 +13,7 @@ draft: false
 
 ## Project Overview
 
-WellAware specializes in industrial automation and data analytics solutions, primarily for the oil and gas industry. My collaboration focused on enhancing their predictive and reactive maintenance capabilities. I developed a traditional machine learning solution that processes sensor data from various field equipment, such as pumps, solar chargers, and batteries to proactively identify potential operational issues. This system was designed to improve maintenance schedules and overall equipment reliability.
+WellAware specializes in industrial automation and data analytics solutions, primarily for the oil and gas industry. Our collaboration focused on enhancing their predictive and reactive maintenance capabilities. We developed a traditional machine learning solution that processes sensor data from various field equipment, such as pumps, solar chargers, and batteries to proactively identify potential operational issues. This system was designed to improve maintenance schedules and overall equipment reliability.
 
 ## Key Contributions
 

@@ -13,7 +13,7 @@ draft: false
 
 ## Project Overview
 
-Intermate.de is a full-service social and influencer marketing agency based in Germany. I worked with their team as an AI Engineer developing a Recommendation Engine for Content Creators based on text, image, and video search.
+Intermate.de is a full-service social and influencer marketing agency based in Germany. We worked with their team as AI Engineers developing a Recommendation Engine for Content Creators based on text, image, and video search.
 
 ## Key Contributions
 

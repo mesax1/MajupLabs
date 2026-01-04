@@ -14,7 +14,7 @@ order: 10
 ---
 
 ### Project Overview
-Developed an AI-powered expert for fantasy football questions, including developing a POC and MVP. It can find waiver wire pickups, analyze trades, help with sit/start decisions, suggest players, and compare players.
+We developed an AI-powered expert for fantasy football questions, including developing a POC and MVP. It can find waiver wire pickups, analyze trades, help with sit/start decisions, suggest players, and compare players.
 
 ### Key Contributions
 - Plan and orchestrate the way the AI would access the daily updated data and answer the questions.

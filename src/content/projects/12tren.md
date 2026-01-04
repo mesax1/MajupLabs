@@ -13,7 +13,7 @@ draft: false
 
 ## Project Overview
 
-12Tren is a transportation and logistics company focused on innovative solutions for the mobility sector. I worked with their team to develop AI-powered optimization systems for route planning, demand forecasting, and operational efficiency enhancement.
+12Tren is a transportation and logistics company focused on innovative solutions for the mobility sector. We worked with their team to develop AI-powered optimization systems for route planning, demand forecasting, and operational efficiency enhancement.
 
 ## Key Contributions
 

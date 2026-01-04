@@ -18,10 +18,10 @@ const allProjects: CollectionEntry<'projects'>[] = await getCollection('projects
 
 // Sort projects by the 'order' field in frontmatter, then by title if order is the same or undefined
 const sortedProjects = allProjects.sort((a, b) => {
-  const orderA = a.data.order ?? Infinity;
-  const orderB = b.data.order ?? Infinity;
+  const orderA = a.data.order ?? -Infinity;
+  const orderB = b.data.order ?? -Infinity;
   if (orderA !== orderB) {
-    return orderA - orderB;
+    return orderB - orderA;
   }
   return a.data.title.localeCompare(b.data.title);
 });

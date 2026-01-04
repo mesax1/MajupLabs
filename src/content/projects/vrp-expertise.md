@@ -7,7 +7,7 @@ technologies: ["Django", "Optimization Algorithms", "OR-Tools", "Mathematical Mo
 roles: ["Optimization Engineer", "VRP Specialist"]
 imageUrls: ["/projects/vrp_projects/logo-coordinadora.svg", "/projects/vrp_projects/rideco-logo.svg"]
 draft: false
-order: 18
+order: 2
 ---
 
 ### Project Overview

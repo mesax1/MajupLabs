@@ -7,7 +7,7 @@ displayYear: "2023"
 technologies: ["LLMs", "Django", "OpenAI", "Langchain", "RAG", "Qdrant"]
 imageUrls: ["/projects/bucket/new-bucket-logo.svg","/projects/bucket/bucket-quiz.png", "/projects/bucket/bucketai.png"]
 projectUrl: "https://bucket.io/"
-order: 16
+order: 3
 draft: false
 ---
 

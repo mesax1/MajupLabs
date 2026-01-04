@@ -7,7 +7,7 @@ displayYear: "2024"
 technologies: ["Python", "Natural Language Processing", "OCR", "Document Processing", "Sales Automation", "AI/ML"]
 imageUrls: ["/projects/pentimenti/pentimenti-logo.avif", "/projects/pentimenti/pentimenti-chat.avif",]
 projectUrl: "https://pentimenti.ai/"
-order: 14
+order: 5
 draft: false
 ---
 

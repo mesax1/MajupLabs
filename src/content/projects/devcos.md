@@ -7,7 +7,7 @@ displayYear: "2025"
 technologies: ["FastAPI", "React", "Azure Document Intelligence", "PostgreSQL", "Docker", "Alembic", "LLMs", "Document Processing"]
 imageUrls: ["/projects/devcos/devcos-logo.png"]
 projectUrl: "https://www.devcos.com/"
-order: 3
+order: 13
 draft: false
 ---
 

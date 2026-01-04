@@ -7,7 +7,7 @@ displayYear: "2023"
 technologies: ["Python", "Machine Learning", "Hugging Face", "Langchain", "FastAPI", "CLIP", "AWS"]
 imageUrls: ["/projects/intermate/Intermate_Logo_Black.svg"]
 projectUrl: "https://intermate.de/"
-order: 15
+order: 4
 draft: false
 ---
 

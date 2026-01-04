@@ -7,7 +7,7 @@ displayYear: "2023"
 technologies: ["Python", "Machine Learning", "Transportation Analytics", "Route Optimization", "Predictive Analytics", "Logistics"]
 imageUrls: ["/projects/12tren/12tren-logo.png"]
 projectUrl: "https://12tren.com/"
-order: 19
+order: 1
 draft: false
 ---
 

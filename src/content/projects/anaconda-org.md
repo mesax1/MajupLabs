@@ -7,7 +7,7 @@ displayYear: "2025"
 technologies: ["RAG", "LLMs", "Kubernetes", "Milvus", "PostgreSQL", "Phoenix - Arize"]
 imageUrls: ["/projects/anaconda/Anaconda_logo_green.png"]
 projectUrl: "https://anaconda.org/"
-order: 2
+order: 11
 draft: false
 ---
 

@@ -7,7 +7,7 @@ displayYear: "2025"
 technologies: ["Anthropic", "RAG", "Langgraph", "Langsmith"]
 imageUrls: ["/projects/proscai/proscai-logo.png"]
 projectUrl: "https://www.proscai.com/"
-order: 4
+order: 9
 draft: false
 ---
 

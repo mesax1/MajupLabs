@@ -8,7 +8,7 @@ roles: ["Main AI Engineer"]
 contraLink: "https://contra.com/p/3ROAUZBX-ai-chatbot-for-real-estate-construction-codes-information"
 imageUrls: ["/projects/acristoengine/acristo-chatbot.png", "/projects/acristoengine/Captura de pantalla 2024-07-10 235757.png", "/projects/acristoengine/Captura de pantalla 2024-07-10 235650.png"]
 draft: false
-order: 12
+order: 6
 ---
 
 ### Project Overview

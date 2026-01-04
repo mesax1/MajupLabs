@@ -7,7 +7,7 @@ displayYear: "2025"
 technologies: ["LLMs", "Langgraph", "Langsmith", "PostgreSQL", "OCR"]
 imageUrls: [/projects/xficient/xficient_logo.webp]
 projectUrl: "https://xficient.com/"
-order: 3
+order: 10
 draft: false
 ---
 

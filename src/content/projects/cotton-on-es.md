@@ -8,7 +8,7 @@ technologies: ["Python", "Machine Learning", "Random Forest", "SARIMAX", "XGBoos
 imageUrls: ["/projects/cottonon/cotton-on-logo.svg"]
 projectUrl: "https://cottonon.com/"
 order: 13
-draft: false
+draft: yes
 lang: "es"
 ---
 

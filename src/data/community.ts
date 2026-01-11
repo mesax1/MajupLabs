@@ -43,7 +43,7 @@ export const communityClasses: CommunityClass[] = [
 			en: "Intro to AI & Automations: n8n Setup on VPS",
 			es: "Intro a IA y Automatizaciones: Configuración de n8n en VPS",
 		},
-		level: "Intermediate",
+		level: "Beginner",
 		summary: {
 			en: "Deploy n8n on a Virtual Private Server (VPS) for 24/7 automation workflows. Learn server setup, security, and cloud deployment.",
 			es: "Despliega n8n en un Servidor Privado Virtual (VPS) para flujos de trabajo 24/7. Aprende configuración de servidor, seguridad y despliegue en la nube.",

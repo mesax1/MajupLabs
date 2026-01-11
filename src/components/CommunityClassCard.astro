@@ -1,0 +1,70 @@
+---
+import { Icon } from "astro-icon/components";
+import Badge from "./Badge.astro";
+
+interface Props {
+	title: string;
+	level: "Beginner" | "Intermediate" | "Advanced";
+	summary: string;
+	techStack: string[];
+	videoUrl?: string;
+	guideUrl?: string;
+}
+
+const { title, level, summary, techStack, videoUrl, guideUrl } = Astro.props;
+
+// Level colors
+const levelColors = {
+	Beginner: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400",
+	Intermediate: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400",
+	Advanced: "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400",
+};
+---
+
+<div class="group bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-6 border border-special-light hover:border-accent-base/50 transition-all hover:shadow-xl">
+	<div class="flex items-start justify-between mb-3">
+		<h3 class="text-xl font-bold text-accent-base group-hover:text-accent-one transition-colors flex-1">
+			{title}
+		</h3>
+		<span class={`text-xs px-3 py-1 rounded-full font-medium ${levelColors[level]}`}>
+			{level}
+		</span>
+	</div>
+	
+	<p class="text-sm text-light mb-4 line-clamp-2">
+		{summary}
+	</p>
+	
+	<div class="flex flex-wrap gap-2 mb-4">
+		{techStack.map((tech) => (
+			<Badge>
+				<span class="text-xs">{tech}</span>
+			</Badge>
+		))}
+	</div>
+	
+	<div class="flex gap-3">
+		{videoUrl && (
+			<a 
+				href={videoUrl} 
+				target="_blank" 
+				rel="noopener noreferrer"
+				class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-accent-base/10 hover:bg-accent-base/20 text-accent-base rounded-lg transition-all text-sm font-medium"
+			>
+				<Icon name="solar:play-circle-bold" class="w-4 h-4" />
+				Watch
+			</a>
+		)}
+		{guideUrl && (
+			<a 
+				href={guideUrl}
+				target="_blank" 
+				rel="noopener noreferrer"
+				class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2 bg-accent-two/10 hover:bg-accent-two/20 text-accent-two rounded-lg transition-all text-sm font-medium"
+			>
+				<Icon name="solar:document-text-bold" class="w-4 h-4" />
+				Guide
+			</a>
+		)}
+	</div>
+</div>

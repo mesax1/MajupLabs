@@ -1,0 +1,333 @@
+---
+import PageLayout from "@/layouts/Base.astro";
+import { Icon } from "astro-icon/components";
+import CommunityClassCard from "@/components/CommunityClassCard.astro";
+import { getClassesByLanguage } from "@/data/community";
+
+const meta = {
+	description: "Únete a nuestra comunidad gratuita de IA y Automatización. Aprende, practica y conecta con otros apasionados por la inteligencia artificial y la automatización.",
+	title: "Comunidad - Aprende IA y Automatizaciones | MajupLabs",
+};
+
+// Get classes for Spanish
+const classes = getClassesByLanguage("es");
+---
+
+<PageLayout meta={meta}>
+	<!-- Hero Section with CTA -->
+	<div class="relative mb-16">
+		<!-- Background gradient -->
+		<div class="absolute inset-0 -z-10 overflow-hidden">
+			<div class="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-accent-one/20 to-accent-two/20 rounded-full blur-3xl"></div>
+			<div class="absolute top-20 right-1/4 w-80 h-80 bg-gradient-to-bl from-purple-400/15 to-blue-400/15 rounded-full blur-3xl"></div>
+		</div>
+
+		<div class="text-center mb-12">
+			<span class="inline-block text-xs sm:text-sm uppercase tracking-wider bg-gradient-to-r from-accent-two/85 via-accent-one/85 to-accent-two/85 dark:from-accent-two dark:via-accent-one dark:to-accent-two bg-clip-text text-transparent font-semibold mb-3">
+				Únete a Nuestra Comunidad
+			</span>
+			<h1 class="title text-3xl sm:text-4xl lg:text-5xl mb-6">
+				Aprende <span class="bg-gradient-to-r from-accent-one to-accent-two bg-clip-text text-transparent">IA y Automatizaciones</span>
+				<br class="hidden sm:block" />
+				<span class="text-2xl sm:text-3xl lg:text-4xl">Gratis</span>
+			</h1>
+			<p class="text-lg sm:text-xl text-light max-w-3xl mx-auto leading-relaxed mb-8">
+				Únete a nuestra <strong class="text-accent-base">comunidad de WhatsApp</strong> para acceder a <strong>clases en vivo gratuitas</strong>, grabaciones, guías y conectar con otros apasionados por la IA y la automatización.
+			</p>
+			
+			<!-- WhatsApp CTA -->
+			<div class="flex flex-col sm:flex-row justify-center gap-4 items-center">
+				<a 
+					href="https://chat.whatsapp.com/C4ykQ2VVg0yA5HRi9A2fUi" 
+					target="_blank" 
+					rel="noopener noreferrer"
+					class="group relative inline-flex items-center justify-center min-h-[3.5rem] px-10 py-4 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700"
+				>
+					<Icon name="solar:chat-round-bold" class="w-6 h-6 text-white mr-3" />
+					<span class="text-white font-bold text-lg">Únete a la Comunidad de WhatsApp</span>
+					<Icon name="solar:arrow-right-bold" class="w-5 h-5 text-white ml-2 group-hover:translate-x-1 transition-transform" />
+				</a>
+				<p class="text-sm text-light">
+					<Icon name="solar:users-group-rounded-bold" class="w-4 h-4 inline-block mr-1" />
+					<strong>100% Gratis</strong> • Sin compromiso
+				</p>
+			</div>
+		</div>
+
+		<!-- Value Props -->
+		<div class="grid md:grid-cols-3 gap-6 mt-12">
+			<div class="bg-bgColor/50 border border-special-light rounded-xl p-6 text-center">
+				<div class="w-12 h-12 bg-gradient-to-br from-accent-one to-accent-two rounded-lg flex items-center justify-center mb-4 mx-auto">
+					<Icon name="solar:video-library-bold" class="w-6 h-6 text-white" />
+				</div>
+				<h3 class="font-semibold text-lg mb-2">Clases en Vivo</h3>
+				<p class="text-sm text-light">Únete a sesiones interactivas en vivo y haz preguntas en tiempo real</p>
+			</div>
+			<div class="bg-bgColor/50 border border-special-light rounded-xl p-6 text-center">
+				<div class="w-12 h-12 bg-gradient-to-br from-accent-one to-accent-two rounded-lg flex items-center justify-center mb-4 mx-auto">
+					<Icon name="solar:document-text-bold" class="w-6 h-6 text-white" />
+				</div>
+				<h3 class="font-semibold text-lg mb-2">Guías Prácticas</h3>
+				<p class="text-sm text-light">Accede a guías paso a paso y plantillas para cada clase</p>
+			</div>
+			<div class="bg-bgColor/50 border border-special-light rounded-xl p-6 text-center">
+				<div class="w-12 h-12 bg-gradient-to-br from-accent-one to-accent-two rounded-lg flex items-center justify-center mb-4 mx-auto">
+					<Icon name="solar:users-group-two-rounded-bold" class="w-6 h-6 text-white" />
+				</div>
+				<h3 class="font-semibold text-lg mb-2">Apoyo de la Comunidad</h3>
+				<p class="text-sm text-light">Conecta con otros miembros y obtén ayuda de la comunidad</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Calendar Section -->
+	<section class="mb-16">
+		<div class="text-center mb-8">
+			<h2 class="text-2xl sm:text-3xl font-bold text-accent-base mb-4">
+				Calendario de Clases Próximas
+			</h2>
+			<p class="text-lg text-light max-w-3xl mx-auto">
+				Todos los horarios de las clases se muestran en <strong id="user-timezone">tu zona horaria local</strong>. Selecciona una clase para agregarla a tu calendario.
+			</p>
+		</div>
+
+		<!-- Calendar Container -->
+		<div class="bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-6 border border-special-light shadow-xl">
+			<div id="calendar-container" class="min-h-[600px]">
+				<!-- Calendar will be rendered here by FullCalendar -->
+			</div>
+		</div>
+
+		<!-- Calendar Controls Info -->
+		<div class="mt-6 flex flex-wrap justify-center gap-4 text-sm text-light">
+			<div class="flex items-center gap-2">
+				<Icon name="solar:calendar-bold" class="w-4 h-4 text-accent-base" />
+				<span>Haz clic en cualquier clase para ver detalles</span>
+			</div>
+			<div class="flex items-center gap-2">
+				<Icon name="solar:clock-circle-bold" class="w-4 h-4 text-accent-base" />
+				<span>Horarios ajustados a tu zona horaria</span>
+			</div>
+			<div class="flex items-center gap-2">
+				<Icon name="solar:download-minimalistic-bold" class="w-4 h-4 text-accent-base" />
+				<span>Agregar a Google Calendar o iCal</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- Past Classes / Recordings Section -->
+	<section class="mb-16">
+		<div class="text-center mb-8">
+			<h2 class="text-2xl sm:text-3xl font-bold text-accent-base mb-4">
+				Clases Pasadas y Grabaciones
+			</h2>
+			<p class="text-lg text-light max-w-3xl mx-auto">
+				Ponte al día con clases anteriores con grabaciones y guías paso a paso. Todo el contenido está disponible para los miembros de la comunidad.
+			</p>
+		</div>
+
+		<!-- Class Cards Grid -->
+		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+			{classes.map((cls) => (
+				<CommunityClassCard
+					title={cls.title}
+					level={cls.level}
+					summary={cls.summary}
+					techStack={cls.techStack}
+					videoUrl={cls.videoUrl}
+					guideUrl={cls.guideUrl}
+				/>
+			))}
+		</div>
+	</section>
+
+	<!-- Final CTA -->
+	<section class="text-center mb-8">
+		<div class="bg-gradient-to-br from-special-lighter to-special-light rounded-2xl p-8 sm:p-12 border border-special-light">
+			<h2 class="text-2xl sm:text-3xl font-bold mb-4">¿Listo para Comenzar a Aprender?</h2>
+			<p class="text-lg text-light mb-8 max-w-2xl mx-auto">
+				Únete a nuestra comunidad de WhatsApp hoy y obtén acceso instantáneo a todas las clases, grabaciones y guías.
+			</p>
+			<a 
+				href="https://chat.whatsapp.com/C4ykQ2VVg0yA5HRi9A2fUi" 
+				target="_blank" 
+				rel="noopener noreferrer"
+				class="inline-flex items-center justify-center min-h-[3.5rem] px-10 py-4 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700"
+			>
+				<Icon name="solar:chat-round-bold" class="w-6 h-6 text-white mr-3" />
+				<span class="text-white font-bold text-lg">Únete a la Comunidad de WhatsApp</span>
+			</a>
+			<p class="text-sm text-light mt-4">
+				Sin costo, sin compromiso. Cancela en cualquier momento.
+			</p>
+		</div>
+	</section>
+</PageLayout>
+
+<!-- FullCalendar CSS -->
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css' rel='stylesheet' />
+
+<!-- FullCalendar JS -->
+<script is:inline src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+
+<!-- FullCalendar Spanish Locale -->
+<script is:inline src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.10/locales/es.global.min.js'></script>
+
+<!-- Calendar Initialization Script -->
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const calendarEl = document.getElementById('calendar-container');
+		if (!calendarEl) return;
+
+		// Sample events (in production, these would come from your backend)
+		const events = [
+			{
+				title: 'Taller de Fundamentos de IA',
+				start: '2026-01-15T18:00:00',
+				end: '2026-01-15T19:30:00',
+				description: 'Introducción a los conceptos básicos de IA y Machine Learning',
+				backgroundColor: '#4F46E5',
+				borderColor: '#4338CA',
+			},
+			{
+				title: 'Masterclass de Automatización N8N',
+				start: '2026-01-18T17:00:00',
+				end: '2026-01-18T18:30:00',
+				description: 'Construye flujos de trabajo potentes con N8N',
+				backgroundColor: '#7C3AED',
+				borderColor: '#6D28D9',
+			},
+			{
+				title: 'Construyendo Agentes de IA',
+				start: '2026-01-22T18:00:00',
+				end: '2026-01-22T19:30:00',
+				description: 'Crea agentes inteligentes con LLMs',
+				backgroundColor: '#EC4899',
+				borderColor: '#DB2777',
+			},
+			{
+				title: 'Inmersión Profunda en Sistemas RAG',
+				start: '2026-01-25T17:00:00',
+				end: '2026-01-25T18:30:00',
+				description: 'Técnicas avanzadas de implementación RAG',
+				backgroundColor: '#F59E0B',
+				borderColor: '#D97706',
+			},
+		];
+
+		// Get user's timezone
+		const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+		document.getElementById('user-timezone').textContent = userTimezone;
+
+		// Initialize FullCalendar with Spanish locale
+		const calendar = new FullCalendar.Calendar(calendarEl, {
+			initialView: 'dayGridMonth',
+			locale: 'es',
+			headerToolbar: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'dayGridMonth,timeGridWeek,timeGridDay'
+			},
+			buttonText: {
+				today: 'Hoy',
+				month: 'Mes',
+				week: 'Semana',
+				day: 'Día'
+			},
+			events: events,
+			timeZone: userTimezone,
+			height: 'auto',
+			eventClick: function(info) {
+				const event = info.event;
+				
+				// Create modal content
+				const modal = `
+					<div id="event-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50" onclick="this.remove()">
+						<div class="bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-md w-full shadow-2xl" onclick="event.stopPropagation()">
+							<div class="flex items-start justify-between mb-4">
+								<h3 class="text-xl font-bold text-gray-900 dark:text-white">${event.title}</h3>
+								<button onclick="document.getElementById('event-modal').remove()" class="text-gray-400 hover:text-gray-600">
+									<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+									</svg>
+								</button>
+							</div>
+							<div class="space-y-3 text-gray-700 dark:text-gray-300">
+								<p class="flex items-center gap-2">
+									<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+									</svg>
+									${event.start.toLocaleString('es-ES')}
+								</p>
+								${event.extendedProps.description ? `<p class="text-sm">${event.extendedProps.description}</p>` : ''}
+							</div>
+							<div class="mt-6 flex gap-3">
+								<a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${event.start.toISOString().replace(/[-:]/g, '').split('.')[0]}Z/${event.end.toISOString().replace(/[-:]/g, '').split('.')[0]}Z" target="_blank" rel="noopener noreferrer" class="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-center text-sm font-medium">
+									Agregar a Google Calendar
+								</a>
+								<button onclick="document.getElementById('event-modal').remove()" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition text-sm font-medium">
+									Cerrar
+								</button>
+							</div>
+						</div>
+					</div>
+				`;
+				
+				document.body.insertAdjacentHTML('beforeend', modal);
+			},
+			eventDidMount: function(info) {
+				// Add tooltip
+				info.el.title = info.event.extendedProps.description || info.event.title;
+			}
+		});
+
+		calendar.render();
+	});
+</script>
+
+<style>
+	/* Calendar custom styling to match site theme */
+	#calendar-container :global(.fc) {
+		font-family: inherit;
+	}
+	
+	#calendar-container :global(.fc-button) {
+		background-color: var(--theme-accent-base) !important;
+		border-color: var(--theme-accent-base) !important;
+		text-transform: capitalize;
+	}
+	
+	#calendar-container :global(.fc-button:hover) {
+		opacity: 0.9;
+	}
+	
+	#calendar-container :global(.fc-button-active) {
+		background-color: var(--theme-accent-two) !important;
+		border-color: var(--theme-accent-two) !important;
+	}
+	
+	#calendar-container :global(.fc-event) {
+		cursor: pointer;
+		border-radius: 6px;
+		padding: 2px 4px;
+	}
+	
+	#calendar-container :global(.fc-event:hover) {
+		opacity: 0.85;
+	}
+
+	#calendar-container :global(.fc-daygrid-day-number) {
+		color: var(--theme-text-base);
+	}
+
+	#calendar-container :global(.fc-col-header-cell-cushion) {
+		color: var(--theme-text-base);
+		font-weight: 600;
+	}
+
+	#calendar-container :global(.fc-toolbar-title) {
+		color: var(--theme-text-base);
+		font-size: 1.5rem;
+		font-weight: 700;
+	}
+</style>

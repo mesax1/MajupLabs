@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Copilot + Power Automate"
-slug: "microsoft-power-automate"
+slug: "microsoft-copilot-power-automate"
 shortDescription: "Domina el ecosistema de automatización de Microsoft. Crea flujos con Power Automate y aprovecha Copilot para multiplicar tu productividad."
 duration: "2 a 3 semanas"
 format: ["Virtual en vivo", "Presencial", "Híbrido"]
